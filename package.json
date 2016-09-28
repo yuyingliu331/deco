@@ -7,6 +7,7 @@
     "start": "nodemon server/index.js",
     "build": "ionic-app-scripts build",
     "watch": "ionic-app-scripts watch",
+    "test": "mocha test/server-test/**/*.js",
     "serve:before": "watch",
     "emulate:before": "build",
     "deploy:before": "build",
@@ -29,6 +30,9 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "^0.0.23",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.1.0",
     "typescript": "^2.0.3"
   },
   "cordovaPlugins": [
