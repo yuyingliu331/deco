@@ -38,12 +38,10 @@ describe('/api/products', function() {
   });
 
   afterEach('Delete product created', function() {
-    Product.findById(product1.id)
-    .then(function(product) {
-      return product.destroy();
-    })
-    .catch(function(err) {
-      console.log(err);
+    Product.destroy({
+      where: {
+
+      }
     });
   });
 
@@ -70,7 +68,27 @@ describe('/api/products', function() {
       });
   });
   it('should add a SINGLE product on /products POST', function(done) {
-
+    chai.request(server)
+      .post('/api/products/')
+      .send({
+        category: 'Sofa',
+        room: 'Living',
+        description: 'Very attractive seat.',
+        size: [6, 6, 6],
+        color: ['204820486'],
+        material: 'Cloth',
+        price: '845802',
+        photo: 'http://www.amazon.com',
+        product3dModel: 'http://www.amazon.com',
+        style: 'Modern'
+      })
+      .end(function(err, res){
+        if (err) return done(err);
+        expect(200);
+        expect(res.body.category).to.equal('Sofa');
+        expect(res.body.price).to.equal('845802');
+        done();
+      });
   });
   it('should update a SINGLE product on /product/<id> PUT');
   it('should delete a SINGLE product on /product/<id> DELETE');
