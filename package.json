@@ -20,7 +20,12 @@
     "express": "^4.14.0",
     "ionic-angular": "^2.0.0-rc.0",
     "ionic-native": "^2.0.3",
-    "ionicons": "^3.0.0"
+    "ionicons": "^3.0.0",
+    "path": "^0.12.7",
+    "pg": "^6.1.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.24.3",
+    "sequelize-cli": "^2.4.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "^0.0.23",
