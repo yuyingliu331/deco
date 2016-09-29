@@ -25,7 +25,7 @@ module.exports = {
     //   product3dModel: '',
     //   style: ''
     // }
-    queryInterface.bulkInsert('Product', [{
+    queryInterface.bulkInsert('Products', [{
       category: 'Bed',
       room: 'Bedroom',
       description: 'The 4 large drawers give you an extra storage space under the bed',
@@ -41,7 +41,9 @@ module.exports = {
       price: 40900,
       photo: 'IKEA_bed_BRIMNES.JPG',
       product3dModel: 'IKEA_bed_BRIMNES.obj',
-      style: 'modern'
+      style: 'modern',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Bed',
       room: 'Bedroom',
@@ -56,7 +58,9 @@ module.exports = {
       price: 35900,
       photo: 'IKEA_bed_MALM.JPG',
       product3dModel: 'IKEA_bed_MALM.obj',
-      style: 'modern'
+      style: 'modern',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Bookcase',
       room: 'Living',
@@ -67,7 +71,9 @@ module.exports = {
       price: 14900,
       photo: 'IKEA_bookcase_HEMNES.JPG',
       product3dModel: 'IKEA_bookcase_HEMNES.obj',
-      style: 'classic'
+      style: 'classic',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Chair',
       room: 'Living',
@@ -83,7 +89,9 @@ module.exports = {
       price: 29900,
       photo: 'IKEA_chair_EKENAS.JPG',
       product3dModel: 'IKEA_chair_EKENAS.obj',
-      style: 'modern'
+      style: 'modern',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Chair',
       room: 'Office',
@@ -100,7 +108,9 @@ module.exports = {
       price: 14900,
       photo: 'IKEA_chair_PATRIK.JPG',
       product3dModel: 'IKEA_chair_PATRIK.obj',
-      style: 'modern'
+      style: 'modern',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Desk',
       room: 'Office',
@@ -115,7 +125,9 @@ module.exports = {
       price: 29900,
       photo: 'IKEA_desk_LIATORP.JPG',
       product3dModel: 'IKEA_desk_LIATORP.obj',
-      style: 'classic'
+      style: 'classic',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Sofa',
       room: 'Living',
@@ -132,7 +144,9 @@ module.exports = {
       price: 49900,
       photo: 'IKEA_sofa_EKTORP.JPG',
       product3dModel: 'IKEA_sofa_EKTORP.obj',
-      style: 'classic'
+      style: 'classic',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Table',
       room: 'Dining',
@@ -143,7 +157,9 @@ module.exports = {
       price: 17900,
       photo: 'IKEA_table_DOCKSTA.JPG',
       product3dModel: 'IKEA_table_DOCKSTA.obj',
-      style: 'classic'
+      style: 'classic',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Table',
       room: 'Dining',
@@ -161,7 +177,9 @@ module.exports = {
       price: 19900,
       photo: 'IKEA_table_TORSBY.JPG',
       product3dModel: 'IKEA_table_TORSBY.obj',
-      style: 'modern'
+      style: 'modern',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       category: 'Wardrobe',
       room: 'Bedroom',
@@ -178,7 +196,9 @@ module.exports = {
       price: 9999,
       photo: 'IKEA_wardrobe_ANEBODA.JPG',
       product3dModel: 'IKEA_wardrobe_ANEBODA.obj',
-      style: 'modern'
+      style: 'modern',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }
     ]);
   },
@@ -192,6 +212,6 @@ module.exports = {
       return queryInterface.bulkDelete('Person', null, {});
     */
 
-    return queryInterface.bulkDelete('Product', null, {});
+    return queryInterface.bulkDelete('Products', null, {});
   }
 };

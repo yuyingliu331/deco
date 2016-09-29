@@ -24,4 +24,11 @@ Migrate `deco_testing` db:
 
 ```
 npm run migratetestdb
+npm run migrate
+```
+
+Seed the database:
+
+```
+npm run seed
 ```
