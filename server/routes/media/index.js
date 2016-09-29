@@ -1,13 +1,11 @@
 const express = require('express');
-const router = express.Router();
 const s3Proxy = require('s3-proxy');
+const router = express.Router();
+const secret = require('../../../secrets.json');
 
 router.get('/media/*', s3Proxy({
-  bucket: 'bucket_name',
-  prefix: 'optional_s3_path_prefix',
-  accessKeyId: 'aws_access_key_id',
-  secretAccessKey: 'aws_secret_access_key',
+  bucket: 'deco_development',
+  accessKeyId: secret.AWS.access_key_idsecret,
+  secretAccessKey: secret.AWS.secret_access_keysecret,
   overrideCacheControl: 'max-age=100000'
 }));
-
-module.exports = router;
