@@ -9,7 +9,6 @@ const expect = require('chai').expect;
 const Sequelize = require('sequelize');
 const db = require('../../../server/models');
 const Product = db.Product;
-const supertest = require('supertest');
 
 chai.use(chaiHttp);
 
@@ -69,6 +68,7 @@ describe('/api/products', function() {
         done();
       });
   });
+
   it('should add a SINGLE product on /products POST', function(done) {
     chai.request(server)
       .post('/api/products/')
