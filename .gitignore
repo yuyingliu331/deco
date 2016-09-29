@@ -12,7 +12,6 @@ log.txt
 .vscode/
 npm-debug.log*
 
-.secrets.json
 .idea/
 .sass-cache/
 .tmp/
@@ -24,6 +23,8 @@ tmp/
 temp/
 www/build
 $RECYCLE.BIN/
+secrets.json
+
 
 .DS_Store
 Thumbs.db
