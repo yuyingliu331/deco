@@ -3,6 +3,8 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
+import { CatalogService } from '../providers/catalog-service';
+import { HttpModule }    from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { CatalogPage } from '../pages/catalog/catalog';
     CatalogPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -19,6 +22,6 @@ import { CatalogPage } from '../pages/catalog/catalog';
     HomePage,
     CatalogPage
   ],
-  providers: []
+  providers: [CatalogService]
 })
 export class AppModule {}
