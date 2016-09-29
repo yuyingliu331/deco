@@ -4,7 +4,7 @@ const router = require('express').Router();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../../models/').User;
-const Strategy = require('./auth');
+const Strategy = require('../../../secrets.json').authentication;
 
 const googleCredentials = {
   clientID: Strategy.googleAuth.clientID,

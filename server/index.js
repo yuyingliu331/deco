@@ -5,6 +5,7 @@ const app = express();
 const session = require('express-session');
 const passport = require('passport');
 const User = require('./models').User;
+const sessionSecret = require('../secrets.json').sessionSecret;
 
 app.use(bodyParser.json());
 app.set('port', process.env.PORT || 8080);
@@ -12,7 +13,7 @@ app.use(cors()); // CORS (Cross-Origin Resource Sharing) headers to support Cros
 app.use(express.static('www')); // Our Ionic app build is in the www folder (kept up-to-date by the Ionic CLI using 'ionic serve')
 
 //Express Session
-app.use(session({secret: 'DECORATE'}));
+app.use(session({secret: sessionSecret}));
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
