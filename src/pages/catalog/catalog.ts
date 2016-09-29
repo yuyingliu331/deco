@@ -8,7 +8,7 @@ import { CatalogService } from '../../providers/catalog-service';
 })
 export class CatalogPage {
   item = 'im an item';
-  products = 'products go here';
+  products = [];
 
   constructor(public navCtrl: NavController, private catalogService: CatalogService) {
   }

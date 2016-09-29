@@ -9,5 +9,10 @@
 <ion-content padding>
   <h1>Hello! I'm a catalog! It feels so good !</h1>
   <p>item: {{item}}</p>
-  <p>products: {{products}}</p>
+  <ul>
+    <li *ngFor="let product of products">
+      {{product.category}}
+    </li>
+  </ul>
+
 </ion-content>

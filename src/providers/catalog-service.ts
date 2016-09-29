@@ -19,7 +19,7 @@ export class CatalogService {
     return this.http.get('/api/products')
       .toPromise()
       .then(response => {
-        return response._body;
+        return JSON.parse(response._body);
       })
       .catch(this.handleError)
   }
