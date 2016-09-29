@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/:userId', function(req, res, next) {
-  User.findById(req.params.userId, { attributes: ['id', 'email']})
+  User.findById(req.params.userId, { attributes: ['id', 'email', 'isAdmin']})
   .then(function(user){
     return user.update(req.body);
   })
