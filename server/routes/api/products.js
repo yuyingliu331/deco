@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   Product.create(req.body)
   .then(function(product) {
-    res.send(product);
+    res.status(201).send(product);
   })
   .catch(next);
 });
@@ -33,7 +33,7 @@ router.put('/:id', function(req, res, next) {
     return product.update(req.body);
   })
   .then(function(updatedProduct) {
-    res.send(updatedProduct);
+    res.status(201).send(updatedProduct);
   })
   .catch(next);
 });
@@ -43,8 +43,8 @@ router.delete('/:id', function(req, res, next) {
   .then(function(product) {
     return product.destroy();
   })
-  .then(function(response) {
-    res.send(response);
+  .then(function() {
+    res.sendStatus(204);
   })
   .catch(next);
 });

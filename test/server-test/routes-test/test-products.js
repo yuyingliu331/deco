@@ -40,7 +40,9 @@ describe('/api/products', function() {
   afterEach('Delete product created', function() {
     Product.destroy({
       where: {
-
+        id: {
+          $gt: 0
+        }
       }
     });
   });
@@ -50,7 +52,7 @@ describe('/api/products', function() {
       .get('/api/products')
       .end(function(err, res){
         if (err) return done(err);
-        expect(200);
+        expect(res).to.have.status(200);
         expect(res.body).to.be.instanceof(Array);
         expect(res.body).to.have.length(1);
         done();
@@ -61,7 +63,7 @@ describe('/api/products', function() {
       .get('/api/products/' + product1.id)
       .end(function(err, res){
         if (err) return done(err);
-        expect(200);
+        expect(res).to.have.status(200);
         expect(res.body.category).to.equal(product1.category);
         expect(res.body.price).to.equal(product1.price);
         done();
@@ -84,12 +86,36 @@ describe('/api/products', function() {
       })
       .end(function(err, res){
         if (err) return done(err);
-        expect(200);
+        expect(res).to.have.status(201);
         expect(res.body.category).to.equal('Sofa');
-        expect(res.body.price).to.equal('845802');
+        expect(res.body.price).to.equal(845802);
         done();
       });
   });
-  it('should update a SINGLE product on /product/<id> PUT');
-  it('should delete a SINGLE product on /product/<id> DELETE');
+  it('should update a SINGLE product on /product/<id> PUT', function(done) {
+    chai.request(server)
+      .put('/api/products/' + product1.id)
+      .send({
+        room: 'Dining'
+      })
+      .end(function(err, res) {
+        if (err) return done(err);
+        expect(res).to.have.status(201);
+        expect(res.body.room).to.equal('Dining');
+        done();
+      });
+  });
+  it('should delete a SINGLE product on /product/<id> DELETE', function(done) {
+    chai.request(server)
+      .delete('/api/products/' + product1.id)
+      .end(function(err, res) {
+        if (err) return done(err);
+        expect(res).to.have.status(204);
+        Product.findAll()
+        .then(function(products) {
+          expect(products).to.have.length(0);
+        });
+        done();
+      });
+  });
 });
