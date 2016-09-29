@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1000),
       allowNull: false
     },
     size: {
@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     color: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      type: DataTypes.ARRAY(DataTypes.STRING),
       validate: {
         isRGB: function(value) {
           for (var i = 0; i < value.length; i++) {
