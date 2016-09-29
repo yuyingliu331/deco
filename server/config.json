@@ -13,5 +13,13 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
+  },
+  "testing": {
+    "username": "postgres",
+    "password": null,
+    "database": "deco_testing",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
   }
 }
