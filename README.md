@@ -23,7 +23,7 @@ npm run migrate
 Migrate `deco_testing` db:
 
 ```
-npm run migratetestdb
+export NODE_ENV=testing
 npm run migrate
 ```
 
