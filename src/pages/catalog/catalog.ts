@@ -5,7 +5,8 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'catalog.html'
 })
 export class CatalogPage {
-  item: 'im an item';
+  item = 'im an item';
+
   constructor(public navCtrl: NavController) {
   }
 }
