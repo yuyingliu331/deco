@@ -45,7 +45,7 @@ describe('api/users', function() {
           $gt: 0
         }
       }
-    })
+    });
   });
 
   it('should list ALL users on /users GET', function(done) {
