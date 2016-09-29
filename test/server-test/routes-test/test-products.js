@@ -10,6 +10,7 @@ const Sequelize = require('sequelize');
 const db = require('../../../server/models');
 const Product = db.Product;
 
+
 chai.use(chaiHttp);
 
 
