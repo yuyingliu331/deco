@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
+
+const router = require('express').Router();
 
 // require individual routes here
 // ex: router.use('/products', require('products'))
