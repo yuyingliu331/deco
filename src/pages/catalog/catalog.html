@@ -6,13 +6,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h1>Hello! I'm a catalog! It feels so good !</h1>
-  <p>item: {{item}}</p>
-  <ul>
-    <li *ngFor="let product of products">
-      {{product.category}}
-    </li>
-  </ul>
-
+<ion-content class="card-background-page">
+  <div *ngFor="let category of productsByCategory">
+    <div *ngFor="let product of category">
+      <a href="#">
+        <ion-card>
+          <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{product.photo}}">
+          <div class="card-title">{{product.category}}</div>
+          <div class="card-subtitle">{{category.length}} items</div>
+        </ion-card>
+      </a>
+    </div>
+  </div>
 </ion-content>

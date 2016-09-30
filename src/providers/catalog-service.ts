@@ -15,17 +15,32 @@ export class CatalogService {
     this.http = http;
   }
 
-  getAllProducts() {
+  getAllProducts() : any {
     return this.http.get('/api/products')
       .toPromise()
       .then(response => {
         return JSON.parse(response._body);
       })
-      .catch(this.handleError)
+      .catch(err => console.log(err));
   }
 
-  private handleError(error: any): Promise<any> {
-    return Promise.reject(error.message || error);
+  getProductsByCategory(): any {
+    return this.getAllProducts()
+    .then(function(products) {
+      let categories = [];
+      let productsByCategory = [];
+
+      products.forEach(function(product) {
+        if (categories.indexOf(product.category) < 0) {
+          categories.push(product.category);
+          productsByCategory[categories.indexOf(product.category)] = [];
+        }
+
+        productsByCategory[categories.indexOf(product.category)].push(product);
+      })
+
+      return productsByCategory;
+    })
   }
 
 }

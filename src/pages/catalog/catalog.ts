@@ -4,21 +4,23 @@ import { CatalogService } from '../../providers/catalog-service';
 
 @Component({
   templateUrl: 'catalog.html',
-  providers: [CatalogService]
+  styleUrls: ['/pages/catalog/catalog.scss'],
+  providers: [CatalogService],
 })
 export class CatalogPage {
-  item = 'im an item';
-  products = [];
+  productsByCategory = [];
 
   constructor(public navCtrl: NavController, private catalogService: CatalogService) {
   }
 
-  getAllProducts() {
-    this.catalogService.getAllProducts()
-    .then(products => this.products = products);
+  getProductsByCategory = function() {
+    this.catalogService.getProductsByCategory()
+    .then(result => {
+      this.productsByCategory = result;
+    })
   }
 
   ngOnInit() {
-    this.getAllProducts();
+    this.getProductsByCategory();
   }
 }
