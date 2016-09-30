@@ -17,7 +17,7 @@ const User = db.User;
 chai.use(chaiHttp);
 
 describe('api/wishlists', function() {
-  var wishlist1, wishlist2;
+  var wishlist1;
   var user1, user2;
 
   const userInfo1 = {
@@ -32,16 +32,10 @@ describe('api/wishlists', function() {
     facebookId: 234
   };
 
-
-
   const wishlistInfo1 = {
     name: "happyChristmas",
     userId: 1
   
-  };
-  const wishlistInfo2 = {
-    name: "birthdayGiftIdea",
-      userId:  2
   };
 
   beforeEach(function(){
