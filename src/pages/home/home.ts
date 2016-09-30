@@ -8,8 +8,7 @@ import { CatalogPage } from '../catalog/catalog';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
-  name = 'Elvis';
+  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {}
 
   goToCatalogPage() {
     //push another page onto the history stack
