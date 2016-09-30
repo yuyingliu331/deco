@@ -6,6 +6,7 @@ import { CatalogPage } from '../pages/catalog/catalog';
 import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -24,4 +25,5 @@ import { HttpModule }    from '@angular/http';
   ],
   providers: [CatalogService]
 })
-export class AppModule {}
+export class AppModule {
+}

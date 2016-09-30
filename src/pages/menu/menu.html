@@ -1,0 +1,14 @@
+<ion-menu [content]="mycontent">
+  <ion-content>
+    <ion-list>
+      <button ion-button block color="light">Home</button>
+      <button ion-button block color="light">Catalog</button>
+      <button ion-button block color="light">Room View</button>
+      <button ion-button block color="light">WishList</button>
+      <button ion-button block color="light">Account Settings</button>
+      <button ion-button block color="light">Logout</button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
