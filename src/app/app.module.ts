@@ -5,13 +5,14 @@ import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
 import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
-
+import { ProductPage } from '../pages/product/product';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    CatalogPage
+    CatalogPage,
+    ProductPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -21,7 +22,8 @@ import { HttpModule }    from '@angular/http';
   entryComponents: [
     MyApp,
     HomePage,
-    CatalogPage
+    CatalogPage,
+    ProductPage
   ],
   providers: [CatalogService]
 })
