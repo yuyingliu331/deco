@@ -3,7 +3,6 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 
-
 @Component({
   templateUrl: `../pages/menu/menu.html`
 })
