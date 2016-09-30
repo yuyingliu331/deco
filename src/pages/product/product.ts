@@ -8,19 +8,19 @@ import { CatalogService } from '../../providers/catalog-service';
   providers: [CatalogService],
 })
 export class ProductPage {
-  productsByCategory = [];
+  product = [];
 
   constructor(public navCtrl: NavController, private catalogService: CatalogService) {
   }
 
-  // getProductsByCategory = function() {
-  //   this.catalogService.getProductsByCategory()
-  //   .then(result => {
-  //     this.productsByCategory = result;
-  //   })
-  // }
+  getProductById = function() {
+    this.catalogService.getProductById(1)
+    .then(result => {
+      this.product = result;
+    })
+  }
 
-  // ngOnInit() {
-  //   this.getProductsByCategory();
-  // }
+  ngOnInit() {
+    this.getProductById();
+  }
 }
