@@ -5,30 +5,9 @@ const Wishlist = models.Wishlist;
 
 // get all the wishlist: 
 router.get('/', function(req, res, next) {
-  Wishlist.findAll({attributes: ['id', 'name', 'userId']})
+  Wishlist.findAll()
   .then(function(wishlists) {
     res.send(wishlists);
-  })
-  .catch(next);
-});
-
-//create a new wishlist: 
-router.post('/', function(req, res, next) {
-  Wishlist.create(req.body)
-  .then(function(wishlist) {
-    res.status(201).send(wishlist);
-  })
-  .catch(next);
-});
-
-//update the wishlist: 
-router.put('/:id', function(req, res, next) {
-  Wishlist.findById(req.params.id, { attributes: ['id', 'email', 'userId']})
-  .then(function(wishlist){
-    return wishlist.update(req.body);
-  })
-  .then(function(wishlist) {
-    res.send(wishlist);
   })
   .catch(next);
 });
@@ -40,13 +19,25 @@ router.get('/:id', function(req, res, next){
     res.send(wishlist);
   })
   .catch(next);
+});
+
+//create a new wishlist: 
+router.post('/', function(req, res, next) {
+  Wishlist.create(req.body)
+  .then(function(wishlist){
+    res.status(201).send(wishlist);
+  })
+  .catch(next);
 })
 
-//find all wishlist by userId
-router.get('/:userId', function(req, res, next) {
-  Wishlist.findAll( { where: { userId: req.params.userId} })
-  .then(function(wishlists) {
-    res.send(wishlists);
+//update the wishlist: 
+router.put('/:id', function(req, res, next) {
+  Wishlist.findById(req.params.id, { attributes: ['id', 'userId']})
+  .then(function(wishlist){
+    return wishlist.update(req.body);
+  })
+  .then(function(wishlist) {
+    res.send(wishlist);
   })
   .catch(next);
 });
