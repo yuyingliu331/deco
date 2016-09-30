@@ -3,6 +3,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,4 +19,5 @@ import { HomePage } from '../pages/home/home';
   ],
   providers: []
 })
-export class AppModule {}
+export class AppModule {
+}
