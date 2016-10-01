@@ -6,13 +6,14 @@ import { CatalogPage } from '../pages/catalog/catalog';
 import { ProductsPage } from '../pages/products/products';
 import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
-
+import { ProductDetailPage } from '../pages/product/product-detail';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CatalogPage,
+    ProductDetailPage,
     ProductsPage
   ],
   imports: [
@@ -24,6 +25,7 @@ import { HttpModule }    from '@angular/http';
     MyApp,
     HomePage,
     CatalogPage,
+    ProductDetailPage,
     ProductsPage
   ],
   providers: [CatalogService]

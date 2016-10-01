@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Product {{productId}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-card>
+    <ion-item>
+      <ion-icon name="heart" isActive="false"></ion-icon>
+      <button ion-button outline item-right icon-left>
+        <ion-icon name="eye"></ion-icon>
+        Experience in AR
+      </button>
+    </ion-item>
+    <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{product.photo}}" />
+    <ion-card-content>
+      <button ion-button outline block>Add To Wishlist</button>
+      <ion-list text-wrap>
+        <ion-list-header>
+          Product Details
+        </ion-list-header>
+        <ion-item (click)="toggleDescription()">
+          <ion-icon primary item-left [name]="showIcon(showDescription)"></ion-icon>
+          Description
+        </ion-item>
+        <p *ngIf="showDescription">{{product.description}}</p>
+        <ion-item (click)="toggleSize()">
+          <ion-icon primary item-left [name]="showIcon(showSize)"></ion-icon>
+          Size
+        </ion-item>
+        <p *ngIf="product.size && showSize">L: {{product.size[0]}} cm</p>
+        <p *ngIf="product.size && showSize">W: {{product.size[1]}} cm</p>
+        <p *ngIf="product.size && showSize">H: {{product.size[2]}} cm</p>
+        <ion-item (click)="toggleMaterial()">
+          <ion-icon primary item-left [name]="showIcon(showMaterial)"></ion-icon>
+          Material
+        </ion-item>
+        <p *ngIf="showMaterial">{{product.material}}</p>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

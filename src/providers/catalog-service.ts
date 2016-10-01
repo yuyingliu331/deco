@@ -40,4 +40,13 @@ export class CatalogService {
       return productsByCategory;
     })
   }
+
+  getProductById(id) : any {
+    return this.http.get('/api/products/' + id)
+    .toPromise()
+    .then(response => {
+      return JSON.parse(response._body);
+    })
+    .catch(err => console.log(err));
+  }
 }
