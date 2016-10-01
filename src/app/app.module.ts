@@ -13,7 +13,7 @@ import { ProductDetailPage } from '../pages/product/product-detail';
     MyApp,
     HomePage,
     CatalogPage,
-    ProductDetailPage
+    ProductDetailPage,
     ProductsPage
   ],
   imports: [
@@ -25,7 +25,7 @@ import { ProductDetailPage } from '../pages/product/product-detail';
     MyApp,
     HomePage,
     CatalogPage,
-    ProductDetailPage
+    ProductDetailPage,
     ProductsPage
   ],
   providers: [CatalogService]

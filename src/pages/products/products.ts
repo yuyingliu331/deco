@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CatalogService } from '../../providers/catalog-service';
 import { Catalog } from '../catalog/catalog';
+import { ProductDetailPage } from '../product/product-detail';
 
 @Component({
   templateUrl: 'products.html',
@@ -12,5 +13,11 @@ export class ProductsPage {
 
   constructor(public navCtrl: NavController, params: NavParams){
     this.products = params.get("products");
+  }
+
+  goToProductDetailPage(n) {
+    this.navCtrl.push(ProductDetailPage, {
+      productId: n
+    });
   }
 }
