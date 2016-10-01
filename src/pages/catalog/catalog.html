@@ -5,15 +5,17 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content class="card-background-page">
-  <div *ngFor="let category of productsByCategory">
-    <a (click)="goToCategoryPage(category)">
-      <ion-card>
-        <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{category[0].photo}}">
-        <div class="card-title">{{category[0].category}}</div>
-        <div class="card-subtitle">{{category.length}} items</div>
-      </ion-card>
-    </a>
+  <div padding>
+    <ion-segment>
+      <ion-segment-button *ngFor="let category of productsByCategory" value="{{category[0].category}}" (click)="switchCategory(category[0].category)">
+        {{category[0].category}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="categoryFilter">
+    <span *ngFor="let category of productsByCategory">
+      <products [products]="category" *ngSwitchCase="category[0].category"></products>
+    </span>
   </div>
 </ion-content>
