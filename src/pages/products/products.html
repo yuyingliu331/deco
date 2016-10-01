@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of products">
+    <ion-item *ngFor="let product of products" (click)="goToProductDetailPage(product.id)">
       <ion-thumbnail item-left>
         <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{product.photo}}">
       </ion-thumbnail>
