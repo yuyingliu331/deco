@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CatalogService } from '../../providers/catalog-service';
-import { Catalog } from '../catalog/catalog';
+import { CatalogPage } from '../catalog/catalog';
 import { ProductDetailPage } from '../product/product-detail';
 
 @Component({
+  selector: 'products',
   templateUrl: 'products.html',
   providers: [],
 })
 export class ProductsPage {
-  products = [];
-
+  // products = [];
+  @Input() products;
   constructor(public navCtrl: NavController, params: NavParams){
     this.products = params.get("products");
   }

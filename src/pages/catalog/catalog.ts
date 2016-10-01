@@ -9,6 +9,7 @@ import { ProductsPage } from '../products/products';
   providers: [CatalogService],
 })
 export class CatalogPage {
+  categoryFilter: string = "Bed"
   productsByCategory = [];
 
   constructor(public navCtrl: NavController, private catalogService: CatalogService) {
@@ -24,6 +25,11 @@ export class CatalogPage {
   goToCategoryPage = function(products) {
     this.navCtrl.push(ProductsPage, {products});
   }
+
+  switchCategory(category) {
+    this.categoryFilter = category;
+  }
+
   //you have a 2-d array of categories,
   ngOnInit() {
     this.getProductsByCategory();
