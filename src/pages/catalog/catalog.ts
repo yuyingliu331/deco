@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CatalogService } from '../../providers/catalog-service';
+import { ProductsPage } from '../products/products';
 
 @Component({
   templateUrl: 'catalog.html',
@@ -20,6 +21,10 @@ export class CatalogPage {
     })
   }
 
+  goToCategoryPage = function(products) {
+    this.navCtrl.push(ProductsPage, {products});
+  }
+  //you have a 2-d array of categories,
   ngOnInit() {
     this.getProductsByCategory();
   }

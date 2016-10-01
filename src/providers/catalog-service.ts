@@ -35,12 +35,9 @@ export class CatalogService {
           categories.push(product.category);
           productsByCategory[categories.indexOf(product.category)] = [];
         }
-
         productsByCategory[categories.indexOf(product.category)].push(product);
       })
-
       return productsByCategory;
     })
   }
-
 }
