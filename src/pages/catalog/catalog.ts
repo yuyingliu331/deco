@@ -22,7 +22,6 @@ export class CatalogPage {
   }
 
   goToCategoryPage = function(products) {
-    console.log(products, 'catalog page');
     this.navCtrl.push(ProductsPage, {products});
   }
   //you have a 2-d array of categories,
