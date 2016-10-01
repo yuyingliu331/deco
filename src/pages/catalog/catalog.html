@@ -8,7 +8,7 @@
 
 <ion-content class="card-background-page">
   <div *ngFor="let category of productsByCategory">
-    <a href="#">
+    <a (click)="goToCategoryPage(category)">
       <ion-card>
         <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{category[0].photo}}">
         <div class="card-title">{{category[0].category}}</div>
