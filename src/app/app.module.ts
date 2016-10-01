@@ -5,14 +5,14 @@ import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
 import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
-import { ProductPage } from '../pages/product/product';
+import { ProductDetailPage } from '../pages/product/product-detail';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CatalogPage,
-    ProductPage
+    ProductDetailPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -23,7 +23,7 @@ import { ProductPage } from '../pages/product/product';
     MyApp,
     HomePage,
     CatalogPage,
-    ProductPage
+    ProductDetailPage
   ],
   providers: [CatalogService]
 })

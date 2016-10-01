@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { CatalogPage } from '../catalog/catalog';
-import { ProductPage } from '../product/product';
+import { ProductDetailPage } from '../product/product-detail';
 
 @Component({
   templateUrl: 'home.html'
@@ -15,7 +15,9 @@ export class HomePage {
     this.navCtrl.push(CatalogPage);
   }
 
-  viewProduct() {
-    this.navCtrl.push(ProductPage);
+  viewProduct(n) {
+    this.navCtrl.push(ProductDetailPage, {
+      productId: n
+    });
   }
 }
