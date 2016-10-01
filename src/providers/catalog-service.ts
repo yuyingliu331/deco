@@ -40,7 +40,6 @@ export class CatalogService {
       return productsByCategory;
     })
   }
-<<<<<<< HEAD
 
   getProductById(id) : any {
     return this.http.get('/api/products/' + id)
@@ -50,7 +49,4 @@ export class CatalogService {
     })
     .catch(err => console.log(err));
   }
-
-=======
->>>>>>> 1a33f2e41c1338931d07e846d3395014403de6ab
 }

@@ -9,6 +9,9 @@ import { CatalogService } from '../../providers/catalog-service';
 })
 export class ProductDetailPage {
   product = [];
+  showDescription = false;
+  showSize = false;
+  showMaterial = false;
   public productId:any;
 
   constructor(public navCtrl: NavController, private catalogService: CatalogService, params: NavParams) {
@@ -19,10 +22,33 @@ export class ProductDetailPage {
     this.catalogService.getProductById(this.productId)
     .then(result => {
       this.product = result;
+      console.log('size', typeof this.product.size);
+      console.log(this.product.size[0]);
     })
   }
 
   ngOnInit() {
     this.getProductById();
   }
+
+  showIcon(category) {
+    if (category) {
+      return 'ios-remove-circle-outline';
+    } else {
+      return 'ios-add-circle-outline';
+    }
+  }
+
+  toggleDescription() {
+    this.showDescription = !this.showDescription;
+  }
+
+  toggleSize() {
+    this.showSize = !this.showSize;
+  }
+
+  toggleMaterial() {
+    this.showMaterial = !this.showMaterial;
+  }
+
 }

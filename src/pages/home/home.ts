@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
-import { CatalogPage } from '../catalog/catalog';
-import { ProductDetailPage } from '../product/product-detail';
 
 @Component({
   templateUrl: 'home.html'
