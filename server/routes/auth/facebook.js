@@ -4,19 +4,19 @@ const router = require('express').Router();
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const User = require('../../models/').User;
-const Strategy = require('../../../secrets.json').authentication;
+const envVar = require('../../env').FACEBOOK;
 
 const facebookCredentials = {
-  clientID: Strategy.facebookAuth.clientID,
-  clientSecret: Strategy.facebookAuth.clientSecret,
-  callbackURL: Strategy.facebookAuth.callbackURL,
+  clientID: envVar.clientID,
+  clientSecret: envVar.clientSecret,
+  callbackURL: envVar.callbackURL,
   profileFields: ['id', 'emails']
 };
 
 router.get('/', passport.authenticate('facebook'));
 
-router.get('/callback', 
-  passport.authenticate('facebook', {successRedirect : '/profile',failureRedirect: '/login'}),
+router.get('/callback',
+  passport.authenticate('facebook', {successRedirect: '/profile', failureRedirect: '/login'}),
   function (req, res) {
     res.redirect('/');
 });
