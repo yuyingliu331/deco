@@ -21084,6 +21084,18 @@ sub {
   }
 }
 
+html, body, ion-content, ion-page, .nav-decor {
+  background-color: transparent !important;
+}
+
+.home #ionball {
+  position: absolute;
+  bottom: 30px;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+}
+
 img {
   height: 50%;
   width: 50%;
@@ -21109,4 +21121,9 @@ img {
   top: 52%;
   width: 100%;
   color: #ee4c83;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }

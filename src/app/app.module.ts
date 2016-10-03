@@ -7,6 +7,8 @@ import { ProductsPage } from '../pages/products/products';
 import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
+import { ARView } from '../pages/ar-view/ar-view';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { ProductDetailPage } from '../pages/product/product-detail';
     HomePage,
     CatalogPage,
     ProductDetailPage,
-    ProductsPage
+    ProductsPage,
+    ARView
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -26,7 +29,8 @@ import { ProductDetailPage } from '../pages/product/product-detail';
     HomePage,
     CatalogPage,
     ProductDetailPage,
-    ProductsPage
+    ProductsPage,
+    ARView
   ],
   providers: [CatalogService]
 })
