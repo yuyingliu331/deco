@@ -21,7 +21,6 @@ dist/
 node_modules/
 tmp/
 temp/
-www/build
 $RECYCLE.BIN/
 secrets.json
 
