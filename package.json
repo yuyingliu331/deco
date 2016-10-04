@@ -4,7 +4,7 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "build": "ionic-app-scripts build",
     "watch": "ionic-app-scripts watch",
     "test": "mocha test/server-test/**/*.js",
