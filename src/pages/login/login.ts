@@ -5,10 +5,10 @@ import { Component } from '@angular/core';
 })
 
 export class  LoginPage {
-	user {
-		name: "",
-		password: ""
-	},
+	// user {
+	// 	name: "=",
+	// 	password: "="
+	// },
 	
 	logIn() {
 		

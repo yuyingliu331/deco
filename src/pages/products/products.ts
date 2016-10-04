@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CatalogService } from '../../providers/catalog-service';
-import { Catalog } from '../catalog/catalog';
+import { CatalogPage } from '../catalog/catalog';
 import { ProductDetailPage } from '../product/product-detail';
 
 @Component({
