@@ -3,11 +3,13 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
+import { LoginPage } from '../pages/login/login';
 import { ProductsPage } from '../pages/products/products';
 import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { ArgonPage } from '../pages/argon/argon';
     CatalogPage,
     ProductDetailPage,
     ProductsPage,
-    ArgonPage
+    ArgonPage,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -29,7 +32,8 @@ import { ArgonPage } from '../pages/argon/argon';
     CatalogPage,
     ProductDetailPage,
     ProductsPage,
-    ArgonPage
+    ArgonPage,
+    LoginPage
   ],
   providers: [CatalogService]
 })

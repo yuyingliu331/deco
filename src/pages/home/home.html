@@ -9,6 +9,10 @@
     </ion-title>
 
     <ion-buttons end>
+    <button ion-button outline icon-left (click)="Login()">
+      <ion-icon name='briefcase' is-active="false"></ion-icon>
+      Log In
+    </button>
       <button ion-button (click)="openModal()">
         <ion-icon name="options"></ion-icon>
       </button>
@@ -22,4 +26,5 @@
   </p>
   <button ion-button (click)="goToArgonPage()">View VR</button>
   <img src="https://s3-us-west-2.amazonaws.com/deco-development/IKEA_bed_MALM.JPG" />
+  
 </ion-content>
