@@ -8,6 +8,7 @@ import { ProductsPage } from '../pages/products/products';
 import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
+import { ArgonPage } from '../pages/argon/argon';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ProductDetailPage } from '../pages/product/product-detail';
     CatalogPage,
     ProductDetailPage,
     ProductsPage,
+    ArgonPage,
     LoginPage
   ],
   imports: [
@@ -30,6 +32,7 @@ import { ProductDetailPage } from '../pages/product/product-detail';
     CatalogPage,
     ProductDetailPage,
     ProductsPage,
+    ArgonPage,
     LoginPage
   ],
   providers: [CatalogService]
