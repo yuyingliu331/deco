@@ -5,15 +5,24 @@
     </button>
 
     <ion-title>
-      Menu
+     Menu
+
+       <a right href="/auth/google">
+      <button ion-button color="secondary" icon-left>
+        <ion-icon name='logo-google'>
+       Google</ion-icon>
+    </button>
+   </a>
+
+   <a href="/auth/facebook">
+    <button ion-button icon-left>
+        <ion-icon name='logo-facebook'>
+      Facebook</ion-icon>
+     </button>
+  </a>
+
     </ion-title>
 
-    <ion-buttons end>
-    <button ion-button outline icon-left (click)="Login()">
-      <ion-icon name='briefcase' is-active="false"></ion-icon>
-      Log In
-    </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
