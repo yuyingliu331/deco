@@ -7,15 +7,13 @@ import { LoginPage } from '../pages/login/login';
 import { ProductsPage } from '../pages/products/products';
 import { CatalogService } from '../providers/catalog-service';
 import { WishlistService } from '../providers/wishlist-service';
+import { SessionService } from '../providers/session-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
 import { ListItem } from '../pages/list-item/list-item';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
 import { WishlistPage } from '../pages/wishlist/wishlist';
-
-
-
 
 @NgModule({
   declarations: [
@@ -47,7 +45,7 @@ import { WishlistPage } from '../pages/wishlist/wishlist';
     WishlistsPage,
     WishlistPage
   ],
-  providers: [CatalogService, WishlistService]
+  providers: [CatalogService, WishlistService, SessionService]
 })
 export class AppModule {
 }

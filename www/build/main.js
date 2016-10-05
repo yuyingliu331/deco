@@ -76251,6 +76251,12 @@ var __decorate$111 = (undefined && undefined.__decorate) || function (decorators
 var __metadata$10 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/*
+  Generated class for the CatalogService provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
 var WishlistService = (function () {
     function WishlistService(http, catalogService) {
         this.http = http;
@@ -76258,7 +76264,7 @@ var WishlistService = (function () {
         this.http = http;
     }
     WishlistService.prototype.getUserWishlists = function () {
-        return this.http.get('/api/wishlists')
+        return this.http.get('/api/wishlists/')
             .toPromise()
             .then(function (response) {
             return JSON.parse(response._body);
@@ -76303,6 +76309,35 @@ var __decorate$112 = (undefined && undefined.__decorate) || function (decorators
 var __metadata$11 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var SessionService = (function () {
+    function SessionService(http) {
+        this.http = http;
+        this.http = http;
+    }
+    SessionService.prototype.getSessionInfo = function () {
+        return this.http.get('/auth/session')
+            .toPromise()
+            .then(function (response) {
+            return JSON.parse(response._body);
+        })
+            .catch(function (err) { return console.log(err); });
+    };
+    SessionService = __decorate$112([
+        Injectable(), 
+        __metadata$11('design:paramtypes', [Http])
+    ], SessionService);
+    return SessionService;
+}());
+
+var __decorate$113 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$12 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var WishlistPage = (function () {
     function WishlistPage(navCtrl, wishlistservice, params) {
         this.navCtrl = navCtrl;
@@ -76313,16 +76348,17 @@ var WishlistPage = (function () {
         this.getWishlist = function (wishlist) {
             this.wishlist = this.wishlistservice.getWishlistProducts(params.get("wishlist"));
         };
+        this.wishlistName = params.get("wishlistName");
     }
     WishlistPage.prototype.ngOnInit = function () {
         this.getWishlist();
     };
-    WishlistPage = __decorate$112([
+    WishlistPage = __decorate$113([
         Component({
-             template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{wishlist.name}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <list-item *ngFor="let product of wishlist" [itemProduct]="product"></list-item>\n  </ion-list>\n</ion-content>\n',
+             template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{wishlistName}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <list-item *ngFor="let product of wishlist" [itemProduct]="product"></list-item>\n  </ion-list>\n</ion-content>\n',
             providers: [WishlistService]
         }), 
-        __metadata$11('design:paramtypes', [NavController, WishlistService, NavParams])
+        __metadata$12('design:paramtypes', [NavController, WishlistService, NavParams])
     ], WishlistPage);
     return WishlistPage;
 }());
@@ -76337,23 +76373,29 @@ var __metadata$9 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var WishlistsPage = (function () {
-    function WishlistsPage(navCtrl, wishlistservice) {
+    function WishlistsPage(navCtrl, wishlistservice, sessionService) {
         this.navCtrl = navCtrl;
         this.wishlistservice = wishlistservice;
+        this.sessionService = sessionService;
         this.wishlists = [];
         this.getUserWishlists = function () {
             var _this = this;
-            this.wishlistservice.getUserWishlists()
-                .then(function (result) {
-                _this.wishlists = result;
+            this.sessionService.getSessionInfo()
+                .then(function (session) {
+                if (session.passport) {
+                    _this.wishlistservice.getUserWishlists()
+                        .then(function (result) {
+                        _this.wishlists = result;
+                    });
+                }
             });
         };
-        this.goToWishlist = function (wishlistId) {
+        this.goToWishlist = function (wishlistId, wishlistName) {
             var _this = this;
             var scope = this;
             this.wishlistservice.getWishlist(wishlistId)
                 .then(function (wishlist) {
-                _this.navCtrl.push(WishlistPage, { wishlist: wishlist });
+                _this.navCtrl.push(WishlistPage, { wishlist: wishlist, wishlistName: wishlistName });
             });
         };
     }
@@ -76362,10 +76404,10 @@ var WishlistsPage = (function () {
     };
     WishlistsPage = __decorate$110([
         Component({
-             template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Wishlists\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n  <ion-item *ngFor="let list of wishlists" (click)="goToWishlist(list.id)">\n    {{list.name}}\n  </ion-item>\n</ion-list>\n</ion-content>\n',
+             template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Wishlists\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n  <ion-item *ngFor="let list of wishlists" (click)="goToWishlist(list.id, list.name)">\n    {{list.name}}\n  </ion-item>\n</ion-list>\n</ion-content>\n',
             providers: [WishlistService],
         }), 
-        __metadata$9('design:paramtypes', [NavController, WishlistService])
+        __metadata$9('design:paramtypes', [NavController, WishlistService, SessionService])
     ], WishlistsPage);
     return WishlistsPage;
 }());
@@ -76403,20 +76445,21 @@ var MyApp = (function () {
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate$1([
         Component({
-             template: '<ion-menu [content]="mycontent">\n  <ion-content>\n    <ion-list>\n      <button ion-button block color="light">Home</button>\n      <button ion-button block color="light" (click)="goToCatalogPage()">Catalog</button>\n      <button ion-button block color="light">Room View</button>\n      <button ion-button block color="light" (click)="goToWishlistPage()">WishList</button>\n      <button ion-button block color="light">Account Settings</button>\n      <button ion-button block color="light">Logout</button>\n    </ion-list>\n  </ion-content>\n</ion-menu>\n\n<ion-nav #mycontent [root]="rootPage"></ion-nav>\n'
+             template: '<ion-menu [content]="mycontent">\n  <ion-content>\n    <ion-list>\n      <button ion-button block color="light">Home</button>\n      <button ion-button block color="light" (click)="goToCatalogPage()">Catalog</button>\n      <button ion-button block color="light">Room View</button>\n      <button ion-button block color="light" (click)="goToWishlistPage()">WishList</button>\n      <button ion-button block color="light">Account Settings</button>\n      <button ion-button block color="light">Logout</button>\n    </ion-list>\n  </ion-content>\n</ion-menu>\n\n<ion-nav #mycontent [root]="rootPage"></ion-nav>\n',
+            providers: []
         }), 
         __metadata$1('design:paramtypes', [Platform, MenuController])
     ], MyApp);
     return MyApp;
 }());
 
-var __decorate$113 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$114 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$12 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$13 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ListItem = (function () {
@@ -76428,17 +76471,17 @@ var ListItem = (function () {
             productId: n
         });
     };
-    __decorate$113([
+    __decorate$114([
         Input(), 
-        __metadata$12('design:type', Object)
+        __metadata$13('design:type', Object)
     ], ListItem.prototype, "itemProduct", void 0);
-    ListItem = __decorate$113([
+    ListItem = __decorate$114([
         Component({
             selector: 'list-item',
              template: '<ion-item (click)="goToProductDetailPage(itemProduct.id)">\n  <ion-thumbnail item-left>\n    <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{itemProduct.photo}}">\n  </ion-thumbnail>\n  <h2>{{itemProduct.name}}</h2>\n  <p>{{itemProduct.description}}</p>\n  <button clear item-right (click)="goToProductDetailPage(itemProduct.id)">View</button>\n</ion-item>\n',
             providers: []
         }), 
-        __metadata$12('design:paramtypes', [NavController])
+        __metadata$13('design:paramtypes', [NavController])
     ], ListItem);
     return ListItem;
 }());
@@ -76486,7 +76529,7 @@ var AppModule = (function () {
                 WishlistsPage,
                 WishlistPage
             ],
-            providers: [CatalogService, WishlistService]
+            providers: [CatalogService, WishlistService, SessionService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

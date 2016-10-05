@@ -3,7 +3,6 @@ const router = express.Router();
 const models = require('../../models');
 const Wishlist = models.Wishlist;
 const WishlistProduct = models.WishlistProduct;
-const Product = models.Product;
 
 // get all the wishlist:
 router.get('/', function(req, res, next) {

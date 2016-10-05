@@ -9,8 +9,10 @@ import { ProductDetailPage } from '../product/product-detail';
 })
 export class WishlistPage {
   wishlist = [];
+  wishlistName;
 
   constructor(public navCtrl: NavController, private wishlistservice: WishlistService, params: NavParams) {
+    this.wishlistName = params.get("wishlistName");
   }
 
   //we pass in a wishlist with just productId's from the wishlists page via params

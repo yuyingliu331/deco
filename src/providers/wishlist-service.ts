@@ -17,7 +17,7 @@ export class WishlistService {
   }
 
   getUserWishlists() : any {
-    return this.http.get('/api/wishlists')
+    return this.http.get('/api/wishlists/')
       .toPromise()
       .then(response => {
         return JSON.parse(response._body);
