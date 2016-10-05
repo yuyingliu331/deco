@@ -6,6 +6,7 @@ import { CatalogPage } from '../pages/catalog/catalog';
 
 @Component({
   templateUrl: `../pages/menu/menu.html`
+
 })
 export class MyApp {
   @ViewChild('mycontent') nav
@@ -23,4 +24,6 @@ export class MyApp {
     this.nav.push(CatalogPage);
     this.menu.close();
   }
+
+
 }

@@ -25,6 +25,8 @@ router.get('/callback',
     res.redirect('/');
 });
 
+
+
 passport.use( new GoogleStrategy(googleCredentials,
   // Google will send back the token and profile
   function (token, refreshToken, profile, done) {
