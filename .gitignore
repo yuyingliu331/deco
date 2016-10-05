@@ -23,6 +23,7 @@ tmp/
 temp/
 www/build
 platforms
+plugins
 $RECYCLE.BIN/
 secrets.json
 
