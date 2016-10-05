@@ -1,12 +1,10 @@
 <ion-menu [content]="mycontent">
   <ion-content>
     <ion-list>
-      <button ion-button block color="light">Home</button>
       <button ion-button block color="light" (click)="goToCatalogPage()">Catalog</button>
-      <button ion-button block color="light">Room View</button>
       <button ion-button block color="light">WishList</button>
       <button ion-button block color="light">Account Settings</button>
-      <button ion-button block color="light">Logout</button>
+      <a class="logout" style="width:100%;" href="/auth/logout"><button ion-button block color="light">Logout</button></a>
     </ion-list>
   </ion-content>
 </ion-menu>

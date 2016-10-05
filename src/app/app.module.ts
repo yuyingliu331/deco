@@ -16,9 +16,8 @@ import { ArgonPage } from '../pages/argon/argon';
     HomePage,
     CatalogPage,
     ProductDetailPage,
-    ProductsPage,
-    ArgonPage
-   
+    ProductsPage
+
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -30,9 +29,7 @@ import { ArgonPage } from '../pages/argon/argon';
     HomePage,
     CatalogPage,
     ProductDetailPage,
-    ProductsPage,
-    ArgonPage
-  
+    ProductsPage
   ],
   providers: [CatalogService]
 })
