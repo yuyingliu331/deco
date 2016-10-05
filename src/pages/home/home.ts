@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { ArgonPage } from '../argon/argon';
-import { LoginPage } from '../login/login';
+
+
 @Component({
   templateUrl: 'home.html'
 })
 export class HomePage {
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {}
-
-  goToArgonPage() {
-    this.navCtrl.push(ArgonPage);
+  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
+  			
   }
 
-  Login() {
-  	this.navCtrl.push(LoginPage)
-  }
+	goToArgonPage() {
+    	this.navCtrl.push(ArgonPage);
+	}
 }

@@ -76003,33 +76003,6 @@ var ArgonPage = (function () {
     return ArgonPage;
 }());
 
-var __decorate$105 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata$4 = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var LoginPage = (function () {
-    function LoginPage() {
-        this.user = {
-            name: "",
-            password: ""
-        };
-    }
-    LoginPage.prototype.logIn = function () {
-    };
-    LoginPage = __decorate$105([
-        Component({
-             template: '<ion-content padding>\n<form  #myForm="ngForm" (ngSubmit)="logIn()">\n<ion-item>\n        <ion-label>User Name</ion-label>\n             <ion-input type="text" [(ngModel)]="user.name" name="userName"></ion-input>\n      </ion-item>\n    <ion-item>\n        <ion-label>Password</ion-label>\n        <ion-textarea [(ngModel)]="user.password" name="password"></ion-textarea>\n      </ion-item>\n      <button type="submit" ion-button color="secondary">Login</button>\n     </form>\n</ion-content>\n \n  \n\n'
-        }), 
-        __metadata$4('design:paramtypes', [])
-    ], LoginPage);
-    return LoginPage;
-}());
-
 var __decorate$103 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -76047,12 +76020,9 @@ var HomePage = (function () {
     HomePage.prototype.goToArgonPage = function () {
         this.navCtrl.push(ArgonPage);
     };
-    HomePage.prototype.Login = function () {
-        this.navCtrl.push(LoginPage);
-    };
     HomePage = __decorate$103([
         Component({
-             template: '<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n\n    <ion-title>\n      Menu\n    </ion-title>\n\n    <ion-buttons end>\n    <button ion-button outline icon-left (click)="Login()">\n      <ion-icon name=\'briefcase\' is-active="false"></ion-icon>\n      Log In\n    </button>\n      <button ion-button (click)="openModal()">\n        <ion-icon name="options"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  The world is your oyster.\n  <p>\n    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.\n  </p>\n  <button ion-button (click)="goToArgonPage()">View VR</button>\n  <img src="https://s3-us-west-2.amazonaws.com/deco-development/IKEA_bed_MALM.JPG" />\n  \n</ion-content>\n'
+             template: '<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n\n    <ion-title>\n     Menu\n  </ion-title>\n \n  <ion-buttons end>\n   <a right href="/auth/google">\n      <button ion-button end edge color="secondary" icon-left>\n        <ion-icon name=\'logo-google\'>\n       Google</ion-icon>\n     </button>\n   </a>\n \n   <a href="/auth/facebook">\n    <button ion-button end edge icon-left>\n        <ion-icon name=\'logo-facebook\'>\n      Facebook</ion-icon>\n     </button>\n  </a>\n  </ion-buttons>\n\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  The world is your oyster.\n  <p>\n    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.\n  </p>\n  <button ion-button (click)="goToArgonPage()">View VR</button>\n  <img src="https://s3-us-west-2.amazonaws.com/deco-development/IKEA_bed_MALM.JPG" />\n  \n</ion-content>\n'
         }), 
         __metadata$2('design:paramtypes', [NavController, MenuController])
     ], HomePage);
@@ -76063,13 +76033,13 @@ var Observable_1$4 = Observable_1$1;
 var toPromise_1$2 = toPromise_1;
 Observable_1$4.Observable.prototype.toPromise = toPromise_1$2.toPromise;
 
-var __decorate$107 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$106 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$6 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$5 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var CatalogService = (function () {
@@ -76108,27 +76078,27 @@ var CatalogService = (function () {
         })
             .catch(function (err) { return console.log(err); });
     };
-    CatalogService = __decorate$107([
+    CatalogService = __decorate$106([
         Injectable(), 
-        __metadata$6('design:paramtypes', [Http])
+        __metadata$5('design:paramtypes', [Http])
     ], CatalogService);
     return CatalogService;
 }());
 
-var __decorate$109 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$108 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$8 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$7 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ProductDetailPage = (function () {
     function ProductDetailPage(navCtrl, catalogService, params) {
         this.navCtrl = navCtrl;
         this.catalogService = catalogService;
-        this.product = [];
+        this.product = { size: [], photo: '' };
         this.showDescription = false;
         this.showSize = false;
         this.showMaterial = false;
@@ -76161,24 +76131,24 @@ var ProductDetailPage = (function () {
     ProductDetailPage.prototype.toggleMaterial = function () {
         this.showMaterial = !this.showMaterial;
     };
-    ProductDetailPage = __decorate$109([
+    ProductDetailPage = __decorate$108([
         Component({
              template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Product {{productId}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="card-background-page">\n  <ion-card>\n    <ion-item>\n      <ion-icon name="heart" isActive="false"></ion-icon>\n      <button ion-button outline item-right icon-left>\n        <ion-icon name="eye"></ion-icon>\n        Experience in AR\n      </button>\n    </ion-item>\n    <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{product.photo}}" />\n    <ion-card-content>\n      <button ion-button outline block>Add To Wishlist</button>\n      <ion-list text-wrap>\n        <ion-list-header>\n          Product Details\n        </ion-list-header>\n        <ion-item (click)="toggleDescription()">\n          <ion-icon primary item-left [name]="showIcon(showDescription)"></ion-icon>\n          Description\n        </ion-item>\n        <p *ngIf="showDescription">{{product.description}}</p>\n        <ion-item (click)="toggleSize()">\n          <ion-icon primary item-left [name]="showIcon(showSize)"></ion-icon>\n          Size\n        </ion-item>\n        <p *ngIf="product.size && showSize">L: {{product.size[0]}} cm</p>\n        <p *ngIf="product.size && showSize">W: {{product.size[1]}} cm</p>\n        <p *ngIf="product.size && showSize">H: {{product.size[2]}} cm</p>\n        <ion-item (click)="toggleMaterial()">\n          <ion-icon primary item-left [name]="showIcon(showMaterial)"></ion-icon>\n          Material\n        </ion-item>\n        <p *ngIf="showMaterial">{{product.material}}</p>\n      </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n',
             styleUrls: ['/pages/product/product-detail.scss'],
             providers: [CatalogService],
         }), 
-        __metadata$8('design:paramtypes', [NavController, CatalogService, NavParams])
+        __metadata$7('design:paramtypes', [NavController, CatalogService, NavParams])
     ], ProductDetailPage);
     return ProductDetailPage;
 }());
 
-var __decorate$108 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$107 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$7 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$6 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ProductsPage = (function () {
@@ -76192,23 +76162,23 @@ var ProductsPage = (function () {
             productId: n
         });
     };
-    ProductsPage = __decorate$108([
+    ProductsPage = __decorate$107([
         Component({
              template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Product 1\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <list-item *ngFor="let product of products" [itemProduct]="product"></list-item>\n  </ion-list>\n</ion-content>\n',
             providers: [],
         }), 
-        __metadata$7('design:paramtypes', [NavController, NavParams])
+        __metadata$6('design:paramtypes', [NavController, NavParams])
     ], ProductsPage);
     return ProductsPage;
 }());
 
-var __decorate$106 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$105 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$5 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$4 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var CatalogPage = (function () {
@@ -76231,32 +76201,26 @@ var CatalogPage = (function () {
     CatalogPage.prototype.ngOnInit = function () {
         this.getProductsByCategory();
     };
-    CatalogPage = __decorate$106([
+    CatalogPage = __decorate$105([
         Component({
              template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Categories\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="card-background-page">\n  <div *ngFor="let category of productsByCategory">\n    <a (click)="goToCategoryPage(category)">\n      <ion-card>\n        <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{category[0].photo}}">\n        <div class="card-title">{{category[0].category}}</div>\n        <div class="card-subtitle">{{category.length}} items</div>\n      </ion-card>\n    </a>\n  </div>\n</ion-content>\n',
             styleUrls: ['/pages/catalog/catalog.scss'],
             providers: [CatalogService],
         }), 
-        __metadata$5('design:paramtypes', [NavController, CatalogService])
+        __metadata$4('design:paramtypes', [NavController, CatalogService])
     ], CatalogPage);
     return CatalogPage;
 }());
 
-var __decorate$111 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$110 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$10 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$9 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/*
-  Generated class for the CatalogService provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 var WishlistService = (function () {
     function WishlistService(http, catalogService) {
         this.http = http;
@@ -76293,20 +76257,20 @@ var WishlistService = (function () {
         }
         return wishlistProducts;
     };
-    WishlistService = __decorate$111([
+    WishlistService = __decorate$110([
         Injectable(), 
-        __metadata$10('design:paramtypes', [Http, CatalogService])
+        __metadata$9('design:paramtypes', [Http, CatalogService])
     ], WishlistService);
     return WishlistService;
 }());
 
-var __decorate$112 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$111 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$11 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$10 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var SessionService = (function () {
@@ -76322,20 +76286,20 @@ var SessionService = (function () {
         })
             .catch(function (err) { return console.log(err); });
     };
-    SessionService = __decorate$112([
+    SessionService = __decorate$111([
         Injectable(), 
-        __metadata$11('design:paramtypes', [Http])
+        __metadata$10('design:paramtypes', [Http])
     ], SessionService);
     return SessionService;
 }());
 
-var __decorate$113 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$112 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$12 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$11 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var WishlistPage = (function () {
@@ -76353,23 +76317,23 @@ var WishlistPage = (function () {
     WishlistPage.prototype.ngOnInit = function () {
         this.getWishlist();
     };
-    WishlistPage = __decorate$113([
+    WishlistPage = __decorate$112([
         Component({
              template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{wishlistName}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <list-item *ngFor="let product of wishlist" [itemProduct]="product"></list-item>\n  </ion-list>\n</ion-content>\n',
             providers: [WishlistService]
         }), 
-        __metadata$12('design:paramtypes', [NavController, WishlistService, NavParams])
+        __metadata$11('design:paramtypes', [NavController, WishlistService, NavParams])
     ], WishlistPage);
     return WishlistPage;
 }());
 
-var __decorate$110 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$109 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$9 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$8 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var WishlistsPage = (function () {
@@ -76402,12 +76366,12 @@ var WishlistsPage = (function () {
     WishlistsPage.prototype.ngOnInit = function () {
         this.getUserWishlists();
     };
-    WishlistsPage = __decorate$110([
+    WishlistsPage = __decorate$109([
         Component({
              template: '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Wishlists\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n  <ion-item *ngFor="let list of wishlists" (click)="goToWishlist(list.id, list.name)">\n    {{list.name}}\n  </ion-item>\n</ion-list>\n</ion-content>\n',
             providers: [WishlistService],
         }), 
-        __metadata$9('design:paramtypes', [NavController, WishlistService, SessionService])
+        __metadata$8('design:paramtypes', [NavController, WishlistService, SessionService])
     ], WishlistsPage);
     return WishlistsPage;
 }());
@@ -76445,21 +76409,20 @@ var MyApp = (function () {
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate$1([
         Component({
-             template: '<ion-menu [content]="mycontent">\n  <ion-content>\n    <ion-list>\n      <button ion-button block color="light">Home</button>\n      <button ion-button block color="light" (click)="goToCatalogPage()">Catalog</button>\n      <button ion-button block color="light">Room View</button>\n      <button ion-button block color="light" (click)="goToWishlistPage()">WishList</button>\n      <button ion-button block color="light">Account Settings</button>\n      <button ion-button block color="light">Logout</button>\n    </ion-list>\n  </ion-content>\n</ion-menu>\n\n<ion-nav #mycontent [root]="rootPage"></ion-nav>\n',
-            providers: []
+             template: '<ion-menu [content]="mycontent">\n  <ion-content>\n    <ion-list>\n      <button ion-button block color="light" (click)="goToCatalogPage()">Catalog</button>\n      <button ion-button block color="light">Room View</button>\n      <button ion-button block color="light" (click)="goToWishlistPage()">WishList</button>\n      <button ion-button block color="light">Account Settings</button>\n      <a class="logout" style="width:100%;" href="/auth/logout"><button ion-button block color="light">Logout</button></a>\n    </ion-list>\n  </ion-content>\n</ion-menu>\n\n<ion-nav #mycontent [root]="rootPage"></ion-nav>\n'
         }), 
         __metadata$1('design:paramtypes', [Platform, MenuController])
     ], MyApp);
     return MyApp;
 }());
 
-var __decorate$114 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$113 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$13 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$12 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ListItem = (function () {
@@ -76471,17 +76434,17 @@ var ListItem = (function () {
             productId: n
         });
     };
-    __decorate$114([
+    __decorate$113([
         Input(), 
-        __metadata$13('design:type', Object)
+        __metadata$12('design:type', Object)
     ], ListItem.prototype, "itemProduct", void 0);
-    ListItem = __decorate$114([
+    ListItem = __decorate$113([
         Component({
             selector: 'list-item',
              template: '<ion-item (click)="goToProductDetailPage(itemProduct.id)">\n  <ion-thumbnail item-left>\n    <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{itemProduct.photo}}">\n  </ion-thumbnail>\n  <h2>{{itemProduct.name}}</h2>\n  <p>{{itemProduct.description}}</p>\n  <button clear item-right (click)="goToProductDetailPage(itemProduct.id)">View</button>\n</ion-item>\n',
             providers: []
         }), 
-        __metadata$13('design:paramtypes', [NavController])
+        __metadata$12('design:paramtypes', [NavController])
     ], ListItem);
     return ListItem;
 }());

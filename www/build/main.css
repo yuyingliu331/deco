@@ -21129,6 +21129,15 @@ img {
   color: #ee4c83;
 }
 
+a {
+  float: right;
+  display: inline-block;
+}
+
+ion-title {
+  line-height: 51px;
+}
+
 img {
   width: 100%;
   height: auto;
