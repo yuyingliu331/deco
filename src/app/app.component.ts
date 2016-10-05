@@ -4,15 +4,8 @@ import { StatusBar } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
 
-declare var cordova;
-
 @Component({
-  templateUrl: `../pages/menu/menu.html`,
-  styles: [`
-    html, body, ion-content, ion-page, ion-app, .nav-decor {
-      background-color: transparent !important;
-    }
-  `]
+  templateUrl: `../pages/menu/menu.html`
 })
 export class MyApp {
   @ViewChild('mycontent') nav
@@ -23,18 +16,6 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
-
-      let tapEnabled = false;
-      let dragEnabled = false;
-      let toBack = true;
-      let rect = {
-        x: 0,
-        y: 0,
-        width: platform.width(),
-        height: platform.height()
-      };
-
-      cordova.plugins.camerapreview.startCamera(rect, "rear", tapEnabled, dragEnabled, toBack);
     });
   }
 
