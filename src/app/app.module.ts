@@ -8,7 +8,7 @@ import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
-import { MenuPage } from '../pages/menu/menu';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +16,8 @@ import { MenuPage } from '../pages/menu/menu';
     HomePage,
     CatalogPage,
     ProductDetailPage,
-    ProductsPage,
-    MenuPage
-   
+    ProductsPage
+
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -30,9 +29,7 @@ import { MenuPage } from '../pages/menu/menu';
     HomePage,
     CatalogPage,
     ProductDetailPage,
-    ProductsPage,
-    MenuPage
-  
+    ProductsPage
   ],
   providers: [CatalogService]
 })
