@@ -22,7 +22,6 @@ import { WishlistPage } from '../pages/wishlist/wishlist';
     ProductDetailPage,
     ProductsPage,
     ArgonPage,
-    LoginPage,
     ListItem,
     WishlistsPage,
     WishlistPage
@@ -39,7 +38,6 @@ import { WishlistPage } from '../pages/wishlist/wishlist';
     ProductDetailPage,
     ProductsPage,
     ArgonPage,
-    LoginPage,
     ListItem,
     WishlistsPage,
     WishlistPage
