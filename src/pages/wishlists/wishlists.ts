@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import { WishlistService } from '../../providers/wishlist-service';
 import { ProductDetailPage } from '../product/product-detail';
+import { WishlistPage } from '../wishlist/wishlist';
 
 @Component({
   templateUrl: 'user-wishlists.html',
   providers: [WishlistService],
 })
 export class WishlistsPage {
-  wishlist = [];
+  wishlists = [];
 
   constructor(public navCtrl: NavController, private wishlistservice: WishlistService){
   }
@@ -16,7 +17,15 @@ export class WishlistsPage {
   getUserWishlists = function() {
     this.wishlistservice.getUserWishlists()
     .then(result => {
-      this.wishlist = result;
+      this.wishlists = result;
+    });
+  }
+
+  goToWishlist = function(wishlistId) {
+    let scope = this;
+    this.wishlistservice.getWishlist(wishlistId)
+    .then(wishlist => {
+      this.navCtrl.push(WishlistPage, {wishlist});
     });
   }
 

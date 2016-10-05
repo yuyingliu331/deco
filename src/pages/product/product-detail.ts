@@ -22,8 +22,6 @@ export class ProductDetailPage {
     this.catalogService.getProductById(this.productId)
     .then(result => {
       this.product = result;
-      console.log('size', typeof this.product.size);
-      console.log(this.product.size[0]);
     })
   }
 

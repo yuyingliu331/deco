@@ -12,6 +12,8 @@ import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
 import { ListItem } from '../pages/list-item/list-item';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
+import { WishlistPage } from '../pages/wishlist/wishlist';
+
 
 
 
@@ -25,7 +27,8 @@ import { WishlistsPage } from '../pages/wishlists/wishlists';
     ArgonPage,
     LoginPage,
     ListItem,
-    WishlistsPage
+    WishlistsPage,
+    WishlistPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -41,7 +44,8 @@ import { WishlistsPage } from '../pages/wishlists/wishlists';
     ArgonPage,
     LoginPage,
     ListItem,
-    WishlistsPage
+    WishlistsPage,
+    WishlistPage
   ],
   providers: [CatalogService, WishlistService]
 })

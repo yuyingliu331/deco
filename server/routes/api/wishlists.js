@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const models = require('../../models');
 const Wishlist = models.Wishlist;
-// const WishlistProduct = models.WishlistProduct;
+const WishlistProduct = models.WishlistProduct;
 const Product = models.Product;
 
 // get all the wishlist:
@@ -11,6 +11,14 @@ router.get('/', function(req, res, next) {
   Wishlist.findAll(body)
   .then(function(wishlists) {
     res.send(wishlists);
+  })
+  .catch(next);
+});
+
+router.get('/:wishlistId', function(req, res, next) {
+  WishlistProduct.findAll({where: {wishlistId: req.params.wishlistId }})
+  .then(function(wishlist) {
+    res.send(wishlist);
   })
   .catch(next);
 });

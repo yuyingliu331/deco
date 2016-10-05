@@ -5,23 +5,22 @@ import { ProductDetailPage } from '../product/product-detail';
 
 @Component({
   templateUrl: 'wishlist.html',
-  providers: [WishlistService],
+  providers: [WishlistService]
 })
 export class WishlistPage {
-  @Input() wishlist;
+  wishlist = [];
 
-  constructor(public navCtrl: NavController, private wishlistservice: WishlistService){
+  constructor(public navCtrl: NavController, private wishlistservice: WishlistService, params: NavParams) {
   }
 
-  getUserWishlists = function() {
-    this.wishlistservice.getUserWishlists()
-    .then(result => {
-      this.wishlist = result;
-    });
+  //we pass in a wishlist with just productId's from the wishlists page via params
+  //we then get all the products from the wishlist
+  getWishlist = function(wishlist) {
+    this.wishlist = this.wishlistservice.getWishlistProducts(params.get("wishlist"));
   }
 
   ngOnInit() {
-    this.getUserWishlists();
+    this.getWishlist();
   }
 
 }
