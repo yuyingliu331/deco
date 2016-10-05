@@ -15,4 +15,8 @@ export class HomePage {
   Login() {
   	this.navCtrl.push(LoginPage)
   }
+
+  refresh(){
+    window['location'].reload();
+  }
 }

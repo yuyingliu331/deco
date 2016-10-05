@@ -48,6 +48,14 @@ module.exports = [
             "cordova.plugins.Keyboard"
         ],
         "runs": true
+    },
+    {
+        "id": "com.mbppower.camerapreview.CameraPreview",
+        "file": "plugins/com.mbppower.camerapreview/www/CameraPreview.js",
+        "pluginId": "com.mbppower.camerapreview",
+        "clobbers": [
+            "cordova.plugins.camerapreview"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -58,7 +66,8 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "4.0.0",
     "cordova-plugin-statusbar": "2.2.0",
     "cordova-plugin-whitelist": "1.3.0",
-    "ionic-plugin-keyboard": "2.2.1"
+    "ionic-plugin-keyboard": "2.2.1",
+    "com.mbppower.camerapreview": "0.0.8"
 };
 // BOTTOM OF METADATA
 });
