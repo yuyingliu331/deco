@@ -20,8 +20,8 @@ export class ArgonPage {
     let rect = {
       x: 0,
       y: 0,
-      width: 300,
-      height: 300
+      width: window.innerWidth,
+      height: window.innerHeight
     };
 
     cordova.plugins.camerapreview.startCamera(rect, "rear", tapEnabled, dragEnabled, toBack);
