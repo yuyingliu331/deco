@@ -29,9 +29,6 @@ module.exports = {
       }
     }, {
     classMethods: {
-      // associate: function(models) {
-      //   Wishlist.belongsToMany(models.Product, {through: 'WishlistProduct'});
-      // }
     }
     });
   },
