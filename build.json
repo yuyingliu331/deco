@@ -4,7 +4,8 @@
       "developmentTeam": "Q7HPNR2FKF"
     },
     "release": {
-      "developmentTeam": "Q7HPNR2FKF"
+      "developmentTeam": "Q7HPNR2FKF",
+      "codeSignIdentity": "iPhone Developer"
     }
   }
 }
