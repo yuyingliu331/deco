@@ -3,6 +3,8 @@ import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
+import { WishlistsPage } from '../pages/wishlists/wishlists';
+
 
 @Component({
   templateUrl: `../pages/menu/menu.html`
@@ -21,6 +23,11 @@ export class MyApp {
 
   goToCatalogPage() {
     this.nav.push(CatalogPage);
+    this.menu.close();
+  }
+
+  goToWishlistPage() {
+    this.nav.push(WishlistsPage);
     this.menu.close();
   }
 }

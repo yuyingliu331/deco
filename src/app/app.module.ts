@@ -6,9 +6,13 @@ import { CatalogPage } from '../pages/catalog/catalog';
 import { LoginPage } from '../pages/login/login';
 import { ProductsPage } from '../pages/products/products';
 import { CatalogService } from '../providers/catalog-service';
+import { WishlistService } from '../providers/wishlist-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
+import { ListItem } from '../pages/list-item/list-item';
+import { WishlistsPage } from '../pages/wishlists/wishlists';
+
 
 
 @NgModule({
@@ -19,7 +23,9 @@ import { ArgonPage } from '../pages/argon/argon';
     ProductDetailPage,
     ProductsPage,
     ArgonPage,
-    LoginPage
+    LoginPage,
+    ListItem,
+    WishlistsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -33,9 +39,11 @@ import { ArgonPage } from '../pages/argon/argon';
     ProductDetailPage,
     ProductsPage,
     ArgonPage,
-    LoginPage
+    LoginPage,
+    ListItem,
+    WishlistsPage
   ],
-  providers: [CatalogService]
+  providers: [CatalogService, WishlistService]
 })
 export class AppModule {
 }

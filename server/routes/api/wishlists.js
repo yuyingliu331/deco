@@ -2,35 +2,29 @@ const express = require('express');
 const router = express.Router();
 const models = require('../../models');
 const Wishlist = models.Wishlist;
+// const WishlistProduct = models.WishlistProduct;
+const Product = models.Product;
 
-// get all the wishlist: 
+// get all the wishlist:
 router.get('/', function(req, res, next) {
-  Wishlist.findAll()
+  body = (req.session.passport) ? {where: { userId: req.session.passport.user}} : {};
+  Wishlist.findAll(body)
   .then(function(wishlists) {
     res.send(wishlists);
   })
   .catch(next);
 });
 
-//get single wishlist by wishlist id: 
-router.get('/:id', function(req, res, next){
-  Wishlist.findById(req.params.id)
-  .then(function(wishlist){
-    res.send(wishlist);
-  })
-  .catch(next);
-});
-
-//create a new wishlist: 
+//create a new wishlist:
 router.post('/', function(req, res, next) {
   Wishlist.create(req.body)
   .then(function(wishlist){
     res.status(201).send(wishlist);
   })
   .catch(next);
-})
+});
 
-//update the wishlist: 
+//update the wishlist:
 router.put('/:id', function(req, res, next) {
   Wishlist.findById(req.params.id, { attributes: ['id', 'userId']})
   .then(function(wishlist){
@@ -42,7 +36,7 @@ router.put('/:id', function(req, res, next) {
   .catch(next);
 });
 
-//delete a wishlist by id: 
+//delete a wishlist by id:
 router.delete('/:id', function(req, res, next) {
   Wishlist.destroy({ where: {id: req.params.id } })
   .then(function() {
