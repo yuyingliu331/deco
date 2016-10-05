@@ -8,7 +8,7 @@ import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
-
+import { MenuPage } from '../pages/menu/menu';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { ArgonPage } from '../pages/argon/argon';
     CatalogPage,
     ProductDetailPage,
     ProductsPage,
-    ArgonPage
+    MenuPage
    
   ],
   imports: [
@@ -31,7 +31,7 @@ import { ArgonPage } from '../pages/argon/argon';
     CatalogPage,
     ProductDetailPage,
     ProductsPage,
-    ArgonPage
+    MenuPage
   
   ],
   providers: [CatalogService]
