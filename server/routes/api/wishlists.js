@@ -22,7 +22,8 @@ router.get('/:wishlistId', function(req, res, next) {
   .catch(next);
 });
 
-//create a new wishlist:
+//create a new wishlist
+//will pass wishlist a name, userId
 router.post('/', function(req, res, next) {
   Wishlist.create(req.body)
   .then(function(wishlist){

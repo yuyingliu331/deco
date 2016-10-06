@@ -11,21 +11,20 @@ import { WishlistPage } from '../wishlist/wishlist';
 })
 export class WishlistsPage {
   wishlists = [];
+  session = {};
+  user = false;
 
   constructor(public navCtrl: NavController, private wishlistservice: WishlistService, private sessionService: SessionService){
   }
 
   getUserWishlists = function() {
-    this.sessionService.getSessionInfo()
-    .then( session => {
-      if(session.passport) {
-        this.wishlistservice.getUserWishlists()
-        .then(result => {
-          this.wishlists = result;
-        });
-      }
-    })
-
+    this.updateSessionInfo();
+    if(this.user) {
+      this.wishlistservice.getUserWishlists()
+      .then(result => {
+        this.wishlists = result;
+      });
+    }
   }
 
   goToWishlist = function(wishlistId, wishlistName) {
@@ -36,8 +35,25 @@ export class WishlistsPage {
     });
   }
 
+  createWishlist = function(wishlistName) {
+    let userId = this.session.passport.user;
+    this.wishlistservice.createWishlist(userId, wishlistName)
+    .then(createdWishlist => {
+      this.wishlists.push(createdWishlist);
+    });
+  }
+
+  updateSessionInfo() {
+    this.sessionService.getSessionInfo()
+    .then( session => {
+      this.session = session;
+      this.user = !!this.session.passport;
+    });
+  }
+
   ngOnInit() {
     this.getUserWishlists();
+    this.updateSessionInfo();
   }
 
 }
