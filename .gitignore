@@ -23,6 +23,7 @@ tmp/
 temp/
 $RECYCLE.BIN/
 secrets.json
+platforms/
 
 
 .DS_Store
