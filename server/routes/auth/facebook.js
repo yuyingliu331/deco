@@ -16,7 +16,7 @@ const facebookCredentials = {
 router.get('/', passport.authenticate('facebook'));
 
 router.get('/callback',
-  passport.authenticate('facebook', {successRedirect: '/', failureRedirect: '/login'}),
+  passport.authenticate('facebook', {successRedirect: '/profile', failureRedirect: '/login'}),
   function (req, res) {
     res.redirect('/');
 });

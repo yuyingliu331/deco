@@ -6,8 +6,8 @@ import { CatalogPage } from '../pages/catalog/catalog';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
 
 @Component({
-  templateUrl: `../pages/menu/menu.html`
-
+  templateUrl: `../pages/menu/menu.html`,
+  providers: []
 })
 export class MyApp {
   @ViewChild('mycontent') nav
