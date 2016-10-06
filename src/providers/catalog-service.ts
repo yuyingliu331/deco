@@ -18,7 +18,7 @@ export class CatalogService {
   getAllProducts() : any {
     return this.http.get('/api/products')
       .toPromise()
-      .then(response => {
+      .then((response: any) => {
         return JSON.parse(response._body);
       })
       .catch(err => console.log(err));
@@ -44,7 +44,7 @@ export class CatalogService {
   getProductById(id) : any {
     return this.http.get('/api/products/' + id)
     .toPromise()
-    .then(response => {
+    .then((response: any) => {
       return JSON.parse(response._body);
     })
     .catch(err => console.log(err));
