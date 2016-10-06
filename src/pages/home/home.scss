@@ -1,2 +1,19 @@
-.home-page {
+a {
+  float: right;
+  display: inline-block
+}
+
+ion-title {
+  line-height: 51px
+}
+.firstLayer{
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  width: 100%
+}
+
+.getStart{
+  background-image: url('https://static.pexels.com/photos/852/restaurant-village-germany-chairs.jpg') ;
+  background-repeat: no-repeat;
+  background-size:cover
 }
