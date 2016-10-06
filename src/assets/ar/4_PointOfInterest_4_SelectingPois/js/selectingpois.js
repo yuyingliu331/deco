@@ -21,7 +21,7 @@ var World = {
     */
 
     /* Create overlay for page one */
-    var imgOne = new AR.ImageResource("assets/imageOne.png");
+    var imgOne = new AR.ImageResource("assets/dog-bone.png");
     var overlayOne = new AR.ImageDrawable(imgOne, 1, {
       offsetX: -0.15,
       offsetY: 0
