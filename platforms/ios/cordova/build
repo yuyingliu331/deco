@@ -42,8 +42,6 @@ var buildOpts = nopt({
     'codeSignIdentity': String,
     'codeSignResourceRules': String,
     'provisioningProfile': String,
-    'developmentTeam': String,
-    'packageType': String,
     'buildConfig' : String,
     'noSign' : Boolean
 }, { '-r': '--release', 'd' : '--verbose' }, args);

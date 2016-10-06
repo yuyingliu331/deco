@@ -71,7 +71,11 @@ module.exports = {
         type: Sequelize.DATE
       }
     }, {
-      classMethods: {}
+      classMethods: {
+        // associate: function(models) {
+        //   Product.belongsToMany(models.Wishlist, {through: 'WishlistProduct'});
+        // }
+      }
     });
   },
   down: function(queryInterface, Sequelize) {

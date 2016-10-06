@@ -46,13 +46,6 @@ NSString* const CDVPluginResetNotification = @"CDVPluginResetNotification";
 NSString* const CDVLocalNotification = @"CDVLocalNotification";
 NSString* const CDVRemoteNotification = @"CDVRemoteNotification";
 NSString* const CDVRemoteNotificationError = @"CDVRemoteNotificationError";
-NSString* const CDVViewWillAppearNotification = @"CDVViewWillAppearNotification";
-NSString* const CDVViewDidAppearNotification = @"CDVViewDidAppearNotification";
-NSString* const CDVViewWillDisappearNotification = @"CDVViewWillDisappearNotification";
-NSString* const CDVViewDidDisappearNotification = @"CDVViewDidDisappearNotification";
-NSString* const CDVViewWillLayoutSubviewsNotification = @"CDVViewWillLayoutSubviewsNotification";
-NSString* const CDVViewDidLayoutSubviewsNotification = @"CDVViewDidLayoutSubviewsNotification";
-NSString* const CDVViewWillTransitionToSizeNotification = @"CDVViewWillTransitionToSizeNotification";
 
 @interface CDVPlugin ()
 
@@ -97,14 +90,6 @@ NSString* const CDVViewWillTransitionToSizeNotification = @"CDVViewWillTransitio
 
     // Added in 2.5.0
     // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pageDidLoad:) name:CDVPageDidLoadNotification object:self.webView];
-    //Added in 4.3.0
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewWillAppear:) name:CDVViewWillAppearNotification object:nil];
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidAppear:) name:CDVViewDidAppearNotification object:nil];
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewWillDisappear:) name:CDVViewWillDisappearNotification object:nil];
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidDisappear:) name:CDVViewDidDisappearNotification object:nil];
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewWillLayoutSubviews:) name:CDVViewWillLayoutSubviewsNotification object:nil];
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidLayoutSubviews:) name:CDVViewDidLayoutSubviewsNotification object:nil];
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewWillTransitionToSize:) name:CDVViewWillTransitionToSizeNotification object:nil];
 }
 
 - (void)dispose

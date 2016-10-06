@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -24,8 +24,7 @@ var Q     = require('q'),
     shell = require('shelljs'),
     spawn = require('./spawn'),
     check_reqs = require('./check_reqs'),
-    fs = require('fs'),
-    plist = require('plist');
+    fs = require('fs');
 
 var events = require('cordova-common').events;
 
@@ -37,11 +36,11 @@ module.exports.run = function (buildOpts) {
     buildOpts = buildOpts || {};
 
     if (buildOpts.debug && buildOpts.release) {
-        return Q.reject('Cannot specify "debug" and "release" options together.');
+        return Q.reject('Only one of "debug"/"release" options should be specified');
     }
 
     if (buildOpts.device && buildOpts.emulator) {
-        return Q.reject('Cannot specify "device" and "emulator" options together.');
+        return Q.reject('Only one of "device"/"emulator" options should be specified');
     }
 
     if(buildOpts.buildConfig) {
@@ -49,13 +48,12 @@ module.exports.run = function (buildOpts) {
             return Q.reject('Build config file does not exist:' + buildOpts.buildConfig);
         }
         events.emit('log','Reading build config file:', path.resolve(buildOpts.buildConfig));
-        var contents = fs.readFileSync(buildOpts.buildConfig, 'utf-8');
-        var buildConfig = JSON.parse(contents.replace(/^\ufeff/, '')); // Remove BOM
+        var buildConfig = JSON.parse(fs.readFileSync(buildOpts.buildConfig, 'utf-8'));
         if(buildConfig.ios) {
             var buildType = buildOpts.release ? 'release' : 'debug';
             var config = buildConfig.ios[buildType];
             if(config) {
-                ['codeSignIdentity', 'codeSignResourceRules', 'provisioningProfile', 'developmentTeam', 'packageType'].forEach(
+                ['codeSignIdentity', 'codeSignResourceRules', 'provisioningProfile'].forEach(
                     function(key) {
                         buildOpts[key] = buildOpts[key] || config[key];
                     });
@@ -78,79 +76,33 @@ module.exports.run = function (buildOpts) {
         if (buildOpts.provisioningProfile) {
             extraConfig += 'PROVISIONING_PROFILE = ' + buildOpts.provisioningProfile + '\n';
         }
-        if (buildOpts.developmentTeam) {
-            extraConfig += 'DEVELOPMENT_TEAM = ' + buildOpts.developmentTeam + '\n';
-        }
         return Q.nfcall(fs.writeFile, path.join(__dirname, '..', 'build-extras.xcconfig'), extraConfig, 'utf-8');
     }).then(function () {
         var configuration = buildOpts.release ? 'Release' : 'Debug';
 
-        events.emit('log','Building project: ' + path.join(projectPath, projectName + '.xcworkspace'));
-        events.emit('log','\tConfiguration: ' + configuration);
-        events.emit('log','\tPlatform: ' + (buildOpts.device ? 'device' : 'emulator'));
+        events.emit('log','Building project  : ' + path.join(projectPath, projectName + '.xcodeproj'));
+        events.emit('log','\tConfiguration : ' + configuration);
+        events.emit('log','\tPlatform      : ' + (buildOpts.device ? 'device' : 'emulator'));
 
-        var buildOutputDir = path.join(projectPath, 'build', 'device');
-
-        // remove the build/device folder before building
-        return spawn('rm', [ '-rf', buildOutputDir ], projectPath)
-        .then(function() {
-            var xcodebuildArgs = getXcodeBuildArgs(projectName, projectPath, configuration, buildOpts.device);
-            return spawn('xcodebuild', xcodebuildArgs, projectPath);
-        });
-
+        var xcodebuildArgs = getXcodeArgs(projectName, projectPath, configuration, buildOpts.device);
+        return spawn('xcodebuild', xcodebuildArgs, projectPath);
     }).then(function () {
         if (!buildOpts.device || buildOpts.noSign) {
             return;
         }
-
-        var exportOptions = {'compileBitcode': false, 'method': 'development'};
-
-        if (buildOpts.packageType) {
-            exportOptions.method = buildOpts.packageType;
-        }
-
-        if (buildOpts.developmentTeam) {
-            exportOptions.teamID = buildOpts.developmentTeam;
-        }
-
-        var exportOptionsPlist = plist.build(exportOptions);
-        var exportOptionsPath = path.join(projectPath, 'exportOptions.plist');
-
         var buildOutputDir = path.join(projectPath, 'build', 'device');
-
-        function packageArchive() {
-          var xcodearchiveArgs = getXcodeArchiveArgs(projectName, projectPath, buildOutputDir, exportOptionsPath);
-          return spawn('xcodebuild', xcodearchiveArgs, projectPath);
+        var pathToApp = path.join(buildOutputDir, projectName + '.app');
+        var pathToIpa = path.join(buildOutputDir, projectName + '.ipa');
+        var xcRunArgs = ['-sdk', 'iphoneos', 'PackageApplication',
+            '-v', pathToApp,
+            '-o', pathToIpa];
+        if (buildOpts.codeSignIdentity) {
+            xcRunArgs.concat('--sign', buildOpts.codeSignIdentity);
         }
-
-        function unpackIPA() {
-            var ipafile = path.join(buildOutputDir, projectName + '.ipa');
-
-            // unpack the existing platform/ios/build/device/appname.ipa (zipfile), will create a Payload folder 
-            return spawn('unzip', [ '-o', '-qq', ipafile ], buildOutputDir);
+        if (buildOpts.provisioningProfile) {
+            xcRunArgs.concat('--embed', buildOpts.provisioningProfile);
         }
-
-        function moveApp() {
-            var appFileInflated = path.join(buildOutputDir, 'Payload', projectName + '.app');
-            var appFile = path.join(buildOutputDir, projectName + '.app');
-            var payloadFolder = path.join(buildOutputDir, 'Payload');
-
-            // delete the existing platform/ios/build/device/appname.app 
-            return spawn('rm', [ '-rf', appFile ], buildOutputDir)
-                .then(function() {
-                    // move the platform/ios/build/device/Payload/appname.app to parent 
-                    return spawn('mv', [ '-f', appFileInflated, buildOutputDir ], buildOutputDir);
-                })
-                .then(function() {
-                    // delete the platform/ios/build/device/Payload folder
-                    return spawn('rm', [ '-rf', payloadFolder ], buildOutputDir);
-                });
-        }
-
-        return Q.nfcall(fs.writeFile, exportOptionsPath, exportOptionsPlist, 'utf-8')
-                .then(packageArchive)
-                .then(unpackIPA)
-                .then(moveApp);
+        return spawn('xcrun', xcRunArgs, projectPath);
     });
 };
 
@@ -187,54 +139,37 @@ module.exports.findXCodeProjectIn = findXCodeProjectIn;
  * @param  {Boolean} isDevice      Flag that specify target for package (device/emulator)
  * @return {Array}                 Array of arguments that could be passed directly to spawn method
  */
-function getXcodeBuildArgs(projectName, projectPath, configuration, isDevice) {
+function getXcodeArgs(projectName, projectPath, configuration, isDevice) {
     var xcodebuildArgs;
     if (isDevice) {
         xcodebuildArgs = [
             '-xcconfig', path.join(__dirname, '..', 'build-' + configuration.toLowerCase() + '.xcconfig'),
-            '-workspace', projectName + '.xcworkspace',
-            '-scheme', projectName,
+            '-project', projectName + '.xcodeproj',
+            'ARCHS=armv7 arm64',
+            '-target', projectName,
             '-configuration', configuration,
-            '-destination', 'generic/platform=iOS',
-            '-archivePath', projectName + '.xcarchive',
-            'archive',
+            '-sdk', 'iphoneos',
+            'build',
+            'VALID_ARCHS=armv7 arm64',
             'CONFIGURATION_BUILD_DIR=' + path.join(projectPath, 'build', 'device'),
             'SHARED_PRECOMPS_DIR=' + path.join(projectPath, 'build', 'sharedpch')
         ];
     } else { // emulator
         xcodebuildArgs = [
             '-xcconfig', path.join(__dirname, '..', 'build-' + configuration.toLowerCase() + '.xcconfig'),
-            '-workspace', projectName + '.xcworkspace',
-            '-scheme', projectName ,
+            '-project', projectName + '.xcodeproj',
+            'ARCHS=i386',
+            '-target', projectName ,
             '-configuration', configuration,
             '-sdk', 'iphonesimulator',
-            '-destination', 'platform=iOS Simulator,name=iPhone 5s',
             'build',
+            'VALID_ARCHS=i386',
             'CONFIGURATION_BUILD_DIR=' + path.join(projectPath, 'build', 'emulator'),
             'SHARED_PRECOMPS_DIR=' + path.join(projectPath, 'build', 'sharedpch')
         ];
     }
     return xcodebuildArgs;
 }
-
-
-/**
- * Returns array of arguments for xcodebuild
- * @param  {String}  projectName        Name of xcode project
- * @param  {String}  projectPath        Path to project file. Will be used to set CWD for xcodebuild
- * @param  {String}  outputPath         Output directory to contain the IPA
- * @param  {String}  exportOptionsPath  Path to the exportOptions.plist file
- * @return {Array}                      Array of arguments that could be passed directly to spawn method
- */
-function getXcodeArchiveArgs(projectName, projectPath, outputPath, exportOptionsPath) {
-  return [
-    '-exportArchive',
-    '-archivePath', projectName + '.xcarchive',
-    '-exportOptionsPlist', exportOptionsPath,
-    '-exportPath', outputPath
-  ];
-}
-
 
 // help/usage function
 module.exports.help = function help() {

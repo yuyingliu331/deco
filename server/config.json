@@ -10,7 +10,7 @@
     "seederStorage": "sequelize"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL",
+    "database": "process.env.DATABASE_URL",
     "dialect": "postgres"
   },
   "testing": {

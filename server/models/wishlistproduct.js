@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
   var WishlistProduct = sequelize.define('WishlistProduct', {
     wishlistId: {
@@ -18,7 +19,6 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
       }
     }
   });

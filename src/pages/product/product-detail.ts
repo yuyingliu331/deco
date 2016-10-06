@@ -8,7 +8,7 @@ import { CatalogService } from '../../providers/catalog-service';
   providers: [CatalogService],
 })
 export class ProductDetailPage {
-  product = {size: [], photo: ''};
+  product = [];
   showDescription = false;
   showSize = false;
   showMaterial = false;
@@ -21,7 +21,7 @@ export class ProductDetailPage {
 
   getProductById = function() {
     this.catalogService.getProductById(this.productId)
-    .then((result: any) => {
+    .then(result => {
       this.product = result;
     })
   }
