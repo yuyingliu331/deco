@@ -1,17 +1,4 @@
-body {
-  font-family: Arial;
+html, body, ion-content, ion-app, ion-page, .nav-decor {
+  background-color: transparent !important;
 }
 
-a {
-  color: #ffffff;
-}
-
-#description {
-  pointer-events: auto;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  padding: 10px;
-  background-color:rgba(255,255,255,0.7);
-  -webkit-backdrop-filter: blur(5px);
-  position:absolute;
-  bottom: 0px;
-}
