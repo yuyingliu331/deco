@@ -1,21 +1,12 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Wishlists
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label color="light" stacked>New Wishlist</ion-label>
-      <ion-input type="newWishlist" #newWishlist placeholder="New Wishlist"></ion-input>
-    </ion-item>
-    <ion-item>
-      <button ion-button color="light" fab-center (click)="createWishlist(newWishlist.value)">Create Wishlist</button>
-    </ion-item>
-    <ion-item *ngFor="let list of wishlists" (click)="goToWishlist(list.id, list.name)">
-    {{list.name}}</ion-item>
+<ion-list>
+  <ion-item>
+    <ion-label color="light" stacked>New Wishlist</ion-label>
+    <ion-input type="newWishlist" #newWishlist placeholder="New Wishlist"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button color="light" fab-center (click)="createWishlist(newWishlist.value)">Create Wishlist</button>
+  </ion-item>
+  <ion-item *ngFor="let list of wishlists" (click)="goToWishlist(list.id, list.name)">
+  {{list.name}}
+  </ion-item>
 </ion-list>
-</ion-content>

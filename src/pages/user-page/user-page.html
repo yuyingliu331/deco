@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      User Home
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding>
+    <ion-segment>
+      <ion-segment-button value="wishlists" (click)="changeSegment('wishlists')">
+        Wishlists
+      </ion-segment-button>
+      <ion-segment-button value="likes" (click)="changeSegment('likes')">
+        Likes
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="userView">
+    <ion-list *ngSwitchCase="'wishlists'">
+      <user-wishlists [sessionInfo]="sessionInfo"></user-wishlists>
+    </ion-list>
+  </div>
+</ion-content>
+

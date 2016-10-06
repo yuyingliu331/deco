@@ -14,6 +14,7 @@ import { ArgonPage } from '../pages/argon/argon';
 import { ListItem } from '../pages/list-item/list-item';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
 import { WishlistPage } from '../pages/wishlist/wishlist';
+import { UserPage } from '../pages/user-page/user-page';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { WishlistPage } from '../pages/wishlist/wishlist';
     LoginPage,
     ListItem,
     WishlistsPage,
-    WishlistPage
+    WishlistPage,
+    UserPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -43,7 +45,8 @@ import { WishlistPage } from '../pages/wishlist/wishlist';
     LoginPage,
     ListItem,
     WishlistsPage,
-    WishlistPage
+    WishlistPage,
+    UserPage
   ],
   providers: [CatalogService, WishlistService, SessionService]
 })
