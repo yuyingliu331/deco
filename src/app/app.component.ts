@@ -29,11 +29,6 @@ export class MyApp {
     this.menu.close();
   }
 
-  goToWishlistPage() {
-    this.nav.push(WishlistsPage);
-    this.menu.close();
-  }
-
   goToUserHome(session) {
     this.sessionService.getSessionInfo()
     .then( session => {
