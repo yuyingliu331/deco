@@ -12,6 +12,7 @@ export class ProductDetailPage {
   showDescription = false;
   showSize = false;
   showMaterial = false;
+  like = false;
   public productId:any;
 
   constructor(public navCtrl: NavController, private catalogService: CatalogService, params: NavParams) {
@@ -47,6 +48,12 @@ export class ProductDetailPage {
 
   toggleMaterial() {
     this.showMaterial = !this.showMaterial;
+  }
+  showLike(){
+    return this.like;
+  }
+   toggleLike(){
+    this.like = !this.like;
   }
 
 }
