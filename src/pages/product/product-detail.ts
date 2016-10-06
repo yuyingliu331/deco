@@ -50,10 +50,10 @@ export class ProductDetailPage {
     this.showMaterial = !this.showMaterial;
   }
   showLike(){
-    return this.like;
+   return this.like;
   }
-   toggleLike(){
-    this.like = !this.like;
+  toggleLike(){
+   this.like = !this.like;
   }
 
 }
