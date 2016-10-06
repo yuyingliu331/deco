@@ -9,7 +9,7 @@ import { CatalogService } from '../providers/catalog-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
-
+import { WikitudePage } from '../pages/wikitude/wikitude';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { ArgonPage } from '../pages/argon/argon';
     ProductDetailPage,
     ProductsPage,
     ArgonPage,
-    LoginPage
+    LoginPage,
+    WikitudePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -33,7 +34,8 @@ import { ArgonPage } from '../pages/argon/argon';
     ProductDetailPage,
     ProductsPage,
     ArgonPage,
-    LoginPage
+    LoginPage,
+    WikitudePage
   ],
   providers: [CatalogService]
 })
