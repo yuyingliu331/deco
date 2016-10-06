@@ -33,13 +33,12 @@ router.post('/', function(req, res, next) {
 });
 
 //update the wishlist:
-router.put('/:id', function(req, res, next) {
-  Wishlist.findById(req.params.id, { attributes: ['id', 'userId']})
-  .then(function(wishlist){
-    return wishlist.update(req.body);
-  })
-  .then(function(wishlist) {
-    res.send(wishlist);
+//takes a productId, wishlistId --> adds new item to WishlistProduct
+router.put('/', function(req, res, next) {
+  console.log(req.body)
+  WishlistProduct.findOrCreate({where: req.body})
+  .spread(function(wishlistItem, created) {
+    res.send(wishlistItem);
   })
   .catch(next);
 });

@@ -17,7 +17,7 @@
     </ion-item>
     <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{product.photo}}" />
     <ion-card-content>
-      <button ion-button outline block>Add To Wishlist</button>
+      <button ion-button outline block (click)="addProductWishlist(wishlists)">Add To Wishlist</button>
       <ion-list text-wrap>
         <ion-list-header>
           Product Details

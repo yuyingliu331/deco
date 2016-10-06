@@ -7,9 +7,9 @@ import { WishlistPage } from '../wishlist/wishlist';
 
 @Component({
   selector: 'user-wishlists',
-  templateUrl: 'user-wishlists.html',
-  providers: [WishlistService],
+  templateUrl: 'user-wishlists.html'
 })
+
 export class WishlistsPage {
   wishlists = [];
   @Input() sessionInfo;

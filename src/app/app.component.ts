@@ -6,10 +6,11 @@ import { CatalogPage } from '../pages/catalog/catalog';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
 import { UserPage } from '../pages/user-page/user-page';
 import { SessionService } from '../providers/session-service';
+import { WishlistService } from '../providers/wishlist-service';
 
 @Component({
-  templateUrl: `../pages/menu/menu.html`
-
+  templateUrl: `../pages/menu/menu.html`,
+  providers: [WishlistService, SessionService]
 })
 export class MyApp {
   @ViewChild('mycontent') nav

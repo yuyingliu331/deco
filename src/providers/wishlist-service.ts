@@ -57,4 +57,13 @@ export class WishlistService {
       .catch(err => console.log(err));
   }
 
+  addProductToWishlist(wishlistId, productId) {
+    return this.http.put('/api/wishlists/', {wishlistId, productId})
+      .toPromise()
+      .then(response => {
+        return JSON.parse(response._body);
+      })
+      .catch(err => console.log(err));
+  }
+
 }
