@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Product 1
+      {{wishlistName}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <list-item *ngFor="let product of products" [itemProduct]="product"></list-item>
+    <list-item *ngFor="let product of wishlist" [itemProduct]="product"></list-item>
   </ion-list>
 </ion-content>
