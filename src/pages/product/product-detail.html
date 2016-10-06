@@ -9,7 +9,7 @@
 <ion-content class="card-background-page">
   <ion-card>
     <ion-item>
-      <ion-icon name="heart" isActive="false"></ion-icon>
+      <ion-icon name="heart" (click)="toggleLike()" isActive="showLike()"></ion-icon>
       <button ion-button outline item-right icon-left>
         <ion-icon name="eye"></ion-icon>
         Experience in AR
