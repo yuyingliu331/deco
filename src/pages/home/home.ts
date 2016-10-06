@@ -36,7 +36,7 @@ export class HomePage {
             () => {
               console.log('error loading ar');
             },
-            'www/assets/ar/4_PointOfInterest_4_SelectingPois/index.html', //url
+            'www/assets/ar/dog/index.html', //url
             ['geo'],
             {
               camera_position: 'back'
