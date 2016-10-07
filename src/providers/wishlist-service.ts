@@ -51,7 +51,7 @@ export class WishlistService {
   createWishlist(userId, name) : any {
     return this.http.post('/api/wishlists/', {userId, name})
       .toPromise()
-      .then(response => {
+      .then((response : any) => {
         return JSON.parse(response._body);
       })
       .catch(err => console.log(err));
@@ -60,7 +60,7 @@ export class WishlistService {
   addProductToWishlist(wishlistId, productId) : any {
     return this.http.post('/api/wishlists/add', {wishlistId, productId})
       .toPromise()
-      .then(response => {
+      .then((response : any) => {
         return JSON.parse(response._body);
       })
       .catch(err => console.log(err));

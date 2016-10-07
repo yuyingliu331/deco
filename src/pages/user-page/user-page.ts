@@ -1,8 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { SessionService } from '../../providers/session-service';
-import { WishlistsPage } from '../wishlists/wishlists';
-
 
 @Component({
   templateUrl: 'user-page.html'
