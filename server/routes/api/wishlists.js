@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   var body = (req.session.passport) ? {where: { userId: req.session.passport.user}} : {};
   Wishlist.findAll(body)
   .then(function(wishlists) {
-    res.send(wishlists);
+    res.status(200).send(wishlists);
   })
   .catch(next);
 });
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 router.get('/:wishlistId', function(req, res, next) {
   WishlistProduct.findAll({where: {wishlistId: req.params.wishlistId }})
   .then(function(wishlist) {
-    res.send(wishlist);
+    res.status(200).send(wishlist);
   })
   .catch(next);
 });
@@ -37,7 +37,7 @@ router.post('/', function(req, res, next) {
 router.post('/add', function(req, res, next) {
   WishlistProduct.create(req.body)
   .then(function(wishlistItem) {
-    res.send(wishlistItem);
+    res.status(201).send(wishlistItem);
   })
   .catch(next);
 });

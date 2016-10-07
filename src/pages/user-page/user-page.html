@@ -20,7 +20,7 @@
 
   <div [ngSwitch]="userView">
     <ion-list *ngSwitchCase="'wishlists'">
-      <user-wishlists [sessionInfo]="sessionInfo"></user-wishlists>
+      <user-wishlists [sessionInfo]="session"></user-wishlists>
     </ion-list>
   </div>
 </ion-content>
