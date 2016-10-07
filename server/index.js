@@ -36,7 +36,7 @@ app.use('/api', require('./routes/api'));
 
 // Initialize the app.
 app.listen(app.get('port'), function () {
-console.log("You're a wizard, Harry. I'm a what? Yes, a wizard, on port", app.get('port'));
+  console.log("You're a wizard, Harry. I'm a what? Yes, a wizard, on port", app.get('port'));
 });
 
 module.exports = app;

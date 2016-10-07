@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { CatalogService } from './catalog-service';
 import 'rxjs/add/operator/toPromise';
@@ -17,9 +17,9 @@ export class WishlistService {
   }
 
   getUserWishlists() : any {
-    return this.http.get('/api/wishlists/')
+    return this.http.get('http://gh-deco.herokuapp.com/api/wishlists/')
       .toPromise()
-      .then(response => {
+      .then((response : any) => {
         return JSON.parse(response._body);
       })
       .catch(err => console.log(err));
@@ -27,9 +27,9 @@ export class WishlistService {
 
   //get all products from wishlistservice with wishlist id
   getWishlist(wishlistId) : any {
-    return this.http.get('/api/wishlists/' + wishlistId)
+    return this.http.get('http://gh-deco.herokuapp.com/api/wishlists/' + wishlistId)
       .toPromise()
-      .then(response => {
+      .then((response : any) => {
         return JSON.parse(response._body);
       })
       .catch(err => console.log(err));
