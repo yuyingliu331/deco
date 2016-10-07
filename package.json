@@ -21,7 +21,6 @@
     "@ionic/app-scripts": "^0.0.23",
     "@ionic/storage": "^1.0.3",
     "body-parser": "^1.15.2",
-    "cordova": "^6.3.1",
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
