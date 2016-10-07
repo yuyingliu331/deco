@@ -7,12 +7,15 @@ import { ProductsPage } from '../pages/products/products';
 import { CatalogService } from '../providers/catalog-service';
 import { WishlistService } from '../providers/wishlist-service';
 import { SessionService } from '../providers/session-service';
+import { RadioAlertService } from '../providers/radioAlert-service';
+import { ToastService } from '../providers/toast-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
 import { ListItem } from '../pages/list-item/list-item';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
 import { WishlistPage } from '../pages/wishlist/wishlist';
+import { UserPage } from '../pages/user-page/user-page';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { WishlistPage } from '../pages/wishlist/wishlist';
     ArgonPage,
     ListItem,
     WishlistsPage,
-    WishlistPage
+    WishlistPage,
+    UserPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -40,9 +44,10 @@ import { WishlistPage } from '../pages/wishlist/wishlist';
     ArgonPage,
     ListItem,
     WishlistsPage,
-    WishlistPage
+    WishlistPage,
+    UserPage
   ],
-  providers: [CatalogService, WishlistService, SessionService]
+  providers: [CatalogService, WishlistService, SessionService, RadioAlertService, ToastService]
 })
 
 export class AppModule {

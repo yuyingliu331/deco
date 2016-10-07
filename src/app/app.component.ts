@@ -4,16 +4,20 @@ import { StatusBar } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
+import { UserPage } from '../pages/user-page/user-page';
+import { SessionService } from '../providers/session-service';
+import { WishlistService } from '../providers/wishlist-service';
+import { ToastService } from '../providers/toast-service';
 
 @Component({
-  templateUrl: `../pages/menu/menu.html`
-
+  templateUrl: `../pages/menu/menu.html`,
+  providers: [WishlistService, SessionService, ToastService]
 })
 export class MyApp {
   @ViewChild('mycontent') nav
   rootPage = HomePage;
 
-  constructor(platform: Platform, private menu: MenuController) {
+  constructor(platform: Platform, private menu: MenuController, private sessionService: SessionService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -21,13 +25,17 @@ export class MyApp {
     });
   }
 
+
   goToCatalogPage() {
     this.nav.push(CatalogPage);
     this.menu.close();
   }
 
-  goToWishlistPage() {
-    this.nav.push(WishlistsPage);
-    this.menu.close();
+  goToUserHome(session) {
+    this.sessionService.getSessionInfo()
+    .then( session => {
+      this.nav.push(UserPage, {session});
+      this.menu.close();
+    });
   }
 }

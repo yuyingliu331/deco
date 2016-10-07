@@ -48,4 +48,22 @@ export class WishlistService {
     return wishlistProducts;
   }
 
+  createWishlist(userId, name) : any {
+    return this.http.post('/api/wishlists/', {userId, name})
+      .toPromise()
+      .then(response => {
+        return JSON.parse(response._body);
+      })
+      .catch(err => console.log(err));
+  }
+
+  addProductToWishlist(wishlistId, productId) : any {
+    return this.http.post('/api/wishlists/add', {wishlistId, productId})
+      .toPromise()
+      .then(response => {
+        return JSON.parse(response._body);
+      })
+      .catch(err => console.log(err));
+  }
+
 }
