@@ -3,7 +3,6 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
-import { LoginPage } from '../pages/login/login';
 import { ProductsPage } from '../pages/products/products';
 import { CatalogService } from '../providers/catalog-service';
 import { WishlistService } from '../providers/wishlist-service';
@@ -26,7 +25,6 @@ import { UserPage } from '../pages/user-page/user-page';
     ProductDetailPage,
     ProductsPage,
     ArgonPage,
-    LoginPage,
     ListItem,
     WishlistsPage,
     WishlistPage,
@@ -44,7 +42,6 @@ import { UserPage } from '../pages/user-page/user-page';
     ProductDetailPage,
     ProductsPage,
     ArgonPage,
-    LoginPage,
     ListItem,
     WishlistsPage,
     WishlistPage,
@@ -52,5 +49,6 @@ import { UserPage } from '../pages/user-page/user-page';
   ],
   providers: [CatalogService, WishlistService, SessionService, RadioAlertService, ToastService]
 })
+
 export class AppModule {
 }

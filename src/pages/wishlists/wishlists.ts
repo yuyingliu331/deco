@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { WishlistService } from '../../providers/wishlist-service';
 import { SessionService } from '../../providers/session-service';
-import { ProductDetailPage } from '../product/product-detail';
 import { WishlistPage } from '../wishlist/wishlist';
 
 @Component({

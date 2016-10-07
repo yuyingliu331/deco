@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
@@ -16,9 +16,9 @@ export class SessionService {
   }
 
   getSessionInfo() : any {
-    return this.http.get('/auth/session')
+    return this.http.get('http://gh-deco.herokuapp.com/auth/session')
       .toPromise()
-      .then(response => {
+      .then((response : any) => {
         return JSON.parse(response._body);
       })
       .catch(err => console.log(err));
