@@ -5,6 +5,7 @@ import { WishlistService } from '../../providers/wishlist-service';
 import { RadioAlertService } from '../../providers/radioAlert-service';
 import { ToastService } from '../../providers/toast-service';
 
+declare var cordova;
 
 @Component({
   templateUrl: 'product-detail.html',
@@ -71,5 +72,35 @@ export class ProductDetailPage {
 
   addProductWishlist(wishlists) {
     this.radioAlertService.doRadio(wishlists, this.productId);
+  }
+
+  openVR() {
+    var WikitudePlugin = cordova.require('com.wikitude.phonegap.WikitudePlugin.WikitudePlugin');
+
+    WikitudePlugin.isDeviceSupported(
+      () => {
+        console.log('supported');
+        WikitudePlugin.loadARchitectWorld(
+          () => {
+            WikitudePlugin.setOnUrlInvokeCallback((url) => {
+              console.log('callback url: ' + url);
+            });
+
+          },
+          () => {
+            console.log('error loading ar');
+          },
+          'www/assets/ar/furniture/index.html', //url
+          ['geo'],
+          {
+            camera_position: 'back'
+          }
+        );
+      },
+      () => {
+        console.log('unsupported');
+      },
+      ['geo']
+    );
   }
 }
