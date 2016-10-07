@@ -34,8 +34,7 @@ router.post('/', function(req, res, next) {
 
 //update the wishlist:
 //takes a productId, wishlistId --> adds new item to WishlistProduct
-router.put('/', function(req, res, next) {
-  console.log(req.body)
+router.post('/add', function(req, res, next) {
   WishlistProduct.create(req.body)
   .then(function(wishlistItem) {
     res.send(wishlistItem);

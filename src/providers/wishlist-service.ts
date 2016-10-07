@@ -58,7 +58,7 @@ export class WishlistService {
   }
 
   addProductToWishlist(wishlistId, productId) : any {
-    return this.http.put('/api/wishlists/', {wishlistId, productId})
+    return this.http.post('/api/wishlists/add', {wishlistId, productId})
       .toPromise()
       .then(response => {
         return JSON.parse(response._body);
