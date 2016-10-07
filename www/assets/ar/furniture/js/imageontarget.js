@@ -27,18 +27,19 @@ var World = {
     //   offsetY: 0
     // });
 
-    this.modelChair = new AR.model('assets/chair.wt3', {
-      onLoaded: this.loadingStep,
+    this.modelChair = new AR.Model("assets/chair.wt3", {
+      onLoaded: this.worldLoaded,
       scale: {
-        x: 1,
-        y: 1,
-        z: 1,
+        x: 0.03,
+        y: 0.03,
+        z: 0.03
       },
       translate: {
-        x: 0,
-        y: 0,
-        z: 0,
-      }, rotate: {
+        x: 0.0,
+        y: 0.0,
+        z: 0.0
+      },
+      rotate: {
         roll: 0
       }
     });
@@ -48,9 +49,9 @@ var World = {
       Please note that in this case the target name is a wildcard. Wildcards can be used to respond to any target defined in the target collection. If you want to respond to a certain target only for a particular AR.Trackable2DObject simply provide the target name as specified in the target collection.
     */
     var trackable = new AR.Trackable2DObject(this.tracker, "*", {
-        drawables: {
-            cam: [this.modelChair]
-        }
+      drawables: {
+        cam: [this.modelChair]
+      }
     });
 
   //   var pageOne = new AR.Trackable2DObject(this.tracker, "*", {
@@ -62,7 +63,7 @@ var World = {
   },
 
   worldLoaded: function worldLoadedFn() {
-
+    console.log('loaded!');
   }
 
 };
