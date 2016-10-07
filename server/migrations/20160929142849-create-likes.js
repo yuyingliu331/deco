@@ -2,6 +2,12 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('Likes', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+    },
      productId: {
       type: Sequelize.INTEGER,
       references: {
