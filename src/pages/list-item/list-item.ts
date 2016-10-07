@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { CatalogService } from '../../providers/catalog-service';
 import { ProductDetailPage } from '../product/product-detail';
 
 @Component({

@@ -16,7 +16,7 @@ export class CatalogService {
   }
 
   getAllProducts() : any {
-    return this.http.get('/api/products')
+    return this.http.get('http://gh-deco.herokuapp.com/api/products')
       .toPromise()
       .then((response: any) => {
         return JSON.parse(response._body);
@@ -42,7 +42,7 @@ export class CatalogService {
   }
 
   getProductById(id) : any {
-    return this.http.get('/api/products/' + id)
+    return this.http.get('http://gh-deco.herokuapp.com/api/products/' + id)
     .toPromise()
     .then((response: any) => {
       return JSON.parse(response._body);

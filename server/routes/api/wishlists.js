@@ -6,7 +6,7 @@ const WishlistProduct = models.WishlistProduct;
 
 // get all the wishlist:
 router.get('/', function(req, res, next) {
-  body = (req.session.passport) ? {where: { userId: req.session.passport.user}} : {};
+  var body = (req.session.passport) ? {where: { userId: req.session.passport.user}} : {};
   Wishlist.findAll(body)
   .then(function(wishlists) {
     res.send(wishlists);
