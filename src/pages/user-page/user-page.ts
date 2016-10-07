@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { LikesPage } from '../likes/likes';
 
 @Component({
   templateUrl: 'user-page.html'

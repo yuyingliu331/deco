@@ -49,7 +49,7 @@ export class WishlistService {
   }
 
   createWishlist(userId, name) : any {
-    return this.http.post('/api/wishlists/', {userId, name})
+    return this.http.post('http://gh-deco.herokuapp.com/api/wishlists/', {userId, name})
       .toPromise()
       .then((response : any) => {
         return JSON.parse(response._body);
@@ -58,7 +58,7 @@ export class WishlistService {
   }
 
   addProductToWishlist(wishlistId, productId) : any {
-    return this.http.post('/api/wishlists/add', {wishlistId, productId})
+   return this.http.post('http://gh-deco.herokuapp.com/api/wishlists/add', {wishlistId, productId})
       .toPromise()
       .then((response : any) => {
         return JSON.parse(response._body);

@@ -11,17 +11,25 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class SessionService {
 
+  session = null;
+
   constructor(public http: Http) {
     this.http = http;
   }
 
   getSessionInfo() : any {
-    return this.http.get('http://gh-deco.herokuapp.com/auth/session')
-      .toPromise()
-      .then((response : any) => {
-        return JSON.parse(response._body);
-      })
-      .catch(err => console.log(err));
+    if(!this.session) {
+      //http://gh-deco.herokuapp.com
+      return this.http.get('http://gh-deco.herokuapp.com/auth/session')
+        .toPromise()
+        .then((response : any) => {
+          this.session = JSON.parse(response._body);
+          return this.session;
+        })
+        .catch(err => console.log(err));
+    } else {
+      return this.session;
+    }
   }
 
 }

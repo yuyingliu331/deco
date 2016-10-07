@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   .catch(next);
 });
 
-//gets like for user
+//gets likes for user
 //takes userId
 router.get('/:userId', function(req, res, next) {
   Likes.findAll({ where: {userId: req.params.userId} })
@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
   .catch(next);
 });
 
-//deletes a like from user
+//deletes a like
 //takes userId, productId
 router.delete('/', function(req, res, next) {
   Likes.destroy({ where: req.body })

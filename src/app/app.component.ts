@@ -7,10 +7,12 @@ import { UserPage } from '../pages/user-page/user-page';
 import { SessionService } from '../providers/session-service';
 import { WishlistService } from '../providers/wishlist-service';
 import { ToastService } from '../providers/toast-service';
+import { LikesService } from '../providers/likes-service';
+
 
 @Component({
   templateUrl: `../pages/menu/menu.html`,
-  providers: [WishlistService, SessionService, ToastService]
+  providers: [WishlistService, SessionService, ToastService, LikesService]
 })
 export class MyApp {
   @ViewChild('mycontent') nav
