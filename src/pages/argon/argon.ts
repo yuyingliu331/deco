@@ -26,13 +26,26 @@ export class ArgonPage {
     function init() {
       container = document.createElement( 'div' );
       document.body.appendChild( container );
+
       var info = document.createElement( 'div' );
+      var button = document.createElement('BUTTON');
+
       info.style.position = 'absolute';
       info.style.top = '10px';
       info.style.width = '100%';
       info.style.textAlign = 'center';
       info.innerHTML = 'Drag to spin the cube';
+
+      button.style.position = 'relative';
+      button.style.top = '30px';
+      button.style.width = '10%';
+      button.style.float = 'right';
+      button.style.color = 'black';
+
+      button.style.textAlign = 'right';
+      button.innerHTML = 'change location';
       container.appendChild( info );
+      container.appendChild(button);
       camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
       camera.position.y = 150;
       camera.position.z = 500;
@@ -84,7 +97,9 @@ export class ArgonPage {
     }
     function onDocumentMouseMove( event ) {
       mouseX = event.clientX - windowHalfX;
+      var mouseY = event.clientY - windowHalfY;
       targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
+      cube.position.set(mouseX, mouseY, 0.0);
     }
     function onDocumentMouseUp( event ) {
       document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -121,6 +136,7 @@ export class ArgonPage {
     }
   }
 
+
   ngOnInit() {
     let tapEnabled = false;
     let dragEnabled = false;
@@ -134,6 +150,7 @@ export class ArgonPage {
 
     cordova.plugins.camerapreview.startCamera(rect, "rear", tapEnabled, dragEnabled, toBack);
   }
+
 
   refresh(){
     window['location'].reload();
