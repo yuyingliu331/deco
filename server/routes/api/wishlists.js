@@ -36,8 +36,8 @@ router.post('/', function(req, res, next) {
 //takes a productId, wishlistId --> adds new item to WishlistProduct
 router.put('/', function(req, res, next) {
   console.log(req.body)
-  WishlistProduct.findOrCreate({where: req.body})
-  .spread(function(wishlistItem, created) {
+  WishlistProduct.create(req.body)
+  .then(function(wishlistItem) {
     res.send(wishlistItem);
   })
   .catch(next);

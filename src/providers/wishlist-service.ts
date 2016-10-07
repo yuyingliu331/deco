@@ -57,7 +57,7 @@ export class WishlistService {
       .catch(err => console.log(err));
   }
 
-  addProductToWishlist(wishlistId, productId) {
+  addProductToWishlist(wishlistId, productId) : any {
     return this.http.put('/api/wishlists/', {wishlistId, productId})
       .toPromise()
       .then(response => {
