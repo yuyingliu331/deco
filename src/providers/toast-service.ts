@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from 'ionic-angular';
-import { WishlistService } from './wishlist-service';
 import 'rxjs/add/operator/toPromise';
 
 /*

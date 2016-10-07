@@ -3,7 +3,6 @@ import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { CatalogPage } from '../pages/catalog/catalog';
-import { WishlistsPage } from '../pages/wishlists/wishlists';
 import { UserPage } from '../pages/user-page/user-page';
 import { SessionService } from '../providers/session-service';
 import { WishlistService } from '../providers/wishlist-service';

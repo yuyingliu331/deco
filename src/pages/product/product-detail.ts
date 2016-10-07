@@ -40,7 +40,7 @@ export class ProductDetailPage {
 
   ngOnInit() {
     this.getProductById();
-    this.wishlists = this.getUserWishlists();
+    this.getUserWishlists();
   }
 
   showIcon(category) {
