@@ -12,7 +12,7 @@ declare var THREE;
 export class ArgonPage {
 
   constructor(public navCtrl: NavController, params: NavParams){
-    var container, stats;
+    var container;
     var camera, scene, renderer;
     var cube, plane;
     var targetRotation = 0;
@@ -62,10 +62,10 @@ export class ArgonPage {
       cube.position.y = 150;
       scene.add( cube );
       // Plane
-      var geometry = new THREE.PlaneBufferGeometry( 200, 200 );
-      geometry.rotateX( - Math.PI / 2 );
-      var material = new THREE.MeshBasicMaterial( { color: 0xe0e0e0, overdraw: 0.5 } );
-      plane = new THREE.Mesh( geometry, material );
+      var geometry2 = new THREE.PlaneBufferGeometry( 200, 200 );
+      geometry2.rotateX( - Math.PI / 2 );
+      var material2 = new THREE.MeshBasicMaterial( { color: 0xe0e0e0, overdraw: 0.5 } );
+      plane = new THREE.Mesh( geometry2, material2 );
       scene.add( plane );
       renderer = new THREE.CanvasRenderer({alpha: true});
       // renderer.setClearColor( 0xf0f0f0 );
@@ -137,19 +137,19 @@ export class ArgonPage {
   }
 
 
-  ngOnInit() {
-    let tapEnabled = false;
-    let dragEnabled = false;
-    let toBack = true;
-    let rect = {
-      x: 0,
-      y: 0,
-      width: window.innerWidth,
-      height: window.innerHeight
-    };
+  // ngOnInit() {
+  //   let tapEnabled = false;
+  //   let dragEnabled = false;
+  //   let toBack = true;
+  //   let rect = {
+  //     x: 0,
+  //     y: 0,
+  //     width: window.innerWidth,
+  //     height: window.innerHeight
+  //   };
 
-    cordova.plugins.camerapreview.startCamera(rect, "rear", tapEnabled, dragEnabled, toBack);
-  }
+  //   cordova.plugins.camerapreview.startCamera(rect, "rear", tapEnabled, dragEnabled, toBack);
+  // }
 
 
   refresh(){

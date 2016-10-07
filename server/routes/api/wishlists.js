@@ -6,7 +6,7 @@ const WishlistProduct = models.WishlistProduct;
 
 // get all the wishlist:
 router.get('/', function(req, res, next) {
-  body = (req.session.passport) ? {where: { userId: req.session.passport.user}} : {};
+  var body = (req.session.passport) ? {where: { userId: req.session.passport.user}} : {};
   Wishlist.findAll(body)
   .then(function(wishlists) {
     res.send(wishlists);
@@ -22,7 +22,8 @@ router.get('/:wishlistId', function(req, res, next) {
   .catch(next);
 });
 
-//create a new wishlist:
+//create a new wishlist
+//will pass wishlist a name, userId
 router.post('/', function(req, res, next) {
   Wishlist.create(req.body)
   .then(function(wishlist){
@@ -31,14 +32,12 @@ router.post('/', function(req, res, next) {
   .catch(next);
 });
 
-//update the wishlist:
-router.put('/:id', function(req, res, next) {
-  Wishlist.findById(req.params.id, { attributes: ['id', 'userId']})
-  .then(function(wishlist){
-    return wishlist.update(req.body);
-  })
-  .then(function(wishlist) {
-    res.send(wishlist);
+//create a wishlist:
+//takes a productId, wishlistId --> adds new item to WishlistProduct
+router.post('/add', function(req, res, next) {
+  WishlistProduct.create(req.body)
+  .then(function(wishlistItem) {
+    res.send(wishlistItem);
   })
   .catch(next);
 });
