@@ -2,6 +2,7 @@ var World = {
   loaded: false,
   rotating: false,
   trackableVisible: false,
+  modelUrl: '',
 
   init: function initFn() {
     this.createOverlays();
@@ -25,6 +26,28 @@ var World = {
 
       A function is attached to the onLoaded trigger to receive a notification once the 3D model is fully loaded. Depending on the size of the model and where it is stored (locally or remotely) it might take some time to completely load and it is recommended to inform the user about the loading time.
     */
+    this.modelChair = new AR.Model(this.getModelUrl(), {
+      onLoaded: this.loadingStep,
+      /*
+        The drawables are made clickable by setting their onClick triggers. Click triggers can be set in the options of the drawable when the drawable is created. Thus, when the 3D model onClick: this.toggleAnimateModel is set in the options it is then passed to the AR.Model constructor. Similar the button's onClick: this.toggleAnimateModel trigger is set in the options passed to the AR.ImageDrawable constructor. toggleAnimateModel() is therefore called when the 3D model or the button is clicked.
+
+        Inside the toggleAnimateModel() function, it is checked if the animation is running and decided if it should be started, resumed or paused.
+      */
+      onClick: this.toggleAnimateModel,
+      scale: {
+        x: 0,
+        y: 0,
+        z: 0
+      },
+      translate: {
+        x: 0,
+        y: 0,
+        z: 0.0
+      },
+      rotate: {
+        roll: -25
+      }
+    });
     this.modelChair = new AR.Model('assets/chair.wt3', {
       onLoaded: this.loadingStep,
       /*
@@ -147,9 +170,13 @@ var World = {
     return false;
   },
 
-  loadFromApp: function loadFromAppFn(data) {
-    console.log('data!', data);
-    document.getElementById('check').innerHTML = '<div>Number is: ' + data + '</div>';
+  loadModelUrl: function loadModelUrlFn(url) {
+    document.getElementById('check').innerHTML = '<div>Model url is: ' + url + '</div>';
+    this.modelUrl = url;
+  },
+
+  getModelUrl: function getModelUrlFn() {
+    return this.modelUrl;
   }
 };
 

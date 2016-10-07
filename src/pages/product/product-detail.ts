@@ -80,10 +80,9 @@ export class ProductDetailPage {
     WikitudePlugin.isDeviceSupported(
       () => {
         console.log('supported');
-        WikitudePlugin.callJavaScript('World.loadFromApp(1)')
         WikitudePlugin.loadARchitectWorld(
           () => {
-            WikitudePlugin.callJavaScript('World.loadFromApp(1)')
+            WikitudePlugin.callJavaScript('World.loadModelUrl(assets/chair.wt3)')
             WikitudePlugin.setOnUrlInvokeCallback((url) => {
               console.log('callback url: ' + url);
             });
