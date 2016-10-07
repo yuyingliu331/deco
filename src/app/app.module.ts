@@ -9,6 +9,7 @@ import { CatalogService } from '../providers/catalog-service';
 import { WishlistService } from '../providers/wishlist-service';
 import { SessionService } from '../providers/session-service';
 import { RadioAlertService } from '../providers/radioAlert-service';
+import { ToastService } from '../providers/toast-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
 import { ArgonPage } from '../pages/argon/argon';
@@ -49,7 +50,7 @@ import { UserPage } from '../pages/user-page/user-page';
     WishlistPage,
     UserPage
   ],
-  providers: [CatalogService, WishlistService, SessionService, RadioAlertService]
+  providers: [CatalogService, WishlistService, SessionService, RadioAlertService, ToastService]
 })
 export class AppModule {
 }

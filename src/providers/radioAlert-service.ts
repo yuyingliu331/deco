@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { WishlistService } from './wishlist-service';
+import { ToastService } from './toast-service';
 import 'rxjs/add/operator/toPromise';
 
 /*
@@ -15,7 +16,7 @@ export class RadioAlertService {
   testRadioOpen: boolean;
   testRadioResult;
 
-  constructor(public alerCtrl: AlertController, private wishlistService: WishlistService) { }
+  constructor(public alerCtrl: AlertController, private wishlistService: WishlistService, private toastService: ToastService) { }
 
   doRadio(wishlists, productId) {
     let alert = this.alerCtrl.create({ enableBackdropDismiss: true });
@@ -25,7 +26,7 @@ export class RadioAlertService {
       alert.addInput({
         type: 'radio',
         label: wishlist.name,
-        value: wishlist.id
+        value: wishlist
       });
     }
 
@@ -40,7 +41,8 @@ export class RadioAlertService {
       handler: data => {
         this.testRadioOpen = false;
         this.testRadioResult = data;
-        this.wishlistService.addProductToWishlist(data, productId);
+        this.wishlistService.addProductToWishlist(data.id, productId);
+        this.toastService.presentToast('Item added to ' + data.name);
       }
     });
 

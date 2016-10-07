@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CatalogService } from '../../providers/catalog-service';
 import { WishlistService } from '../../providers/wishlist-service';
 import { RadioAlertService } from '../../providers/radioAlert-service';
+import { ToastService } from '../../providers/toast-service';
+
 
 @Component({
   templateUrl: 'product-detail.html',
@@ -18,7 +20,7 @@ export class ProductDetailPage {
   wishlists = [];
   public productId:any;
 
-  constructor(public navCtrl: NavController, private catalogService: CatalogService, private wishlistService: WishlistService, private radioAlertService: RadioAlertService, params: NavParams) {
+  constructor(public navCtrl: NavController, private catalogService: CatalogService, private wishlistService: WishlistService, private radioAlertService: RadioAlertService, private toastService: ToastService, params: NavParams) {
     this.productId = params.get('productId');
   }
 
@@ -68,6 +70,6 @@ export class ProductDetailPage {
   }
 
   addProductWishlist(wishlists) {
-    this.radioAlertService.doRadio(wishlists, this.productId)
+    this.radioAlertService.doRadio(wishlists, this.productId);
   }
 }
