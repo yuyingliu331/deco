@@ -30,7 +30,7 @@ export class MyApp {
     this.menu.close();
   }
 
-  goToUserHome(session) {
+  goToUserHome() {
     this.sessionService.getSessionInfo()
     .then( session => {
       this.nav.push(UserPage, {session});
