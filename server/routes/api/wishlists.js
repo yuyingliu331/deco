@@ -32,10 +32,9 @@ router.post('/', function(req, res, next) {
   .catch(next);
 });
 
-//update the wishlist:
+//create a wishlist:
 //takes a productId, wishlistId --> adds new item to WishlistProduct
 router.put('/', function(req, res, next) {
-  console.log(req.body)
   WishlistProduct.create(req.body)
   .then(function(wishlistItem) {
     res.send(wishlistItem);
