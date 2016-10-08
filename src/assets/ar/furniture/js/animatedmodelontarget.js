@@ -4,51 +4,18 @@ var World = {
   trackableVisible: false,
   modelUrl: '',
 
-  init: function initFn() {
-    this.createOverlays();
+  init: function initFn(path) {
+    this.createOverlays(path);
   },
 
-  createOverlays: function createOverlaysFn() {
-    /*
-      First an AR.ClientTracker needs to be created in order to start the recognition engine. It is initialized with a URL specific to the target collection. Optional parameters are passed as object in the last argument. In this case a callback function for the onLoaded trigger is set. Once the tracker is fully loaded the function loadingStep() is called.
-
-      Important: If you replace the tracker file with your own, make sure to change the target name accordingly.
-      Use a specific target name to respond only to a certain target or use a wildcard to respond to any or a certain group of targets.
-    */
+  createOverlays: function createOverlaysFn(path) {
+    //custom AR tracker
     this.tracker = new AR.ClientTracker('assets/tracker.wtc', {
       onLoaded: this.loadingStep
     });
 
-    /*
-      3D content within Wikitude can only be loaded from Wikitude 3D Format files (.wt3). This is a compressed binary format for describing 3D content which is optimized for fast loading and handling of 3D content on a mobile device. You still can use 3D models from your favorite 3D modeling tools (Autodesk® Maya® or Blender) but you'll need to convert them into the wt3 file format. The Wikitude 3D Encoder desktop application (Windows and Mac) encodes your 3D source file. You can download it from our website. The Encoder can handle Autodesk® FBX® files (.fbx) and the open standard Collada (.dae) file formats for encoding to .wt3.
-
-      Create an AR.Model and pass the URL to the actual .wt3 file of the model. Additional options allow for scaling, rotating and positioning the model in the scene.
-
-      A function is attached to the onLoaded trigger to receive a notification once the 3D model is fully loaded. Depending on the size of the model and where it is stored (locally or remotely) it might take some time to completely load and it is recommended to inform the user about the loading time.
-    */
-    this.modelChair = new AR.Model(this.getModelUrl(), {
-      onLoaded: this.loadingStep,
-      /*
-        The drawables are made clickable by setting their onClick triggers. Click triggers can be set in the options of the drawable when the drawable is created. Thus, when the 3D model onClick: this.toggleAnimateModel is set in the options it is then passed to the AR.Model constructor. Similar the button's onClick: this.toggleAnimateModel trigger is set in the options passed to the AR.ImageDrawable constructor. toggleAnimateModel() is therefore called when the 3D model or the button is clicked.
-
-        Inside the toggleAnimateModel() function, it is checked if the animation is running and decided if it should be started, resumed or paused.
-      */
-      onClick: this.toggleAnimateModel,
-      scale: {
-        x: 0,
-        y: 0,
-        z: 0
-      },
-      translate: {
-        x: 0,
-        y: 0,
-        z: 0.0
-      },
-      rotate: {
-        roll: -25
-      }
-    });
-    this.modelChair = new AR.Model('assets/chair.wt3', {
+    //import 3d model and set its properties
+    this.modelChair = new AR.Model(path, {
       onLoaded: this.loadingStep,
       /*
         The drawables are made clickable by setting their onClick triggers. Click triggers can be set in the options of the drawable when the drawable is created. Thus, when the 3D model onClick: this.toggleAnimateModel is set in the options it is then passed to the AR.Model constructor. Similar the button's onClick: this.toggleAnimateModel trigger is set in the options passed to the AR.ImageDrawable constructor. toggleAnimateModel() is therefore called when the 3D model or the button is clicked.
@@ -84,7 +51,7 @@ var World = {
     /*
       Additionally to the 3D model an image that will act as a button is added to the image target. This can be accomplished by loading an AR.ImageResource and creating a drawable from it.
     */
-    var imgRotate = new AR.ImageResource('assets/rotateButton.png');
+    var imgRotate = new AR.ImageResource('assets/refresh.png');
     var buttonRotate = new AR.ImageDrawable(imgRotate, 0.2, {
       offsetX: 0.35,
       offsetY: 0.45,
@@ -142,6 +109,7 @@ var World = {
       World.appearingAnimation.start();
     }
   },
+
   disappear: function disappearFn() {
     World.trackableVisible = false;
   },
@@ -168,16 +136,11 @@ var World = {
     }
 
     return false;
-  },
-
-  loadModelUrl: function loadModelUrlFn(url) {
-    document.getElementById('check').innerHTML = '<div>Model url is: ' + url + '</div>';
-    this.modelUrl = url;
-  },
-
-  getModelUrl: function getModelUrlFn() {
-    return this.modelUrl;
   }
 };
 
-World.init();
+// this function is called by native app and passes in the correct 3d model path
+var getModelFromNative = function(path) {
+  document.getElementById('check').innerHTML = '<div>Model path is: ' + path + '</div>';
+  World.init(path);
+};
