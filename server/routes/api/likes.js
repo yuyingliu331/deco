@@ -23,6 +23,14 @@ router.get('/:userId', function(req, res, next) {
   .catch(next);
 });
 
+router.get('/:userId/:productId', function(req, res, next) {
+  Likes.findOne({ where: {userId: req.params.userId, productId: req.params.productId} })
+  .then(function(like) {
+    res.status(200).send(like);
+  })
+  .catch(next);
+});
+
 //adds a like to db
 //takes userId, productId ->pass in req.body
 router.post('/', function(req, res, next) {
@@ -35,9 +43,12 @@ router.post('/', function(req, res, next) {
 
 //deletes a like
 //takes userId, productId
-router.delete('/', function(req, res, next) {
-  Likes.destroy({ where: req.body })
-  .then(function() {
+router.delete('/:userId/:productId', function(req, res, next) {
+  Likes.findOne({ where: {userId: req.params.userId, productId: req.params.productId} })
+  .then(function(like) {
+    return like.destroy();
+  })
+  .then(function(){
     res.status(204).send();
   })
   .catch(next);

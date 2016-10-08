@@ -18,18 +18,14 @@ export class SessionService {
   }
 
   getSessionInfo() : any {
-    if(!this.session) {
-      //http://gh-deco.herokuapp.com
-      return this.http.get('http://gh-deco.herokuapp.com/auth/session')
-        .toPromise()
-        .then((response : any) => {
-          this.session = JSON.parse(response._body);
-          return this.session;
-        })
-        .catch(err => console.log(err));
-    } else {
-      return this.session;
-    }
+    return this.http.get('http://gh-deco.herokuapp.com/auth/session')
+      .toPromise()
+      .then((response : any) => {
+        this.session = JSON.parse(response._body);
+        console.log(this.session, 'inside session info')
+        return this.session;
+      })
+      .catch(err => console.log(err));
   }
 
 }

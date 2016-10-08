@@ -23,7 +23,7 @@ export class LikesPage {
     })
   }
 
-  NgOnInit() {
+  ngOnInit() {
     this.getUserLikes();
   }
 }

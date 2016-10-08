@@ -15,7 +15,7 @@ export class LikesService {
   constructor(public http: Http, private wishlistService: WishlistService) {
     this.http = http;
   }
-
+//http://gh-deco.herokuapp.com
   getUserLikes(userId) : any {
     return this.http.get('http://gh-deco.herokuapp.com/api/likes/' + userId)
       .toPromise()
@@ -23,6 +23,15 @@ export class LikesService {
         return JSON.parse(response._body);
       })
       .catch(err => console.log(err));
+  }
+
+  getLikeStatus(userId, productId) {
+    return this.http.get('http://gh-deco.herokuapp.com/api/likes/' + userId + '/' + productId)
+    .toPromise()
+    .then((response : any) => {
+      return JSON.parse(response._body);
+    })
+    .catch(err => console.log(err));
   }
 
   likeItem(userId, productId) : any {
@@ -35,7 +44,7 @@ export class LikesService {
   }
 
   unlikeItem(userId, productId) : any {
-    return this.http.delete('http://gh-deco.herokuapp.com/api/likes/', {userId, productId})
+    return this.http.delete('http://gh-deco.herokuapp.com/api/likes/' + userId +'/' + productId)
       .toPromise()
       .then((response : any) => {
         return JSON.parse(response._body);

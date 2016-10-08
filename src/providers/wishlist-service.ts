@@ -15,7 +15,6 @@ export class WishlistService {
   constructor(public http: Http, private catalogService: CatalogService) {
     this.http = http;
   }
-
   getUserWishlists() : any {
     return this.http.get('http://gh-deco.herokuapp.com/api/wishlists/')
       .toPromise()

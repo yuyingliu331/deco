@@ -18,7 +18,7 @@ export class MyApp {
   @ViewChild('mycontent') nav
   rootPage = HomePage;
 
-  constructor(platform: Platform, private menu: MenuController, private sessionService: SessionService) {
+  constructor(platform: Platform, private menu: MenuController, ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -33,10 +33,7 @@ export class MyApp {
   }
 
   goToUserHome() {
-    this.sessionService.getSessionInfo()
-    .then( session => {
-      this.nav.push(UserPage, {session});
-      this.menu.close();
-    });
+    this.nav.push(UserPage);
+    this.menu.close();
   }
 }
