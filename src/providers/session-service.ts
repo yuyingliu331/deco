@@ -22,7 +22,6 @@ export class SessionService {
       .toPromise()
       .then((response : any) => {
         this.session = JSON.parse(response._body);
-        console.log(this.session, 'inside session info')
         return this.session;
       })
       .catch(err => console.log(err));
