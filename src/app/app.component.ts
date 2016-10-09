@@ -7,14 +7,23 @@ import { UserPage } from '../pages/user-page/user-page';
 import { SessionService } from '../providers/session-service';
 import { WishlistService } from '../providers/wishlist-service';
 import { ToastService } from '../providers/toast-service';
+import { BrowsePage } from '../pages/browse/browse';
 
 @Component({
-  templateUrl: `../pages/menu/menu.html`,
+  template:
+  `<ion-tabs>
+      <ion-tab tabIcon="home" tabTitle="home" [root]="home"></ion-tab>
+      <ion-tab tabIcon="search" tabTitle="browse" [root]="catalog"></ion-tab>
+      <ion-tab tabIcon="information-circle" tabTitle="profile" [root]="profile"></ion-tab>
+    </ion-tabs>`,
   providers: [WishlistService, SessionService, ToastService]
 })
 export class MyApp {
   @ViewChild('mycontent') nav
-  rootPage = HomePage;
+
+  home: any;
+  catalog: any;
+  profile: any;
 
   constructor(platform: Platform, private menu: MenuController, private sessionService: SessionService) {
     platform.ready().then(() => {
@@ -22,6 +31,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
+
+    this.home = HomePage;
+    this.catalog = BrowsePage;
+    this.profile = UserPage;
   }
 
 
