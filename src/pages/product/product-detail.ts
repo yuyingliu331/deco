@@ -77,16 +77,30 @@ export class ProductDetailPage {
   openVR() {
     var WikitudePlugin = cordova.require('com.wikitude.phonegap.WikitudePlugin.WikitudePlugin');
 
+    function onUrlInvoke(url) {
+      if (url.indexOf('captureScreen') > -1) {
+        console.log('capturing screen!');
+        WikitudePlugin.captureScreen(
+          function(absoluteFilePath) {
+            console.log('Screenshot successfully saved');
+          },
+          function (errorMessage) {
+            console.log('Error saving screenshot');
+          },
+          true, null
+        );
+      } else {
+          alert(url + "not handled");
+      }
+    }
+
     WikitudePlugin.isDeviceSupported(
       () => {
         console.log('supported');
         WikitudePlugin.loadARchitectWorld(
           () => {
-            WikitudePlugin.callJavaScript('getModelFromNative("assets/chair.wt3")')
-            WikitudePlugin.setOnUrlInvokeCallback((url) => {
-              console.log('callback url: ' + url);
-            });
-
+            WikitudePlugin.callJavaScript('getModelFromNative("assets/chair2.wt3")')
+            WikitudePlugin.setOnUrlInvokeCallback(onUrlInvoke)
           },
           () => {
             console.log('error loading ar');

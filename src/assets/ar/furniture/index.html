@@ -15,7 +15,15 @@
 
 <body>
   <div id="back-message">Swipe right to go back</div>
-  <div id="check"></div>
-  <script src="js/animatedmodelontarget.js"></script>
+
+  <div id="screenshot-container">
+    <img id="screenshot" src="assets/screenshot.png" ontouchstart="World.captureScreen()" />
+  </div>
+
+  <div id="rotate-container">
+    <img src="assets/rotate.png" id="rotate" ontouchstart="World.toggleRotate()" ontouchend="World.toggleRotate()" />
+  </div>
+  <!-- AR World -->
+  <script src="js/modelontarget.js"></script>
 </body>
 </html>

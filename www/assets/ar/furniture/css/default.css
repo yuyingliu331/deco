@@ -8,4 +8,34 @@
   line-height: 30px;
   text-align: center;
   font-size: 20px;
+  border-radius: 15px;
+}
+
+#rotate-container {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  bottom: 5px;
+  right: 5px;
+  background-color: #11c1f3;
+  border: 1px solid #0a9dc7;
+}
+
+#rotate, #screenshot {
+  padding: 0px;
+  margin: 0;
+  height: 50px;
+  width: 50px;
+}
+
+#screenshot-container {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  bottom: 5px;
+  right: 65px;
+  background-color: #11c1f3;
+  border: 1px solid #0a9dc7;
 }
