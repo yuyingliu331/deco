@@ -2,7 +2,6 @@
   <ion-thumbnail item-left>
     <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{itemProduct.photo}}">
   </ion-thumbnail>
-  <h2>{{itemProduct.name}}</h2>
   <p>{{itemProduct.description}}</p>
-  <button clear item-right (click)="goToProductDetailPage(itemProduct.id)">View</button>
+  <button item-right (click)="goToProductDetailPage(itemProduct.id)">View</button>
 </ion-item>

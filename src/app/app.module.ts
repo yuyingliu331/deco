@@ -16,6 +16,8 @@ import { ListItem } from '../pages/list-item/list-item';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
 import { WishlistPage } from '../pages/wishlist/wishlist';
 import { UserPage } from '../pages/user-page/user-page';
+import { BrowsePage } from '../pages/browse/browse';
+import { FilterCategoryPipe } from '../pages/browse/browse.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { UserPage } from '../pages/user-page/user-page';
     ListItem,
     WishlistsPage,
     WishlistPage,
-    UserPage
+    UserPage,
+    BrowsePage,
+    FilterCategoryPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -45,7 +49,8 @@ import { UserPage } from '../pages/user-page/user-page';
     ListItem,
     WishlistsPage,
     WishlistPage,
-    UserPage
+    UserPage,
+    BrowsePage
   ],
   providers: [CatalogService, WishlistService, SessionService, RadioAlertService, ToastService]
 })
