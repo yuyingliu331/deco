@@ -13,35 +13,5 @@ export class HomePage {
   goToArgonPage() {
     this.navCtrl.push(ArgonPage);
   }
-
-  wikitude() {
-    var WikitudePlugin = cordova.require('com.wikitude.phonegap.WikitudePlugin.WikitudePlugin');
-
-    WikitudePlugin.isDeviceSupported(
-      () => {
-        console.log('supported');
-        WikitudePlugin.loadARchitectWorld(
-          () => {
-            WikitudePlugin.setOnUrlInvokeCallback((url) => {
-              console.log('callback url: ' + url);
-            });
-
-          },
-          () => {
-            console.log('error loading ar');
-          },
-          'www/assets/ar/dog/index.html', //url
-          ['geo'],
-          {
-            camera_position: 'back'
-          }
-        );
-      },
-      () => {
-        console.log('unsupported');
-      },
-      ['geo']
-    );
-  }
 }
 
