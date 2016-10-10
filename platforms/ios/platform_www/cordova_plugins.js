@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "com.mbppower.camerapreview.CameraPreview",
-        "file": "plugins/com.mbppower.camerapreview/www/CameraPreview.js",
-        "pluginId": "com.mbppower.camerapreview",
-        "clobbers": [
-            "cordova.plugins.camerapreview"
-        ]
-    },
-    {
         "id": "cordova-plugin-camera.Camera",
         "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
         "pluginId": "cordova-plugin-camera",
@@ -101,7 +93,6 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "com.mbppower.camerapreview": "0.0.8",
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-camera": "2.3.0",
     "cordova-plugin-console": "1.0.4",

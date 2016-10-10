@@ -47,14 +47,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "com.mbppower.camerapreview": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-camera-preview"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "com.wikitude.phonegap.WikitudePlugin": {
         "source": {
             "type": "git",
