@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
-import { CatalogPage } from '../pages/catalog/catalog';
 import { UserPage } from '../pages/user-page/user-page';
 import { SessionService } from '../providers/session-service';
 import { WishlistService } from '../providers/wishlist-service';
@@ -26,7 +25,7 @@ export class MyApp {
   catalog: any;
   profile: any;
 
-  constructor(platform: Platform, private menu: MenuController, ) {
+  constructor(platform: Platform ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -36,16 +35,5 @@ export class MyApp {
     this.home = HomePage;
     this.catalog = BrowsePage;
     this.profile = UserPage;
-  }
-
-
-  goToCatalogPage() {
-    this.nav.push(CatalogPage);
-    this.menu.close();
-  }
-
-  goToUserHome() {
-    this.nav.push(UserPage);
-    this.menu.close();
   }
 }
