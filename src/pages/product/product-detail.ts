@@ -3,8 +3,11 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CatalogService } from '../../providers/catalog-service';
 import { WishlistService } from '../../providers/wishlist-service';
 import { RadioAlertService } from '../../providers/radioAlert-service';
+import { ToastService } from '../../providers/toast-service';
 import { LikesService } from '../../providers/likes-service';
 import { SessionService } from '../../providers/session-service';
+
+declare var cordova;
 
 @Component({
   templateUrl: 'product-detail.html',
@@ -104,5 +107,50 @@ export class ProductDetailPage {
 
   addProductWishlist(wishlists) {
     this.radioAlertService.doRadio(wishlists, this.productId);
+  }
+
+  openVR() {
+    var WikitudePlugin = cordova.require('com.wikitude.phonegap.WikitudePlugin.WikitudePlugin');
+
+    function onUrlInvoke(url) {
+      if (url.indexOf('captureScreen') > -1) {
+        console.log('capturing screen!');
+        WikitudePlugin.captureScreen(
+          function(absoluteFilePath) {
+            console.log('Screenshot successfully saved');
+          },
+          function (errorMessage) {
+            console.log('Error saving screenshot');
+          },
+          true, null
+        );
+      } else {
+          alert(url + "not handled");
+      }
+    }
+
+    WikitudePlugin.isDeviceSupported(
+      () => {
+        console.log('supported');
+        WikitudePlugin.loadARchitectWorld(
+          () => {
+            WikitudePlugin.callJavaScript('getModelFromNative("assets/chair2.wt3")')
+            WikitudePlugin.setOnUrlInvokeCallback(onUrlInvoke)
+          },
+          () => {
+            console.log('error loading ar');
+          },
+          'www/assets/ar/furniture/index.html', //url
+          ['geo'],
+          {
+            camera_position: 'back'
+          }
+        );
+      },
+      () => {
+        console.log('unsupported');
+      },
+      ['geo']
+    );
   }
 }

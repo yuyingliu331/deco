@@ -23,23 +23,6 @@ export class CatalogService {
       .catch(err => console.log(err));
   }
 
-  getProductsByCategory(): any {
-    return this.getAllProducts()
-    .then(function(products) {
-      let categories = [];
-      let productsByCategory = [];
-
-      products.forEach(function(product) {
-        if (categories.indexOf(product.category) < 0) {
-          categories.push(product.category);
-          productsByCategory[categories.indexOf(product.category)] = [];
-        }
-        productsByCategory[categories.indexOf(product.category)].push(product);
-      })
-      return productsByCategory;
-    })
-  }
-
   getProductById(id) : any {
     return this.http.get('http://gh-deco.herokuapp.com/api/products/' + id)
     .toPromise()
