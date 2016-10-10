@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "com.mbppower.camerapreview": {
-            "PACKAGE_NAME": "com.ionicframework.todoionic2heroku917540"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.todoionic2heroku917540"
         },
