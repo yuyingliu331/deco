@@ -9,15 +9,17 @@ import { WishlistService } from '../../providers/wishlist-service';
 export class WishlistPage {
   wishlist = [];
   wishlistName;
+  wishlistId;
 
   constructor(public navCtrl: NavController, private wishlistservice: WishlistService, params: NavParams) {
     this.wishlistName = params.get("wishlistName");
+    this.wishlistId = params.get("wishlist");
   }
 
   //we pass in a wishlist with just productId's from the wishlists page via params
   //we then get all the products from the wishlist
   getWishlist = function() {
-    this.wishlist = this.wishlistservice.getWishlistProducts(this.params.get("wishlist"));
+    this.wishlist = this.wishlistservice.getWishlistProducts(this.wishlistId);
   }
 
   ngOnInit() {

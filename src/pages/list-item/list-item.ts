@@ -4,8 +4,7 @@ import { ProductDetailPage } from '../product/product-detail';
 
 @Component({
   selector : 'list-item',
-  templateUrl: 'list-item.html',
-  providers: []
+  templateUrl: 'list-item.html'
 })
 export class ListItem {
 
