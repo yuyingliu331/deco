@@ -1,4 +1,4 @@
-import { Component, Pipe } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { CatalogService } from '../../providers/catalog-service';
 
@@ -8,6 +8,7 @@ import { CatalogService } from '../../providers/catalog-service';
 })
 export class BrowsePage {
   products = [];
+  categories = [];
   filtered = '';
   constructor(public navCtrl: NavController, public menuCtrl: MenuController, private catalogService:  CatalogService) {}
 

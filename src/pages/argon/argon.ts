@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-declare var cordova;
 declare var THREE;
 
 @Component({
@@ -132,7 +131,6 @@ export class ArgonPage {
       height: window.innerHeight
     };
 
-    cordova.plugins.camerapreview.startCamera(rect, "rear", tapEnabled, dragEnabled, toBack);
   }
 
   refresh(){
