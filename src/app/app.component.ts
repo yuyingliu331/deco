@@ -8,6 +8,7 @@ import { SessionService } from '../providers/session-service';
 import { WishlistService } from '../providers/wishlist-service';
 import { ToastService } from '../providers/toast-service';
 import { LikesService } from '../providers/likes-service';
+import { BrowsePage } from '../pages/browse/browse';
 
 @Component({
   template:
