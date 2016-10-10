@@ -1,0 +1,12 @@
+.categories {
+  position: fixed;
+  bottom: 49px;
+  width: 100%;
+  z-index: 2;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  padding: 5px;
+  height: 64px;
+  overflow: auto;
+  white-space: nowrap;
+}

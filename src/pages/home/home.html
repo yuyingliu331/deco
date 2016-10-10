@@ -1,36 +1,32 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+<ion-content>
+  <ion-slides pager>
 
-  </ion-navbar>
-</ion-header>
+    <ion-slide style="background-color: #f16b99; color: #fff">
+      <div class="page-container">
+        <span class="title">Deco</span>
+        <img src="http://placehold.it/300x400" />
+        <p class="description">Place Marker On Floor</p>
+        <p class="status"><ion-icon name="radio-button-on"></ion-icon><ion-icon name="radio-button-off"></ion-icon><ion-icon name="radio-button-off"></ion-icon></p>
+      </div>
+    </ion-slide>
 
-<ion-content class="getStart">
-<div class="firstLayer">
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-slide style="background-color: #ca61dc; color: #fff">
+      <div class="page-container">
+        <span class="title">Deco</span>
+        <img src="http://placehold.it/300x400" />
+        <p class="description">Point Camera At Marker</p>
+        <p class="status"><ion-icon name="radio-button-on"></ion-icon><ion-icon name="radio-button-on"></ion-icon><ion-icon name="radio-button-off"></ion-icon></p>
+      </div>
+    </ion-slide>
 
-   <ion-buttons end>
-   <a right href="/auth/google">
-      <button ion-button end edge color="secondary" icon-left>
-        <ion-icon name='logo-google'>
-       Continue with Google</ion-icon>
-     </button>
-   </a>
-  <p></p>
-   <a href="/auth/facebook">
-    <button ion-button end edge icon-left>
-        <ion-icon name='logo-facebook'>
-      Continue with Facebook</ion-icon>
-     </button>
-  </a>
-  </ion-buttons>
-  <p>
-  <button ion-button (click)="goToArgonPage()">View VR</button>
-  <button ion-button (click)="wikitude()">View Wikitude</button>
-  </p>
-</div>
+    <ion-slide style="background-color: #7ac57d; color: #fff">
+      <div class="page-container">
+        <span class="title">Deco</span>
+        <img src="http://placehold.it/300x400" />
+        <p class="description">Rotate as desired & screenshot to share with your friends</p>
+        <p class="status"><ion-icon name="radio-button-on"></ion-icon><ion-icon name="radio-button-on"></ion-icon><ion-icon name="radio-button-on"></ion-icon></p>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
