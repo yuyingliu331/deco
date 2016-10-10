@@ -134,7 +134,7 @@ export class ProductDetailPage {
         console.log('supported');
         WikitudePlugin.loadARchitectWorld(
           () => {
-            WikitudePlugin.callJavaScript('getModelFromNative("assets/beanbag.wt35")')
+            WikitudePlugin.callJavaScript('getModelFromNative("assets/tvbox.wt30150")')
             WikitudePlugin.setOnUrlInvokeCallback(onUrlInvoke)
           },
           () => {

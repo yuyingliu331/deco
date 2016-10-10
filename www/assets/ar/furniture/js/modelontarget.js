@@ -12,12 +12,12 @@ var World = {
       onLoaded: this.worldLoaded
     });
     // 3dmodel
-    this.model = new AR.Model(path.slice(0, path.length - 1), {
+    this.model = new AR.Model(path.slice(0, path.length - 4), {
       onLoaded: this.worldLoaded,
       scale: {
-        x: +path.slice(-1),
-        y: +path.slice(-1),
-        z: +path.slice(-1)
+        x: +path.slice(-4) / 1000,
+        y: +path.slice(-4) / 1000,
+        z: +path.slice(-4) / 1000
       },
       translate: {
         x: 0.0,

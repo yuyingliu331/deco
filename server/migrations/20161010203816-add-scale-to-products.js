@@ -3,7 +3,7 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface.addColumn('Products', 'scale', {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     });
   },
 
