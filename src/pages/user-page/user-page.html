@@ -19,9 +19,8 @@
   </div>
 
   <div [ngSwitch]="userView">
-    <ion-list *ngSwitchCase="'wishlists'">
-      <user-wishlists [sessionInfo]="sessionInfo"></user-wishlists>
-    </ion-list>
+    <user-wishlists *ngSwitchCase="'wishlists'" [sessionInfo]="session"></user-wishlists>
+    <user-likes *ngSwitchCase="'likes'" [sessionInfo]="session"></user-likes>
   </div>
 </ion-content>
 

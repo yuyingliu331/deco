@@ -3,6 +3,7 @@
 const router = require('express').Router();
 
 router.get('/session', function(req, res, next) {
+  console.log('session request ', req.session);
   res.send(req.session);
 });
 

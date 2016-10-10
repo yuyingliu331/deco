@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { WishlistService } from '../../providers/wishlist-service';
+import { ToastService } from '../../providers/toast-service';
 import { SessionService } from '../../providers/session-service';
 import { WishlistPage } from '../wishlist/wishlist';
 
@@ -13,7 +14,7 @@ export class WishlistsPage {
   wishlists = [];
   @Input() sessionInfo;
 
-  constructor(public navCtrl: NavController, private wishlistservice: WishlistService, private sessionService: SessionService){
+  constructor(public navCtrl: NavController, private wishlistservice: WishlistService, private sessionService: SessionService, private toastService: ToastService){
   }
 
   getUserWishlists = function() {
@@ -35,6 +36,7 @@ export class WishlistsPage {
     this.wishlistservice.createWishlist(userId, wishlistName)
     .then(createdWishlist => {
       this.wishlists.push(createdWishlist);
+      this.toastService.presentToast('Created ' + createdWishlist.name);
     });
   }
 

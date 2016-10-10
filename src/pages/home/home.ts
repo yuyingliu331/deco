@@ -5,7 +5,8 @@ import { ArgonPage } from '../argon/argon';
 declare var cordova;
 
 @Component({
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  styleUrls: ['/pages/home/home.scss']
 })
 export class HomePage {
   constructor(public navCtrl: NavController, public menuCtrl: MenuController) {}
@@ -14,4 +15,3 @@ export class HomePage {
     this.navCtrl.push(ArgonPage);
   }
 }
-

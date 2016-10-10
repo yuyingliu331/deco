@@ -14,7 +14,6 @@ export class CatalogService {
   constructor(public http: Http) {
     this.http = http;
   }
-
   getAllProducts() : any {
     return this.http.get('http://gh-deco.herokuapp.com/api/products')
       .toPromise()

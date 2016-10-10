@@ -6,7 +6,7 @@ const Product = models.Product;
 router.get('/', function(req, res, next) {
   Product.findAll()
   .then(function(products) {
-    res.send(products);
+    res.status(200).send(products);
   })
   .catch(next);
 });
