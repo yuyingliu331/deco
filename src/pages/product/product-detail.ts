@@ -8,7 +8,6 @@ import { LikesService } from '../../providers/likes-service';
 import { SessionService } from '../../providers/session-service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
-
 declare var cordova;
 
 @Component({
@@ -29,10 +28,6 @@ export class ProductDetailPage {
 
   constructor(public navCtrl: NavController, private catalogService: CatalogService, private wishlistService: WishlistService, private radioAlertService: RadioAlertService, private likesService: LikesService, private sessionService: SessionService, params: NavParams, private sanitizer: DomSanitizer) {
     this.productId = params.get('productId');
-
-    // this.safeUrl = sanitizer.bypassSecurityTrustResourceUrl('https://sketchfab.com/models/' + this.product.modelPath + '/embed?autostart=1');
-    // console.log('path', this.product.modelPath);
-    // console.log('safeUrl', this.safeUrl);
   }
 
   getSessionInfo() {
@@ -44,9 +39,6 @@ export class ProductDetailPage {
 
   getSafeUrl() {
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://sketchfab.com/models/' + this.product.modelPath + '/embed?autostart=1');
-    console.log('path', this.product.modelPath);
-    console.log('safeUrl', this.safeUrl);
-
     return this.safeUrl;
   }
 

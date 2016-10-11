@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Product {{productId}}
+      {{ product.category }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -16,7 +16,7 @@
       </button>
     </ion-item>
     <div class="sketchfab-embed-wrapper" *ngIf="product.modelPath.length > 0">
-      <iframe width="640" height="480" [src]='safeUrl' frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+      <iframe width="640" height="480" [src]='getSafeUrl()' frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
     </div>
     <!-- <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{product.photo}}" /> -->
     <ion-card-content>
