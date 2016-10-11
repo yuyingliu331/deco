@@ -58,7 +58,20 @@ var World = {
   },
 
   captureScreen: function captureScreenFn() {
+    var message = document.getElementById('back-message');
+    var screenshot = document.getElementById('screenshot-container');
+    var rotate = document.getElementById('rotate-container');
+    message.style.visibility = 'hidden';
+    screenshot.style.visibility = 'hidden';
+    rotate.style.visibility = 'hidden';
+
     document.location = 'architectsdk://button?action=captureScreen';
+
+    window.setTimeout(function() {
+      message.style.visibility = 'visible';
+      screenshot.style.visibility = 'visible';
+      rotate.style.visibility = 'visible';
+    }, 1500);
   },
 };
 
