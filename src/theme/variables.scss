@@ -57,7 +57,7 @@ $toolbar-ios-border-color: #eb2d6e;
 
 $list-ios-border-color: #000;
 $list-ios-text-color: #303030;
-$list-ios-header-color: #fff;
+$list-ios-header-color: #000;
 
 //app bg color
 $background-ios-color: #fff;
@@ -80,4 +80,10 @@ body {
 
 .item-inner {
   border-bottom: none !important;
+}
+
+input {
+  border: 1px solid #000 !important;
+  border-radius: 4px !important;
+  padding: 5px !important;
 }
