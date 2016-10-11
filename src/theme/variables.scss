@@ -22,7 +22,7 @@ $background-color:  #222;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #E85B84,
+  primary:    #f16b99,
   secondary:  #F98174,
   danger:     #f53d3d,
   light:      #FDCC50,
@@ -49,10 +49,36 @@ $colors: (
 $ionicons-font-path: "../assets/fonts";
 @import "ionicons";
 
-
 $tabs-ios-background: #000;
 $tabs-ios-tab-color: #fff;
+$toolbar-ios-background: #000;
+$toolbar-ios-border-color: #f16b99;
+$list-ios-border-color: #000;
+$list-ios-text-color: #fff;
+$list-ios-header-color: #fff;
 
+$background-ios-color: #222;
+$background-md-color: #222;
+$background-wp-color: #222;
 
+ion-thumbnail img{
+  border-radius: 4px;
+}
 
+ion-app {
+  background-color: #222 !important;
+}
 
+ion-item {
+  margin: 1% !important;
+  width: 98% !important;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background-color: #000;
+}
+
+.item-inner {
+  border-bottom: none !important;
+}
