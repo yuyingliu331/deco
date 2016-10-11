@@ -12,9 +12,9 @@ import { BrowsePage } from '../pages/browse/browse';
 @Component({
   template:
   `<ion-tabs>
-      <ion-tab class="tabs-energized tabs-icon-top" tabIcon="home" tabTitle="Home"  class="home" [root]="home"></ion-tab>
-      <ion-tab tabIcon="search" tabTitle="Browse" [root]="catalog" id="tab"></ion-tab>
-      <ion-tab tabIcon="information-circle" tabTitle="Profile" [root]="profile" id="tab"></ion-tab>
+      <ion-tab tabIcon="home" tabTitle="Home" icon-off="ion-ios-filing-outline" icon-off="ion-ios-filing-outline" class="home" [root]="home"></ion-tab>
+      <ion-tab tabIcon="search" tabTitle="Browse" [root]="catalog" icon-off="ion-ios-filing-outline" icon-off="ion-ios-filing-outline"></ion-tab>
+      <ion-tab tabIcon="information-circle" tabTitle="Profile" [root]="profile"></ion-tab>
     </ion-tabs>`,
     styleUrls: ['/src/app/app.component.scss'],
   providers: [WishlistService, SessionService, ToastService, LikesService]
