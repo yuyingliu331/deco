@@ -16,7 +16,7 @@ declare var cordova;
   providers: [CatalogService, RadioAlertService]
 })
 export class ProductDetailPage {
-  product = {size: [], photo: '', product3dModel: '', modelPath: ''};
+  product = {size: [], photo: '', product3dModel: '', modelPath: '', category: ''};
   showDescription = false;
   showSize = false;
   showMaterial = false;
