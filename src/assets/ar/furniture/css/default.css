@@ -39,3 +39,12 @@
   background-color: #11c1f3;
   border: 1px solid #0a9dc7;
 }
+
+#logo {
+  position: absolute;
+  bottom: 55px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+}
+
