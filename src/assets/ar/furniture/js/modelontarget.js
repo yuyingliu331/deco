@@ -8,7 +8,7 @@ var World = {
 
   createOverlays: function createOverlaysFn(path) {
     // custom tracker
-    this.tracker = new AR.ClientTracker('assets/tracker.wtc', {
+    this.tracker = new AR.ClientTracker('assets/logo.wtc', {
       onLoaded: this.worldLoaded
     });
     // 3dmodel
