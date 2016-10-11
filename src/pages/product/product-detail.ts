@@ -16,7 +16,7 @@ declare var cordova;
   providers: [CatalogService, RadioAlertService]
 })
 export class ProductDetailPage {
-  product = {size: [], photo: '', product3dModel: '', modelPath: '', category: ''};
+  product = {size: [], photo: '', product3dModel: '', modelPath: '', category: '', scale: ''};
   showDescription = false;
   showSize = false;
   showMaterial = false;
@@ -140,9 +140,10 @@ export class ProductDetailPage {
     WikitudePlugin.isDeviceSupported(
       () => {
         console.log('supported');
+        console.log('going to assets/' + this.product.product3dModel + this.product.scale);
         WikitudePlugin.loadARchitectWorld(
           () => {
-            WikitudePlugin.callJavaScript('getModelFromNative("' + this.product.product3dModel + this.product.modelPath + '")')
+            WikitudePlugin.callJavaScript('getModelFromNative("' + this.product.product3dModel + this.product.scale + '")')
             WikitudePlugin.setOnUrlInvokeCallback(onUrlInvoke)
           },
           () => {
