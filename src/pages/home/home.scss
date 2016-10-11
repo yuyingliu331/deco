@@ -36,6 +36,34 @@
 }
 
 #markerPhone{
-  height: 500px;
+  height: 400px;
   width: auto
 }
+
+.image {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 350px;
+    width: auto;
+}
+
+#image1 {
+
+  position: absolute;
+  top: 158px;
+  left: 118px;
+  height: 230px;
+  width: auto;
+}
+
+#image2 {
+
+  position: absolute;
+  top: 138px;
+  left: 118px;
+  height: 245px;
+  width: 131px;
+}
+
+
