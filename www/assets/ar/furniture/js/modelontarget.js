@@ -12,7 +12,7 @@ var World = {
       onLoaded: this.worldLoaded
     });
     // 3dmodel
-    this.model = new AR.Model(path.slice(0, path.length - 4), {
+    this.model = new AR.Model('assets/' + path.slice(0, path.length - 4), {
       onLoaded: this.worldLoaded,
       scale: {
         x: +path.slice(-4) / 1000,
