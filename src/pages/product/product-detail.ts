@@ -6,6 +6,8 @@ import { RadioAlertService } from '../../providers/radioAlert-service';
 import { ToastService } from '../../providers/toast-service';
 import { LikesService } from '../../providers/likes-service';
 import { SessionService } from '../../providers/session-service';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+
 
 declare var cordova;
 
@@ -15,7 +17,7 @@ declare var cordova;
   providers: [CatalogService, RadioAlertService]
 })
 export class ProductDetailPage {
-  product = {size: [], photo: ''};
+  product = {size: [], photo: '', product3dModel: '', modelPath: ''};
   showDescription = false;
   showSize = false;
   showMaterial = false;
@@ -23,9 +25,14 @@ export class ProductDetailPage {
   wishlists = [];
   sessionInfo = null;
   public productId:any;
+  safeUrl: SafeResourceUrl;
 
-  constructor(public navCtrl: NavController, private catalogService: CatalogService, private wishlistService: WishlistService, private radioAlertService: RadioAlertService, private likesService: LikesService, private sessionService: SessionService, params: NavParams) {
+  constructor(public navCtrl: NavController, private catalogService: CatalogService, private wishlistService: WishlistService, private radioAlertService: RadioAlertService, private likesService: LikesService, private sessionService: SessionService, params: NavParams, private sanitizer: DomSanitizer) {
     this.productId = params.get('productId');
+
+    // this.safeUrl = sanitizer.bypassSecurityTrustResourceUrl('https://sketchfab.com/models/' + this.product.modelPath + '/embed?autostart=1');
+    // console.log('path', this.product.modelPath);
+    // console.log('safeUrl', this.safeUrl);
   }
 
   getSessionInfo() {
@@ -35,11 +42,20 @@ export class ProductDetailPage {
     });
   }
 
+  getSafeUrl() {
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://sketchfab.com/models/' + this.product.modelPath + '/embed?autostart=1');
+    console.log('path', this.product.modelPath);
+    console.log('safeUrl', this.safeUrl);
+
+    return this.safeUrl;
+  }
+
   getProductById() {
     return this.catalogService.getProductById(this.productId)
     .then((result: any) => {
       this.product = result;
     })
+    .then(() => this.getSafeUrl())
   }
 
   getUserWishlists() {
@@ -134,7 +150,7 @@ export class ProductDetailPage {
         console.log('supported');
         WikitudePlugin.loadARchitectWorld(
           () => {
-            WikitudePlugin.callJavaScript('getModelFromNative("assets/tvbox.wt30150")')
+            WikitudePlugin.callJavaScript('getModelFromNative("' + this.product.product3dModel + this.product.modelPath + '")')
             WikitudePlugin.setOnUrlInvokeCallback(onUrlInvoke)
           },
           () => {
