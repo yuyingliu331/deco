@@ -11,14 +11,13 @@ var World = {
     this.tracker = new AR.ClientTracker('assets/tracker.wtc', {
       onLoaded: this.worldLoaded
     });
-
     // 3dmodel
-    this.model = new AR.Model(path, {
+    this.model = new AR.Model(path.slice(0, path.length - 4), {
       onLoaded: this.worldLoaded,
       scale: {
-        x: 0.002,
-        y: 0.002,
-        z: 0.002
+        x: +path.slice(-4) / 1000,
+        y: +path.slice(-4) / 1000,
+        z: +path.slice(-4) / 1000
       },
       translate: {
         x: 0.0,

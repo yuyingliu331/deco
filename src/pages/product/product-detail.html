@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Product {{productId}}
+      {{ product.category }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,7 +15,10 @@
         Experience in AR
       </button>
     </ion-item>
-    <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{product.photo}}" />
+    <div class="sketchfab-embed-wrapper" *ngIf="product.modelPath.length > 0">
+      <iframe width="640" height="480" [src]='getSafeUrl()' frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+    </div>
+    <!-- <img src="https://s3-us-west-2.amazonaws.com/deco-development/{{product.photo}}" /> -->
     <ion-card-content>
       <button ion-button outline block (click)="addProductWishlist(wishlists)">Add To Wishlist</button>
       <ion-list text-wrap>

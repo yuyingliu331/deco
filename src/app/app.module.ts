@@ -33,7 +33,7 @@ import { FilterCategoryPipe } from '../pages/browse/browse.pipe';
     UserPage,
     LikesPage,
     BrowsePage,
-    FilterCategoryPipe
+    FilterCategoryPipe,
   ],
   imports: [
     IonicModule.forRoot(MyApp),

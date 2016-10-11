@@ -9,7 +9,7 @@ import { CatalogService } from '../../providers/catalog-service';
 export class BrowsePage {
   products = [];
   categories = [];
-  filtered = '';
+  filtered = 'All';
   constructor(public navCtrl: NavController, public menuCtrl: MenuController, private catalogService:  CatalogService) {}
 
   getProducts : any = function() {
