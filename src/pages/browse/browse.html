@@ -7,13 +7,13 @@
 </ion-header>
 
 <ion-content>
-  <div class="categories">
-    <button ion-button color="#ccc" outline (click)="filtered='All'">All</button>
-    <span *ngFor="let category of categories">
-      <button ion-button color="#ccc" outline (click)="filtered=category">{{category}}</button>
-    </span>
-  </div>
   <ion-list>
     <list-item *ngFor="let product of products | filterCategory: filtered" [itemProduct]="product"></list-item>
   </ion-list>
 </ion-content>
+<div class="categories">
+  <button ion-button color="#ccc" outline (click)="filtered='All'">All</button>
+  <span *ngFor="let category of categories">
+    <button ion-button color="#ccc" outline (click)="filtered=category">{{category}}</button>
+  </span>
+</div>
