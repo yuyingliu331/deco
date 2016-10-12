@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CatalogService } from '../../providers/catalog-service';
 import { WishlistService } from '../../providers/wishlist-service';
 import { RadioAlertService } from '../../providers/radioAlert-service';
-import { ToastService } from '../../providers/toast-service';
 import { LikesService } from '../../providers/likes-service';
 import { SessionService } from '../../providers/session-service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
