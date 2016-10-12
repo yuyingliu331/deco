@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <div *ngIf="session">
-    <ion-segment>
+    <ion-segment [(ngModel)]="selected">
       <ion-segment-button value="wishlists" (click)="changeSegment('wishlists')">
         Wishlists
       </ion-segment-button>
