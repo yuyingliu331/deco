@@ -66,7 +66,7 @@ export class WishlistService {
   }
 
   deleteWishlist(userId, wishlistId) {
-    return this.http.delete('http://gh-deco.herokuapp.com/api/wishlists/' + userId + '/' + wishlistId)
+    return this.http.delete('http://gh-deco.herokuapp.com/api/wishlists/' + wishlistId)
     .toPromise()
     .then((response : any) => {
       return JSON.parse(response._body);
@@ -75,7 +75,7 @@ export class WishlistService {
   }
 
   deleteWishlistProduct(wishlistId, productId) {
-    return this.http.delete('http://gh-deco.herokuapp.com/api/wishlists/product/' + wishlistId + '/' + productId)
+    return this.http.delete('http://gh-deco.herokuapp.com/api/wishlists/' + wishlistId + '/' + productId)
     .toPromise()
     .then((response : any) => {
       return JSON.parse(response._body);

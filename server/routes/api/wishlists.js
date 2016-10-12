@@ -43,7 +43,7 @@ router.post('/add', function(req, res, next) {
 });
 
 //delete just an item from a wishlist
-router.delete('/product/:wishlistId/:productId', function(req, res, next) {
+router.delete('/:wishlistId/:productId', function(req, res, next) {
   WishlistProduct.destroy({where: { wishlistId: req.params.wishlistId, productId: req.params.productId } })
   .then(function() {
     res.status(204).send();
@@ -52,7 +52,7 @@ router.delete('/product/:wishlistId/:productId', function(req, res, next) {
 });
 
 //delete a wishlist by id, then delete all its products in WishlistProducts
-router.delete('/:userId/:wishlistId', function(req, res, next) {
+router.delete('/:wishlistId', function(req, res, next) {
   WishlistProduct.destroy({where: { wishlistId: req.params.wishlistId } })
   .then(function(){
     return Wishlist.destroy({ where: {id: req.params.wishlistId } });
