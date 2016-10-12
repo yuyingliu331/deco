@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      User Home
+      Profile
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div>
-    <ion-segment>
+  <div *ngIf="session">
+    <ion-segment [(ngModel)]="selected">
       <ion-segment-button value="wishlists" (click)="changeSegment('wishlists')">
         Wishlists
       </ion-segment-button>
@@ -16,15 +16,16 @@
         Likes
       </ion-segment-button>
     </ion-segment>
-  </div>
 
-  <div [ngSwitch]="userView">
-    <h5 padding>Wishlists</h5>
-    <user-wishlists *ngSwitchCase="'wishlists'" [sessionInfo]="session"></user-wishlists>
-    <user-likes *ngSwitchCase="'likes'" [sessionInfo]="session"></user-likes>
+    <div [ngSwitch]="userView">
+      <user-wishlists *ngSwitchCase="'wishlists'" [sessionInfo]="session"></user-wishlists>
+      <user-likes *ngSwitchCase="'likes'" [sessionInfo]="session"></user-likes>
+    </div>
+    <a href="http://gh-deco/herokuapp.com/auth/logout"><button ion-button>Logout</button></a>
   </div>
-  <a href="http://gh-deco.herokuapp.com/auth/google"><button ion-button>Login with Google</button></a>
-  <a href="http://gh-deco.herokuapp.com/auth/facebook"><button ion-button>Login with Facebook</button></a>
-  <a href="http://gh-deco/herokuapp.com/auth/logout"><button ion-button>Logout</button></a>
+  <div *ngIf="!session">
+    <a href="http://gh-deco.herokuapp.com/auth/google"><button ion-button>Login with Google</button></a>
+    <a href="http://gh-deco.herokuapp.com/auth/facebook"><button ion-button>Login with Facebook</button></a>
+  </div>
 </ion-content>
 

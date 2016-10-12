@@ -8,8 +8,10 @@ import { SessionService } from '../../providers/session-service';
 export class UserPage {
   session = {};
   userView = 'wishlists';
+  selected: string;
 
   constructor(public navCtrl: NavController, private sessionService: SessionService, private params: NavParams) {
+    this.selected = 'wishlists';
   }
 
   changeSegment(segment) {

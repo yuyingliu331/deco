@@ -14,13 +14,15 @@ export class LikesPage {
   }
 
   getUserLikes() {
-    this.likesService.getUserLikes(this.sessionInfo.passport.user)
-    .then(result => {
-      return this.likesService.getUserLikeProducts(result);
-    })
-    .then(results => {
-      this.products = results;
-    })
+    if(this.sessionInfo && this.sessionInfo.passport) {
+      this.likesService.getUserLikes(this.sessionInfo.passport.user)
+      .then(result => {
+        return this.likesService.getUserLikeProducts(result);
+      })
+      .then(results => {
+        this.products = results;
+      })
+    }
   }
 
   ngOnInit() {
