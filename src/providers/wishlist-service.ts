@@ -65,4 +65,22 @@ export class WishlistService {
       .catch(err => console.log(err));
   }
 
+  deleteWishlist(wishlistId) {
+    return this.http.delete('http://gh-deco.herokuapp.com/api/wishlists/' + wishlistId)
+    .toPromise()
+    .then((response : any) => {
+      return JSON.parse(response._body);
+    })
+    .catch(err => console.log(err));
+  }
+
+  deleteWishlistProduct(wishlistId, productId) {
+    return this.http.delete('http://gh-deco.herokuapp.com/api/wishlists/' + wishlistId + '/' + productId)
+    .toPromise()
+    .then((response : any) => {
+      return JSON.parse(response._body);
+    })
+    .catch(err => console.log(err));
+  }
+
 }
