@@ -28,4 +28,12 @@ export class UserPage {
   ngOnInit() {
     this.getSessionInfo();
   }
+
+  logout() {
+    return this.sessionService.logoutSession()
+    .then(() => {
+      this.session = {};
+    });
+  }
 }
+

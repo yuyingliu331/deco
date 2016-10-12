@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="session">
+  <div *ngIf="session && session.passport">
     <ion-segment [(ngModel)]="selected">
       <ion-segment-button value="wishlists" (click)="changeSegment('wishlists')">
         Wishlists
@@ -23,7 +23,7 @@
     </div>
     <a href="http://gh-deco.herokuapp.com/auth/logout"><button ion-button>Logout</button></a>
   </div>
-  <div *ngIf="!session">
+  <div *ngIf="!session.passport">
     <a href="http://gh-deco.herokuapp.com/auth/google"><button ion-button>Login with Google</button></a>
     <a href="http://gh-deco.herokuapp.com/auth/facebook"><button ion-button>Login with Facebook</button></a>
   </div>

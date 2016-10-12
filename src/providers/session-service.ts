@@ -27,4 +27,23 @@ export class SessionService {
       .catch(err => console.log(err));
   }
 
+  getSession() : any {
+    if (!this.session) {
+      return this.getSessionInfo()
+      .then((info) => {
+        return this.session;
+      });
+    } else {
+      return this.session;
+    }
+  }
+
+  logoutSession() : any {
+    return this.http.get('http://gh-deco.herokuapp.com/auth/logout')
+      .toPromise()
+      .then((response : any) => {
+        this.session = null;
+      })
+  }
+
 }
