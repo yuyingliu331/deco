@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SessionService } from '../../providers/session-service';
 
+declare var window: any;
+
 @Component({
   templateUrl: 'user-page.html'
 })
@@ -27,6 +29,17 @@ export class UserPage {
 
   ngOnInit() {
     this.getSessionInfo();
+  }
+
+  login(name) {
+    //need to moniter it and close it when it redirects to callback
+    let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name);
+    browserRef.addEventListener("loadstart", (event) => {
+      if ((event.url).indexOf("http://gh-deco.herokuapp.com/auth/" + name + "/callback") === 0) {
+        browserRef.removeEventListener("exit", (event) => {});
+        browserRef.close();
+      }
+    })
   }
 
   logout() {
