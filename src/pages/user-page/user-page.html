@@ -25,7 +25,7 @@
   </div>
   <div *ngIf="!session.passport">
     <a (click)="login(google)"><button ion-button>Login with Google</button></a>
-    <a href="http://gh-deco.herokuapp.com/auth/facebook"><button ion-button>Login with Facebook</button></a>
+    <a (click)="login(facebook)><button ion-button>Login with Facebook</button></a>
   </div>
 </ion-content>
 
