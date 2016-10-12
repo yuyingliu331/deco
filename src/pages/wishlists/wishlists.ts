@@ -32,12 +32,14 @@ export class WishlistsPage {
   }
 
   createWishlist = function(wishlistName) {
-    let userId = this.sessionInfo.passport.user;
-    this.wishlistservice.createWishlist(userId, wishlistName)
-    .then(createdWishlist => {
-      this.wishlists.push(createdWishlist);
-      this.toastService.presentToast('Created ' + createdWishlist.name);
-    });
+    if (this.sessionInfo && this.sessionInfo.passport) {
+      let userId = this.sessionInfo.passport.user;
+      this.wishlistservice.createWishlist(userId, wishlistName)
+      .then(createdWishlist => {
+        this.wishlists.push(createdWishlist);
+        this.toastService.presentToast('Created ' + createdWishlist.name);
+      });
+    }
   }
 
   ngOnInit() {

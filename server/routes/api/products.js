@@ -4,6 +4,8 @@ const models = require('../../models');
 const Product = models.Product;
 
 router.get('/', function(req, res, next) {
+  console.log('session', req.session);
+
   Product.findAll()
   .then(function(products) {
     res.status(200).send(products);
