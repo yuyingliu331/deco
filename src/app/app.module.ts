@@ -11,7 +11,6 @@ import { ToastService } from '../providers/toast-service';
 import { LikesService } from '../providers/likes-service';
 import { HttpModule }    from '@angular/http';
 import { ProductDetailPage } from '../pages/product/product-detail';
-import { ArgonPage } from '../pages/argon/argon';
 import { ListItem } from '../pages/list-item/list-item';
 import { WishlistsPage } from '../pages/wishlists/wishlists';
 import { WishlistPage } from '../pages/wishlist/wishlist';
@@ -26,7 +25,6 @@ import { FilterCategoryPipe } from '../pages/browse/browse.pipe';
     HomePage,
     ProductDetailPage,
     ProductsPage,
-    ArgonPage,
     ListItem,
     WishlistsPage,
     WishlistPage,
@@ -45,7 +43,6 @@ import { FilterCategoryPipe } from '../pages/browse/browse.pipe';
     HomePage,
     ProductDetailPage,
     ProductsPage,
-    ArgonPage,
     ListItem,
     WishlistsPage,
     WishlistPage,

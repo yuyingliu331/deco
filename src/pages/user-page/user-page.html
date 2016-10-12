@@ -6,8 +6,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div padding>
+<ion-content padding>
+  <div>
     <ion-segment>
       <ion-segment-button value="wishlists" (click)="changeSegment('wishlists')">
         Wishlists
@@ -19,8 +19,12 @@
   </div>
 
   <div [ngSwitch]="userView">
+    <h5 padding>Wishlists</h5>
     <user-wishlists *ngSwitchCase="'wishlists'" [sessionInfo]="session"></user-wishlists>
     <user-likes *ngSwitchCase="'likes'" [sessionInfo]="session"></user-likes>
   </div>
+  <a href="http://gh-deco.herokuapp.com/auth/google"><button ion-button>Login with Google</button></a>
+  <a href="http://gh-deco.herokuapp.com/auth/facebook"><button ion-button>Login with Facebook</button></a>
+  <a href="http://gh-deco/herokuapp.com/auth/logout"><button ion-button>Logout</button></a>
 </ion-content>
 
