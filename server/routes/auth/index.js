@@ -11,6 +11,7 @@ router.use('/google', require('./google'));
 router.use('/facebook', require('./facebook'));
 router.get('/logout', function(req, res){
   req.session.destroy();
+  req.logout();
   res.redirect('/');
 });
 
