@@ -65,7 +65,7 @@ export class WishlistService {
       .catch(err => console.log(err));
   }
 
-  deleteWishlist(userId, wishlistId) {
+  deleteWishlist(wishlistId) {
     return this.http.delete('http://gh-deco.herokuapp.com/api/wishlists/' + wishlistId)
     .toPromise()
     .then((response : any) => {
