@@ -6,7 +6,7 @@ import { SessionService } from '../../providers/session-service';
   templateUrl: 'user-page.html'
 })
 export class UserPage {
-  session = {};
+  session = {passport: ''};
   userView = 'wishlists';
   selected: string;
 
@@ -20,7 +20,7 @@ export class UserPage {
 
   getSessionInfo() {
     this.sessionService.getSessionInfo()
-    .then(result => {
+    .then((result : any) => {
       this.session = result;
     });
   }
@@ -32,7 +32,7 @@ export class UserPage {
   logout() {
     return this.sessionService.logoutSession()
     .then(() => {
-      this.session = {};
+      this.session = {passport: ''};
     });
   }
 }
