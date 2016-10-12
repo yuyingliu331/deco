@@ -8,5 +8,7 @@ declare var cordova;
   styleUrls: ['/pages/home/home.scss']
 })
 export class HomePage {
+
   constructor(public navCtrl: NavController, public menuCtrl: MenuController) {}
+
 }
