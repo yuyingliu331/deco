@@ -31,11 +31,9 @@ export class SessionService {
     if (!this.session) {
       return this.getSessionInfo()
       .then((info) => {
-        console.log('no session', this.session);
         return this.session;
       });
     } else {
-      console.log('session exists', this.session);
       return this.session;
     }
   }
