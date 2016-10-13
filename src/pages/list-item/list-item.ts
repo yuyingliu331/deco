@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProductDetailPage } from '../product/product-detail';
-import { WishlistService } from '../../providers/wishlist-service';
 
 @Component({
   selector : 'list-item',
@@ -11,9 +10,7 @@ export class ListItem {
 
   @Input() itemProduct;
 
-  wishlistId;
-
-  constructor(public navCtrl: NavController, private wishlistService: WishlistService){
+  constructor(public navCtrl: NavController){
 
   }
 
