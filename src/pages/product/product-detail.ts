@@ -60,7 +60,6 @@ export class ProductDetailPage {
     let userId = this.sessionInfo.passport.user;
     return this.likesService.getLikeStatus(userId, this.productId)
     .then((result: any) => {
-      console.log("result", result);
       this.like = result ? true : false;
     })
   }
