@@ -8,6 +8,9 @@
 
 <ion-content>
   <ion-list>
-    <list-item *ngFor="let product of wishlist" [itemProduct]="product"></list-item>
+    <ion-item *ngFor="let product of wishlist">
+      <list-item [itemProduct]="product"></list-item>
+      <ion-icon (click)="delete(wishlistId[0].wishlistId, product.id)" item-right name="ios-trash"></ion-icon>
+    </ion-item>
   </ion-list>
 </ion-content>

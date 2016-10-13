@@ -22,6 +22,13 @@ export class WishlistPage {
     this.wishlist = this.wishlistservice.getWishlistProducts(this.wishlistId);
   }
 
+  delete(wid,pid){
+   this.wishlistservice.deleteWishlistProduct(wid, pid);
+   this.wishlist = this.wishlist.filter(function(item) {
+     return item.id !== pid;
+   });
+  }
+
   ngOnInit() {
     this.getWishlist();
   }

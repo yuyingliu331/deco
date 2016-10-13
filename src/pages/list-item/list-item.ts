@@ -10,7 +10,8 @@ export class ListItem {
 
   @Input() itemProduct;
 
-  constructor(public navCtrl: NavController ){
+  constructor(public navCtrl: NavController){
+
   }
 
   goToProductDetailPage(n) {
@@ -18,4 +19,6 @@ export class ListItem {
       productId: n
     });
   }
+
+
 }
