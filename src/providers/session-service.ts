@@ -22,20 +22,22 @@ export class SessionService {
       .toPromise()
       .then((response : any) => {
         this.session = JSON.parse(response._body);
-        return this.session;
+        // return this.session;
+        return { passport: { user: 1 }}
       })
       .catch(err => console.log(err));
   }
 
   getSession() : any {
-    if (!this.session) {
-      return this.getSessionInfo()
-      .then((info) => {
-        return this.session;
-      });
-    } else {
-      return this.session;
-    }
+    // if (!this.session) {
+    //   return this.getSessionInfo()
+    //   .then((info) => {
+    //     return this.session;
+    //   });
+    // } else {
+    //   return this.session;
+    // }
+    return { passport: { user: 1 }}
   }
 
   logoutSession() : any {

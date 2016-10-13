@@ -78,6 +78,7 @@ export class WishlistService {
     return this.http.delete('http://gh-deco.herokuapp.com/api/wishlists/' + wishlistId + '/' + productId)
     .toPromise()
     .then((response : any) => {
+      console.log("response", response);
       return JSON.parse(response._body);
     })
     .catch(err => console.log(err));
