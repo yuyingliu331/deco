@@ -37,8 +37,9 @@ export class UserPage {
     let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name, '_blank', 'location=yes');
     let authCallback = "http://gh-deco.herokuapp.com/auth/" + name + "/callback";
     browserRef.addEventListener("loadstart", (event) => {
-      if ((event.url).indexOf(authCallback) != -1 || event.url == authCallback) {
-        browserRef.close();
+      alert(event.url)
+      if ((event.url).indexOf(authCallback) != -1 || event.url === authCallback) {
+        // browserRef.close();
         browserRef.removeEventListener("loadstart", (event) => {});
         me.getSessionInfo();
       }
