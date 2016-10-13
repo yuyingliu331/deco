@@ -31,13 +31,14 @@ export class UserPage {
     this.getSessionInfo();
   }
 
+  //load auth process in inappbrowser, close when redirects to callback
   login(name) {
-    //need to moniter it and close it when it redirects to callback
     let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name);
+    let authCallback = "http://gh-deco.herokuapp.com/auth/" + name + "/callback";
     browserRef.addEventListener("loadstart", (event) => {
-      if ((event.url).indexOf("http://gh-deco.herokuapp.com/auth/" + name + "/callback") === 0) {
-        browserRef.removeEventListener("exit", (event) => {});
+      if ((event.url).indexOf(authCallback) != -1 || event.url == authCallback) {
         browserRef.close();
+        browserRef.removeEventListener("loadstart", (event) => {});
       }
     })
   }
