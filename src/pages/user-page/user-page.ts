@@ -33,7 +33,7 @@ export class UserPage {
 
   //load auth process in inappbrowser, close when redirects to callback
   login(name) {
-    let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name);
+    let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name, '_blank', 'location=yes');
     let authCallback = "http://gh-deco.herokuapp.com/auth/" + name + "/callback";
     browserRef.addEventListener("loadstart", (event) => {
       if ((event.url).indexOf(authCallback) != -1 || event.url == authCallback) {
