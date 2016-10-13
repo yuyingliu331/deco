@@ -50,27 +50,31 @@ export class ProductDetailPage {
   }
 
   getUserWishlists() {
-    return this.wishlistService.getUserWishlists()
-    .then((result: any) => {
-      this.wishlists = result;
-    });
+    if(this.sessionInfo.passport) {
+      return this.wishlistService.getUserWishlists()
+      .then((result: any) => {
+        this.wishlists = result;
+      });
+    }
   }
 
   isProductLiked() {
-    let userId = this.sessionInfo.passport.user;
-    return this.likesService.getLikeStatus(userId, this.productId)
-    .then((result: any) => {
-      this.like = result ? true : false;
-    })
+    if(this.sessionInfo.passport) {
+      let userId = this.sessionInfo.passport.user;
+      return this.likesService.getLikeStatus(userId, this.productId)
+      .then((result: any) => {
+        this.like = result ? true : false;
+      })
+    }
   }
 
   initialize() {
     this.getProductById()
     .then( result => {
-      return this.getUserWishlists();
+      return this.getSessionInfo();
     })
     .then( result => {
-      return this.getSessionInfo();
+      return this.getUserWishlists();
     })
     .then( result => {
       return this.isProductLiked();
