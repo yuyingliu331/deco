@@ -42,29 +42,34 @@
 }
 
 .image {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 350px;
-    width: auto;
+  height: 300px;
+  width: auto;
+  margin: 0 auto 0 auto;
 }
 
 #image1 {
-
   position: absolute;
-  top: 158px;
+  top: 68px;
   left: 118px;
   height: 230px;
   width: auto;
 }
 
 #image2 {
-
   position: absolute;
-  top: 138px;
+  top: 68px;
   left: 118px;
-  height: 245px;
-  width: 131px;
+  height: 230px;
+  width: auto;
 }
 
+.intro-image {
+  border-radius: 10px;
+}
 
+.iphone-container {
+  position: relative;
+  height: 375px;
+  width: 375px;
+  margin: 0 auto 0 auto;
+}
