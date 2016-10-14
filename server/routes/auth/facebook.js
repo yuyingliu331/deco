@@ -5,6 +5,7 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const User = require('../../models/').User;
 const envVar = require('../../env').FACEBOOK;
+const path = require('path');
 
 const facebookCredentials = {
   clientID: envVar.clientID,
@@ -16,9 +17,9 @@ const facebookCredentials = {
 router.get('/', passport.authenticate('facebook'));
 
 router.get('/callback',
-  passport.authenticate('facebook', {successRedirect: '/profile', failureRedirect: '/login'}),
+  passport.authenticate('facebook', { failureRedirect: '/login'}),
   function (req, res) {
-    res.redirect('/');
+     res.sendFile(path.join(__dirname, '../../../www/assets/success.html'));
 });
 
 passport.use( new FacebookStrategy(facebookCredentials,
