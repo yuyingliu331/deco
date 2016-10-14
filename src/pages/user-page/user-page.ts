@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SessionService } from '../../providers/session-service';
 
@@ -12,7 +12,7 @@ export class UserPage {
   userView = 'wishlists';
   selected: string;
 
-  constructor(public navCtrl: NavController, private sessionService: SessionService, private params: NavParams) {
+  constructor(public navCtrl: NavController, private sessionService: SessionService, private params: NavParams, private changeDetector: ChangeDetectorRef) {
     this.selected = 'wishlists';
   }
 
@@ -35,14 +35,10 @@ export class UserPage {
   login(name) {
     let me = this;
     let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name, '_blank', 'location=yes');
-    let authCallback = "http://gh-deco.herokuapp.com/auth/" + name + "/callback";
-    browserRef.addEventListener("loadstart", (event) => {
-      alert(event.url)
-      if ((event.url).indexOf(authCallback) != -1 || event.url === authCallback) {
-        // browserRef.close();
-        browserRef.removeEventListener("loadstart", (event) => {});
-        me.getSessionInfo();
-      }
+    browserRef.addEventListener("exit", (event) => {
+      me.getSessionInfo()
+      this.changeDetector.detectChanges();
+      browserRef.removeEventListener("exit", (event) => {});
     })
   }
 

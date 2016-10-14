@@ -13,7 +13,7 @@ router.use('/facebook', require('./facebook'));
 router.get('/logout', function(req, res){
   req.session.destroy();
   req.logout();
-    res.sendFile(path.join(__dirname, '../../../www/assets/logout.html'));
+  res.send('logged out');
 });
 
 module.exports = router;

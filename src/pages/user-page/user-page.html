@@ -21,12 +21,11 @@
       <user-wishlists *ngSwitchCase="'wishlists'" [sessionInfo]="session"></user-wishlists>
       <user-likes *ngSwitchCase="'likes'" [sessionInfo]="session"></user-likes>
     </div>
-    <a href="http://gh-deco.herokuapp.com/auth/logout"><button ion-button>Logout</button></a>
+    <a (click)="logout()"><button ion-button>Logout</button></a>
   </div>
   <div *ngIf="!session.passport">
     <a (click)="login('google')"><button ion-button>Login with Google</button></a>
     <a (click)="login('facebook')"><button ion-button>Login with Facebook</button></a>
-    <a href="http://gh-deco.herokuapp.com/auth/logout"><button ion-button>Tester Logout</button></a>
   </div>
 </ion-content>
 

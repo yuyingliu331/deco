@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { CatalogService } from './catalog-service';
+import { Subject }    from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 
 /*
@@ -12,9 +13,18 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class WishlistService {
 
+  private newWishlistCreated = new Subject<any>();
+  wishlistCreated$;
+
   constructor(public http: Http, private catalogService: CatalogService) {
     this.http = http;
+    this.wishlistCreated$ = this.newWishlistCreated.asObservable();
   }
+
+  announceNewWishlist(wishlist: any) {
+    this.newWishlistCreated.next(wishlist);
+  }
+
   getUserWishlists() : any {
     return this.http.get('http://gh-deco.herokuapp.com/api/wishlists/')
       .toPromise()
