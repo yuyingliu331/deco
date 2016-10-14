@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LikesService } from '../../providers/likes-service';
+import { SessionService } from '../../providers/session-service';
 
 @Component({
   selector: 'user-likes',
@@ -10,7 +11,10 @@ export class LikesPage {
   @Input() sessionInfo;
   products = [];
 
-  constructor(public navCtrl: NavController, private likesService: LikesService){
+  constructor(public navCtrl: NavController, private likesService: LikesService, private sessionService: SessionService){
+    sessionService.sessionInfo$.subscribe(newSession => {
+      this.sessionInfo = newSession;
+    })
   }
 
   getUserLikes() {

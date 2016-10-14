@@ -8,10 +8,10 @@ declare var window: any;
   templateUrl: 'user-page.html'
 })
 export class UserPage {
-  session = {passport: ''};
+  session = {passport: ''}
   userView = 'wishlists';
   selected: string;
-  user = false;
+  user = true;
 
   constructor(public navCtrl: NavController, private sessionService: SessionService, private params: NavParams, private changeDetector: ChangeDetectorRef) {
     this.selected = 'wishlists';
@@ -24,7 +24,9 @@ export class UserPage {
   getSessionInfo() {
     this.sessionService.getSessionInfo()
     .then((result : any) => {
+      console.log(result, 'HELLO FROM GETINFOSESSION');
       this.session = result;
+      this.sessionService.announceNewSession();
     });
   }
 

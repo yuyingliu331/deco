@@ -20,6 +20,11 @@ export class WishlistsPage {
       this.wishlists.push(newWishlist);
       this.changeDetector.detectChanges();
     })
+
+    sessionService.sessionInfo$.subscribe(newSession => {
+      this.sessionInfo = newSession;
+      this.getUserWishlists();
+    })
   }
 
   getUserWishlists = function() {
@@ -54,6 +59,10 @@ export class WishlistsPage {
         return item.id !== wishlistId;
       })
     })
+  }
+
+  testWishlistLength() {
+    return (this.wishlists || []).length > 0;
   }
 
   ngOnInit() {

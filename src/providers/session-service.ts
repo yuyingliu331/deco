@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { Subject }    from 'rxjs/Subject';
 
 /*
   Generated class for the CatalogService provider.
@@ -12,17 +13,26 @@ import 'rxjs/add/operator/toPromise';
 export class SessionService {
 
   session = null;
+  private newSessionInfo = new Subject<any>();
+  sessionInfo$;
 
   constructor(public http: Http) {
     this.http = http;
+    this.sessionInfo$ = this.newSessionInfo.asObservable();
+  }
+
+  announceNewSession() {
+    this.newSessionInfo.next(this.session);
   }
 
   getSessionInfo() : any {
     return this.http.get('http://gh-deco.herokuapp.com/auth/session')
       .toPromise()
       .then((response : any) => {
+        console.log("in session factory")
         this.session = JSON.parse(response._body);
-         return this.session;
+        this.announceNewSession();
+        return this.session;
       })
       .catch(err => console.log(err));
   }
