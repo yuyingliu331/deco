@@ -5,6 +5,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../../models/').User;
 const envVar = require('../../env').GOOGLE;
+const path = require('path');
 
 const googleCredentials = {
   clientID: envVar.clientID,
@@ -22,7 +23,7 @@ router.get('/', passport.authenticate('google', {
 router.get('/callback',
   passport.authenticate('google', {failureRedirect: '/login'}),
   function (req, res) {
-    res.redirect('/');
+    res.sendFile(path.join(__dirname, '../../../www/assets/success.html'));
 });
 
 passport.use( new GoogleStrategy(googleCredentials,
