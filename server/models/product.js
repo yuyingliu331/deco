@@ -27,13 +27,23 @@ module.exports = function(sequelize, DataTypes) {
     },
     product3dModel: {
       type: DataTypes.STRING,
-      isUrl: true
+      isUrl: true,
+      validate: {
+        isEncodedFile: function(value) {
+          if (!value.match(/.wt3$/)) throw new Error('Model must be an encoded wikitude file');
+        }
+      }
     },
     modelPath: {
       type: DataTypes.STRING
     },
     scale: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        validLength: function(value) {
+          if (value.length !== 4) throw new Error('Model scale must have length 4');
+        }
+      }
     }
   }, {
     classMethods: {

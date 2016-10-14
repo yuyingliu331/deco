@@ -15,8 +15,8 @@ router.get('/:userId', function(req, res, next) {
 
 router.get('/:userId/:wishlistId', function(req, res, next) {
   WishlistProduct.findAll({where: {wishlistId: req.params.wishlistId }})
-  .then(function(wishlist) {
-    res.status(200).send(wishlist);
+  .then(function(wishlistproducts) {
+    res.status(200).send(wishlistproducts);
   })
   .catch(next);
 });
@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
   .catch(next);
 });
 
-//create a wishlist:
+// adds products for an existing wishlist
 //takes a productId, wishlistId --> adds new item to WishlistProduct
 router.post('/add', function(req, res, next) {
   WishlistProduct.create(req.body)

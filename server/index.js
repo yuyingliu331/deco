@@ -27,11 +27,6 @@ passport.deserializeUser(function (id, done) {
   .catch(done);
 });
 
-app.use('/', function(req, res, next) {
-  console.log('session', req.session);
-  next();
-});
-
 //Passport Init
 app.use(passport.initialize());
 app.use(passport.session());

@@ -21,7 +21,7 @@ router.get('/', passport.authenticate('google', {
 }));
 
 router.get('/callback',
-  passport.authenticate('google', {failureRedirect: '/login'}),
+  passport.authenticate('google', {failureRedirect: '/'}),
   function (req, res) {
     res.sendFile(path.join(__dirname, '../../../www/assets/success.html'));
 });

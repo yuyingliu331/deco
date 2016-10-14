@@ -17,15 +17,13 @@ describe('/api/products', function() {
 
   const productInfo = {
     category: 'Seat',
-    room: 'Living',
     description: 'A very comfy seat.',
     size: [1, 2, 3],
-    color: ['102830580'],
     material: 'Leather',
-    price: '10',
-    photo: 'http://www.google.com',
-    product3dModel: 'http://www.google.com',
-    style: 'Italian'
+    photo: 'http://placehold.it/350x150',
+    product3dModel: 'http://models.com/model.wt3',
+    modelPath: 'b6fe53f044774f09b345d05effedd63f',
+    scale: '1000'
   };
 
   beforeEach('Create product', function() {
@@ -55,7 +53,8 @@ describe('/api/products', function() {
         expect(res.body).to.have.length(1);
         done();
       });
-});
+  });
+
   it('should list a SINGLE product on /product/<id> GET', function(done) {
     chai.request(server)
       .get('/api/products/' + product1.id)
@@ -68,42 +67,66 @@ describe('/api/products', function() {
       });
   });
 
+  it('should return 404 when a SINGLE product doesnt exist', function(done) {
+    chai.request(server)
+      .get('/api/products/' + 238428394)
+      .end(function(err, res) {
+        if (err) {
+          expect(res).to.have.status(404);
+        }
+        done();
+      });
+  });
+
   it('should add a SINGLE product on /products POST', function(done) {
     chai.request(server)
       .post('/api/products/')
       .send({
-        category: 'Sofa',
-        room: 'Living',
-        description: 'Very attractive seat.',
-        size: [6, 6, 6],
-        color: ['204820486'],
+        category: 'Chair',
+        description: 'A very comfy chair.',
+        size: [1, 1, 1],
         material: 'Cloth',
-        price: '845802',
-        photo: 'http://www.amazon.com',
-        product3dModel: 'http://www.amazon.com',
-        style: 'Modern'
+        photo: 'http://placehold.it/350x150',
+        product3dModel: 'http://models.com/chair.wt3',
+        modelPath: 'b6fe53f044774f09b345d05effedd63f',
+        scale: '0500'
       })
       .end(function(err, res){
         if (err) return done(err);
         expect(res).to.have.status(201);
-        expect(res.body.category).to.equal('Sofa');
-        expect(res.body.price).to.equal(845802);
+        expect(res.body.category).to.equal('Chair');
         done();
       });
   });
+
   it('should update a SINGLE product on /product/<id> PUT', function(done) {
     chai.request(server)
       .put('/api/products/' + product1.id)
       .send({
-        room: 'Dining'
+        material: 'Leather'
       })
       .end(function(err, res) {
         if (err) return done(err);
         expect(res).to.have.status(201);
-        expect(res.body.room).to.equal('Dining');
+        expect(res.body.material).to.equal('Leather');
         done();
       });
   });
+
+  it('should return 404 when trying to update a SINGLE product that doesnt exist', function(done) {
+    chai.request(server)
+      .put('/api/products/' + 234892342)
+      .send({
+        material: 'Leather'
+      })
+      .end(function(err, res) {
+        if (err) {
+          expect(res).to.have.status(404);
+        }
+        done();
+      });
+  });
+
   it('should delete a SINGLE product on /product/<id> DELETE', function(done) {
     chai.request(server)
       .delete('/api/products/' + product1.id)
