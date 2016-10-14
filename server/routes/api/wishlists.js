@@ -5,17 +5,15 @@ const Wishlist = models.Wishlist;
 const WishlistProduct = models.WishlistProduct;
 
 // get all the wishlist:
-router.get('/', function(req, res, next) {
-  var body = (req.session.passport) ? {where: { userId: req.session.passport.user}} : {};
-  Wishlist.findAll(body)
+router.get('/:userId', function(req, res, next) {
+  Wishlist.findAll({where: { userId: req.params.userId}})
   .then(function(wishlists) {
     res.status(200).send(wishlists);
   })
   .catch(next);
 });
 
-// get all products for a wishlist by the wishlistid
-router.get('/:wishlistId', function(req, res, next) {
+router.get('/:userId/:wishlistId', function(req, res, next) {
   WishlistProduct.findAll({where: {wishlistId: req.params.wishlistId }})
   .then(function(wishlistproducts) {
     res.status(200).send(wishlistproducts);

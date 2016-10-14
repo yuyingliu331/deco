@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, Input } from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { WishlistService } from '../../providers/wishlist-service';
 import { ToastService } from '../../providers/toast-service';
@@ -23,7 +23,7 @@ export class WishlistsPage {
   }
 
   getUserWishlists = function() {
-    this.wishlistservice.getUserWishlists()
+    this.wishlistservice.getUserWishlists(this.sessionInfo.passport.user)
     .then(result => {
       this.wishlists = result;
     });
@@ -32,7 +32,7 @@ export class WishlistsPage {
   goToWishlist = function(wishlistId, wishlistName) {
     this.wishlistservice.getWishlist(wishlistId)
     .then(wishlist => {
-      this.navCtrl.push(WishlistPage, {wishlist, wishlistName});
+      this.navCtrl.push(WishlistPage, {wishlist, wishlistName, userId: this.sessionInfo.passport.user});
     });
   }
 

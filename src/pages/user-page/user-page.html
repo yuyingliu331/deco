@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="session && session.passport">
+  <div *ngIf="user">
     <ion-segment [(ngModel)]="selected">
       <ion-segment-button value="wishlists" (click)="changeSegment('wishlists')">
         Wishlists
@@ -23,7 +23,7 @@
     </div>
     <a (click)="logout()"><button ion-button>Logout</button></a>
   </div>
-  <div *ngIf="!session.passport">
+  <div *ngIf="!user">
     <a (click)="login('google')"><button ion-button>Login with Google</button></a>
     <a (click)="login('facebook')"><button ion-button>Login with Facebook</button></a>
   </div>

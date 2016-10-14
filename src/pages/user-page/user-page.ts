@@ -11,6 +11,7 @@ export class UserPage {
   session = {passport: ''};
   userView = 'wishlists';
   selected: string;
+  user = false;
 
   constructor(public navCtrl: NavController, private sessionService: SessionService, private params: NavParams, private changeDetector: ChangeDetectorRef) {
     this.selected = 'wishlists';
@@ -33,19 +34,24 @@ export class UserPage {
 
   //load auth process in inappbrowser, close when redirects to callback
   login(name) {
-    let me = this;
     let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name, '_blank', 'location=yes');
     browserRef.addEventListener("exit", (event) => {
-      me.getSessionInfo()
-      this.changeDetector.detectChanges();
+      this.sessionService.getSessionInfo()
+     .then((result : any) => {
+       this.session = result;
+     });
+
       browserRef.removeEventListener("exit", (event) => {});
     })
+
+    this.user = true;
   }
 
   logout() {
     return this.sessionService.logoutSession()
     .then(() => {
       this.session = {passport: ''};
+      this.user = false;
     });
   }
 }
