@@ -51,7 +51,7 @@ export class ProductDetailPage {
 
   getUserWishlists() {
     if(this.sessionInfo.passport) {
-      return this.wishlistService.getUserWishlists()
+      return this.wishlistService.getUserWishlists(this.sessionInfo.passport.user)
       .then((result: any) => {
         this.wishlists = result;
       });
