@@ -55,7 +55,6 @@ export class RadioAlertService {
 
     alert.present().then(() => {
       this.testRadioOpen = true;
-      this.refreshWishlists = true;
     });
 
   }
@@ -80,6 +79,7 @@ export class RadioAlertService {
           {
             text: 'Save',
             handler: data => {
+              this.refreshWishlists = true;
               this.testRadioOpen = false;
               this.wishlistService.createWishlist(userId, data.name)
               .then((response : any) =>{
