@@ -11,6 +11,7 @@ export class UserPage {
   session = {passport: ''};
   userView = 'wishlists';
   selected: string;
+  user = false;
 
   constructor(public navCtrl: NavController, private sessionService: SessionService, private params: NavParams, private changeDetector: ChangeDetectorRef) {
     this.selected = 'wishlists';
@@ -38,17 +39,19 @@ export class UserPage {
       this.sessionService.getSessionInfo()
      .then((result : any) => {
        this.session = result;
-       console.log(JSON.stringify(this.session));
      });
 
       browserRef.removeEventListener("exit", (event) => {});
     })
+
+    this.user = true;
   }
 
   logout() {
     return this.sessionService.logoutSession()
     .then(() => {
       this.session = {passport: ''};
+      this.user = false;
     });
   }
 }
