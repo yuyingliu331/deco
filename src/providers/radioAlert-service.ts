@@ -63,7 +63,7 @@ export class RadioAlertService {
   noWishlistsAlert(userId, productId ) {
       let prompt = this.alerCtrl.create({
         title: 'Create Wishlist',
-        message: "Enter a name for the wishlist you want to add the product to",
+        message: "Enter a Wishlist Name",
         inputs: [
           {
             name: 'name',
