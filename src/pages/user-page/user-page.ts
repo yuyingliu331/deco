@@ -24,7 +24,6 @@ export class UserPage {
   getSessionInfo() {
     this.sessionService.getSessionInfo()
     .then((result : any) => {
-      console.log(result, 'HELLO FROM GETINFOSESSION');
       this.session = result;
     });
   }
