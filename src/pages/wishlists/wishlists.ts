@@ -42,6 +42,15 @@ export class WishlistsPage {
     }
   }
 
+  deleteWishlist = function(wishlistId) {
+    this.wishlistservice.deleteWishlist(wishlistId)
+    .then(() => {
+      this.wishlists = this.wishlists.filter(function(item) {
+        return item.id !== wishlistId;
+      })
+    })
+  }
+
   ngOnInit() {
     this.getUserWishlists();
   }
