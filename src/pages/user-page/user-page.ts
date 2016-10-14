@@ -36,10 +36,11 @@ export class UserPage {
     let me = this;
     let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name, '_blank', 'location=yes');
     browserRef.addEventListener("exit", (event) => {
+      console.log('Browser closed, session before updating: ', me.session);
       me.getSessionInfo()
-      this.changeDetector.detectChanges();
       browserRef.removeEventListener("exit", (event) => {});
     })
+    console.log('session after login: ', this.session);
   }
 
   logout() {
