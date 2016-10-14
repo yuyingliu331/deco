@@ -11,7 +11,7 @@ export class UserPage {
   session = {passport: ''}
   userView = 'wishlists';
   selected: string;
-  user = true;
+  user = false;
 
   constructor(public navCtrl: NavController, private sessionService: SessionService, private params: NavParams, private changeDetector: ChangeDetectorRef) {
     this.selected = 'wishlists';
@@ -26,7 +26,6 @@ export class UserPage {
     .then((result : any) => {
       console.log(result, 'HELLO FROM GETINFOSESSION');
       this.session = result;
-      this.sessionService.announceNewSession();
     });
   }
 

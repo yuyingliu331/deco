@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Subject }    from 'rxjs/Subject';
 
 /*
   Generated class for the CatalogService provider.
@@ -13,16 +12,9 @@ import { Subject }    from 'rxjs/Subject';
 export class SessionService {
 
   session = null;
-  private newSessionInfo = new Subject<any>();
-  sessionInfo$;
 
   constructor(public http: Http) {
     this.http = http;
-    this.sessionInfo$ = this.newSessionInfo.asObservable();
-  }
-
-  announceNewSession() {
-    this.newSessionInfo.next(this.session);
   }
 
   getSessionInfo() : any {
@@ -31,7 +23,6 @@ export class SessionService {
       .then((response : any) => {
         console.log("in session factory")
         this.session = JSON.parse(response._body);
-        this.announceNewSession();
         return this.session;
       })
       .catch(err => console.log(err));
