@@ -25,8 +25,8 @@ export class WishlistService {
     this.newWishlistCreated.next(wishlist);
   }
 
-  getUserWishlists() : any {
-    return this.http.get('http://gh-deco.herokuapp.com/api/wishlists/')
+  getUserWishlists(userId) : any {
+    return this.http.get('http://gh-deco.herokuapp.com/api/wishlists/' + userId)
       .toPromise()
       .then((response : any) => {
         return JSON.parse(response._body);
@@ -35,8 +35,8 @@ export class WishlistService {
   }
 
   //get all products from wishlistservice with wishlist id
-  getWishlist(wishlistId) : any {
-    return this.http.get('http://gh-deco.herokuapp.com/api/wishlists/' + wishlistId)
+  getWishlist(userId, wishlistId) : any {
+    return this.http.get('http://gh-deco.herokuapp.com/api/wishlists/' + userId + '/' + wishlistId)
       .toPromise()
       .then((response : any) => {
         return JSON.parse(response._body);
