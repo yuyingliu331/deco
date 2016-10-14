@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { WishlistService } from '../../providers/wishlist-service';
 import { ToastService } from '../../providers/toast-service';
@@ -12,9 +12,14 @@ import { WishlistPage } from '../wishlist/wishlist';
 
 export class WishlistsPage {
   wishlists = [];
+  subscription: any;
   @Input() sessionInfo;
 
-  constructor(public navCtrl: NavController, private wishlistservice: WishlistService, private sessionService: SessionService, private toastService: ToastService){
+  constructor(public navCtrl: NavController, private wishlistservice: WishlistService, private sessionService: SessionService, private toastService: ToastService, private changeDetector: ChangeDetectorRef){
+    wishlistservice.wishlistCreated$.subscribe(newWishlist => {
+      this.wishlists.push(newWishlist);
+      this.changeDetector.detectChanges();
+    })
   }
 
   getUserWishlists = function() {

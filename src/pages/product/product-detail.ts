@@ -123,7 +123,6 @@ export class ProductDetailPage {
   addProductWishlist(wishlists) {
     if(this.sessionInfo.passport) {
       this.radioAlertService.doRadio(wishlists, this.productId, this.sessionInfo.passport.user)
-      if(this.radioAlertService.refreshWishlists) this.getUserWishlists();
     } else {
       this.radioAlertService.loginAlert();
     }

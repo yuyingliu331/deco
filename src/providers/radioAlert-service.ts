@@ -16,6 +16,7 @@ export class RadioAlertService {
   testRadioOpen: boolean;
   testRadioResult;
   refreshWishlists: boolean;
+  newWishlist;
 
   constructor(public alerCtrl: AlertController, private wishlistService: WishlistService, private toastService: ToastService) { }
 
@@ -83,9 +84,11 @@ export class RadioAlertService {
               this.testRadioOpen = false;
               this.wishlistService.createWishlist(userId, data.name)
               .then((response : any) =>{
+                this.newWishlist = response;
                 return this.wishlistService.addProductToWishlist(response.id, productId);
               })
               .then((response : any) =>{
+                this.wishlistService.announceNewWishlist(this.newWishlist);
                 return this.toastService.presentToast('Item added to new wishlist: ' + data.name);
               })
             }
