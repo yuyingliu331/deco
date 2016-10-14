@@ -15,10 +15,11 @@ export class RadioAlertService {
 
   testRadioOpen: boolean;
   testRadioResult;
+  refreshWishlists: boolean;
 
   constructor(public alerCtrl: AlertController, private wishlistService: WishlistService, private toastService: ToastService) { }
 
-  doRadio(wishlists, productId) {
+  doRadio(wishlists, productId, userId) {
     let alert = this.alerCtrl.create({ enableBackdropDismiss: true });
     alert.setTitle('Select A Wishlist');
 
@@ -29,7 +30,13 @@ export class RadioAlertService {
         value: wishlist
       });
     }
-
+    alert.addButton({
+      text: 'New Wishlist',
+      handler: data => {
+        this.testRadioOpen = false;
+        this.noWishlistsAlert(userId, productId)
+      }
+    });
     alert.addButton({
       text:'Cancel',
       handler: data => {
@@ -50,5 +57,52 @@ export class RadioAlertService {
       this.testRadioOpen = true;
     });
 
+  }
+
+  noWishlistsAlert(userId, productId ) {
+      let prompt = this.alerCtrl.create({
+        title: 'Create Wishlist',
+        message: "Enter a Wishlist Name",
+        inputs: [
+          {
+            name: 'name',
+            placeholder: 'Wishlist Name'
+          },
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: data => {
+              this.testRadioResult = undefined;
+            }
+          },
+          {
+            text: 'Save',
+            handler: data => {
+              this.refreshWishlists = true;
+              this.testRadioOpen = false;
+              this.wishlistService.createWishlist(userId, data.name)
+              .then((response : any) =>{
+                return this.wishlistService.addProductToWishlist(response.id, productId);
+              })
+              .then((response : any) =>{
+                return this.toastService.presentToast('Item added to new wishlist: ' + data.name);
+              })
+            }
+          }
+        ]
+      });
+      prompt.present().then(() => {
+        this.testRadioOpen = true;
+      });
+  }
+
+  loginAlert() {
+    let alert = this.alerCtrl.create({
+      title: 'Please Login',
+      subTitle: 'Please login on the Profile Page.',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

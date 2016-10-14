@@ -2,9 +2,10 @@
   <ion-list-header>
     My Wishlists:
   </ion-list-header>
-  <ion-item *ngFor="let list of wishlists" (click)="goToWishlist(list.id, list.name)">
+  <ion-item *ngFor="let list of wishlists">
     <ion-icon name="star" item-left></ion-icon>
-    <p color="primary">{{list.name}}</p>
+    <h4 (click)="goToWishlist(list.id, list.name)" color="primary">{{list.name}}</h4>
+    <ion-icon name="trash" item-right (click)="deleteWishlist(list.id)"></ion-icon>
   </ion-item>
 </ion-list>
 <ion-list inset>
@@ -15,6 +16,8 @@
     <ion-input type="newWishlist" #newWishlist placeholder="Wishlist Name"></ion-input>
   </ion-item>
   <ion-item class='new-list-button'>
-    <button ion-button (click)="createWishlist(newWishlist.value)">Create</button>
+    <button ion-button icon-left (click)="createWishlist(newWishlist.value)">
+      <ion-icon name="add"></ion-icon> Create
+    </button>
   </ion-item>
 </ion-list>

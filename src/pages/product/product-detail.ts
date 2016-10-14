@@ -50,29 +50,33 @@ export class ProductDetailPage {
   }
 
   getUserWishlists() {
-    return this.wishlistService.getUserWishlists()
-    .then((result: any) => {
-      this.wishlists = result;
-    });
+    if(this.sessionInfo.passport) {
+      return this.wishlistService.getUserWishlists()
+      .then((result: any) => {
+        this.wishlists = result;
+      });
+    }
   }
 
   isProductLiked() {
-    let userId = this.sessionInfo.passport.user;
-    return this.likesService.getLikeStatus(userId, this.productId)
-    .then((result: any) => {
-      this.like = result ? true : false;
-    })
+    if(this.sessionInfo.passport) {
+      let userId = this.sessionInfo.passport.user;
+      return this.likesService.getLikeStatus(userId, this.productId)
+      .then((result: any) => {
+        this.like = result ? true : false;
+      })
+    }
   }
 
   initialize() {
     this.getProductById()
-    .then( result => {
-      return this.getUserWishlists();
-    })
-    .then( result => {
+    .then((result: any) => {
       return this.getSessionInfo();
     })
-    .then( result => {
+    .then((result: any) => {
+      return this.getUserWishlists();
+    })
+    .then((result: any) => {
       return this.isProductLiked();
     })
   }
@@ -106,14 +110,23 @@ export class ProductDetailPage {
   }
 
   toggleLike(){
-   this.like = !this.like;
-   let userId = this.sessionInfo.passport.user;
-   if(this.like && userId) this.likesService.likeItem(userId, this.productId);
-   if(!this.like && userId) this.likesService.unlikeItem(userId, this.productId);
+   if(this.sessionInfo.passport) {
+     this.like = !this.like;
+     let userId = this.sessionInfo.passport.user;
+     if(this.like && userId) this.likesService.likeItem(userId, this.productId);
+     if(!this.like && userId) this.likesService.unlikeItem(userId, this.productId);
+   } else {
+     this.radioAlertService.loginAlert();
+   }
   }
 
   addProductWishlist(wishlists) {
-    this.radioAlertService.doRadio(wishlists, this.productId);
+    if(this.sessionInfo.passport) {
+      this.radioAlertService.doRadio(wishlists, this.productId, this.sessionInfo.passport.user)
+      if(this.radioAlertService.refreshWishlists) this.getUserWishlists();
+    } else {
+      this.radioAlertService.loginAlert();
+    }
   }
 
   openVR() {
