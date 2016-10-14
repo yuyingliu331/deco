@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 // get all products for a wishlist by the wishlistid
 router.get('/:wishlistId', function(req, res, next) {
-  WishlistProduct.find({where: {wishlistId: req.params.wishlistId }})
+  WishlistProduct.findAll({where: {wishlistId: req.params.wishlistId }})
   .then(function(wishlistproducts) {
     res.status(200).send(wishlistproducts);
   })
