@@ -12,7 +12,7 @@ router.use('/facebook', require('./facebook'));
 router.get('/logout', function(req, res){
   req.session.destroy();
   req.logout();
-  res.redirect('/');
+  res.send('logged out');
 });
 
 module.exports = router;
