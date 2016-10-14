@@ -70,13 +70,13 @@ export class ProductDetailPage {
 
   initialize() {
     this.getProductById()
-    .then( result => {
+    .then((result: any) => {
       return this.getSessionInfo();
     })
-    .then( result => {
+    .then((result: any) => {
       return this.getUserWishlists();
     })
-    .then( result => {
+    .then((result: any) => {
       return this.isProductLiked();
     })
   }
@@ -117,7 +117,10 @@ export class ProductDetailPage {
   }
 
   addProductWishlist(wishlists) {
-    this.radioAlertService.doRadio(wishlists, this.productId);
+    if(this.sessionInfo.passport) {
+      this.radioAlertService.doRadio(wishlists, this.productId, this.sessionInfo.passport.user)
+      if(this.radioAlertService.refreshWishlists) this.getUserWishlists();
+    }
   }
 
   openVR() {

@@ -15,10 +15,11 @@ export class RadioAlertService {
 
   testRadioOpen: boolean;
   testRadioResult;
+  refreshWishlists: boolean;
 
   constructor(public alerCtrl: AlertController, private wishlistService: WishlistService, private toastService: ToastService) { }
 
-  doRadio(wishlists, productId) {
+  doRadio(wishlists, productId, userId) {
     let alert = this.alerCtrl.create({ enableBackdropDismiss: true });
     alert.setTitle('Select A Wishlist');
 
@@ -29,7 +30,13 @@ export class RadioAlertService {
         value: wishlist
       });
     }
-
+    alert.addButton({
+      text: 'New Wishlist',
+      handler: data => {
+        this.testRadioOpen = false;
+        this.noWishlistsAlert(userId, productId)
+      }
+    });
     alert.addButton({
       text:'Cancel',
       handler: data => {
@@ -48,6 +55,7 @@ export class RadioAlertService {
 
     alert.present().then(() => {
       this.testRadioOpen = true;
+      this.refreshWishlists = true;
     });
 
   }
