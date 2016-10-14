@@ -30,7 +30,7 @@ export class WishlistsPage {
   }
 
   goToWishlist = function(wishlistId, wishlistName) {
-    this.wishlistservice.getWishlist(wishlistId)
+    this.wishlistservice.getWishlist(this.sessionInfo.passport.user, wishlistId)
     .then(wishlist => {
       this.navCtrl.push(WishlistPage, {wishlist, wishlistName, userId: this.sessionInfo.passport.user});
     });
