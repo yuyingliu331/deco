@@ -21,7 +21,6 @@ export class SessionService {
     return this.http.get('http://gh-deco.herokuapp.com/auth/session')
       .toPromise()
       .then((response : any) => {
-        console.log("in session factory")
         this.session = JSON.parse(response._body);
         return this.session;
       })
