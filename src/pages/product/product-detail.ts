@@ -110,16 +110,22 @@ export class ProductDetailPage {
   }
 
   toggleLike(){
-   this.like = !this.like;
-   let userId = this.sessionInfo.passport.user;
-   if(this.like && userId) this.likesService.likeItem(userId, this.productId);
-   if(!this.like && userId) this.likesService.unlikeItem(userId, this.productId);
+   if(this.sessionInfo.passport) {
+     this.like = !this.like;
+     let userId = this.sessionInfo.passport.user;
+     if(this.like && userId) this.likesService.likeItem(userId, this.productId);
+     if(!this.like && userId) this.likesService.unlikeItem(userId, this.productId);
+   } else {
+     this.radioAlertService.loginAlert();
+   }
   }
 
   addProductWishlist(wishlists) {
     if(this.sessionInfo.passport) {
       this.radioAlertService.doRadio(wishlists, this.productId, this.sessionInfo.passport.user)
       if(this.radioAlertService.refreshWishlists) this.getUserWishlists();
+    } else {
+      this.radioAlertService.loginAlert();
     }
   }
 

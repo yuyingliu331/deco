@@ -96,4 +96,13 @@ export class RadioAlertService {
         this.testRadioOpen = true;
       });
   }
+
+  loginAlert() {
+    let alert = this.alerCtrl.create({
+      title: 'Please Login',
+      subTitle: 'Please login on the Profile Page.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }
