@@ -33,14 +33,16 @@ export class UserPage {
 
   //load auth process in inappbrowser, close when redirects to callback
   login(name) {
-    let me = this;
     let browserRef = window.cordova.InAppBrowser.open('http://gh-deco.herokuapp.com/auth/' + name, '_blank', 'location=yes');
     browserRef.addEventListener("exit", (event) => {
-      console.log('Browser closed, session before updating: ', me.session);
-      me.getSessionInfo()
+      this.sessionService.getSessionInfo()
+     .then((result : any) => {
+       this.session = result;
+       console.log(JSON.stringify(this.session));
+     });
+
       browserRef.removeEventListener("exit", (event) => {});
     })
-    console.log('session after login: ', this.session);
   }
 
   logout() {
