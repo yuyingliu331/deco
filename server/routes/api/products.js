@@ -24,7 +24,11 @@ router.post('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
   Product.findById(req.params.id)
   .then(function(product) {
-    res.send(product);
+    if (product) {
+      res.send(product);
+    } else {
+      res.status(404).send('Product not found');
+    }
   })
   .catch(next);
 });
@@ -32,7 +36,11 @@ router.get('/:id', function(req, res, next) {
 router.put('/:id', function(req, res, next) {
   Product.findById(req.params.id)
   .then(function(product) {
-    return product.update(req.body);
+    if (product) {
+      return product.update(req.body);
+    } else {
+      res.status(404).send('Product not found');
+    }
   })
   .then(function(updatedProduct) {
     res.status(201).send(updatedProduct);
