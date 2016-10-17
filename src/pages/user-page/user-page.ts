@@ -11,7 +11,7 @@ export class UserPage {
   session = {passport: ''}
   userView = 'wishlists';
   selected: string;
-  user = false;
+  user = true;
 
   constructor(public navCtrl: NavController, private sessionService: SessionService, private params: NavParams, private changeDetector: ChangeDetectorRef) {
     this.selected = 'wishlists';
@@ -43,7 +43,6 @@ export class UserPage {
 
       browserRef.removeEventListener("exit", (event) => {});
     })
-
     this.user = true;
   }
 
