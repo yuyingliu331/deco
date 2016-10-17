@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LikesService } from '../../providers/likes-service';
+import { SessionService } from '../../providers/session-service';
 
 @Component({
   selector: 'user-likes',
@@ -10,10 +11,17 @@ export class LikesPage {
   @Input() sessionInfo;
   products = [];
 
-  constructor(public navCtrl: NavController, private likesService: LikesService){
+  constructor(public navCtrl: NavController, private likesService: LikesService, private sessionService: SessionService){
   }
 
-  getUserLikes() {
+  getSessionInfo = function() {
+    return this.sessionService.getSessionInfo()
+    .then(result => {
+      this.sessionInfo = result;
+    });
+  }
+
+  getUserLikes = function() {
     if(this.sessionInfo && this.sessionInfo.passport) {
       this.likesService.getUserLikes(this.sessionInfo.passport.user)
       .then(result => {
@@ -26,6 +34,9 @@ export class LikesPage {
   }
 
   ngOnInit() {
-    this.getUserLikes();
+    this.getSessionInfo()
+    .then((result: any) =>{
+      this.getUserLikes();
+    });
   }
 }

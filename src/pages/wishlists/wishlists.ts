@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { WishlistService } from '../../providers/wishlist-service';
 import { ToastService } from '../../providers/toast-service';
@@ -15,11 +15,17 @@ export class WishlistsPage {
   subscription: any;
   @Input() sessionInfo;
 
-  constructor(public navCtrl: NavController, private wishlistservice: WishlistService, private sessionService: SessionService, private toastService: ToastService, private changeDetector: ChangeDetectorRef){
+  constructor(public navCtrl: NavController, private wishlistservice: WishlistService, private sessionService: SessionService, private toastService: ToastService){
     wishlistservice.wishlistCreated$.subscribe(newWishlist => {
       this.wishlists.push(newWishlist);
-      this.changeDetector.detectChanges();
     })
+  }
+
+  getSessionInfo = function() {
+    return this.sessionService.getSessionInfo()
+    .then(result => {
+      this.sessionInfo = result;
+    });
   }
 
   getUserWishlists = function() {
@@ -30,7 +36,7 @@ export class WishlistsPage {
   }
 
   goToWishlist = function(wishlistId, wishlistName) {
-    this.wishlistservice.getWishlist(wishlistId)
+    this.wishlistservice.getWishlist(this.sessionInfo.passport.user, wishlistId)
     .then(wishlist => {
       this.navCtrl.push(WishlistPage, {wishlist, wishlistName, userId: this.sessionInfo.passport.user});
     });
@@ -56,8 +62,15 @@ export class WishlistsPage {
     })
   }
 
+  testWishlistLength = function() {
+    return (this.wishlists || []).length > 0;
+  }
+
   ngOnInit() {
-    this.getUserWishlists();
+    this.getSessionInfo()
+    .then((result: any) => {
+      this.getUserWishlists();
+    });
   }
 
 }

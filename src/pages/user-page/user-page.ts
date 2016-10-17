@@ -8,7 +8,7 @@ declare var window: any;
   templateUrl: 'user-page.html'
 })
 export class UserPage {
-  session = {passport: ''};
+  session = {passport: ''}
   userView = 'wishlists';
   selected: string;
   user = false;

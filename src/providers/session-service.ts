@@ -22,7 +22,7 @@ export class SessionService {
       .toPromise()
       .then((response : any) => {
         this.session = JSON.parse(response._body);
-         return this.session;
+        return this.session;
       })
       .catch(err => console.log(err));
   }
