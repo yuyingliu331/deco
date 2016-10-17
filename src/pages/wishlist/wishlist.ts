@@ -21,7 +21,7 @@ export class WishlistPage {
   //we pass in a wishlist with just productId's from the wishlists page via params
   //we then get all the products from the wishlist
   getWishlist = function() {
-    this.wishlist = this.wishlistservice.getWishlistProducts(this.userId, this.wishlistId);
+    this.wishlist = this.wishlistservice.getWishlistProducts(this.wishlistId);
   }
 
   delete(wid,pid){

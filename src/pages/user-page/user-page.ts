@@ -43,7 +43,6 @@ export class UserPage {
 
       browserRef.removeEventListener("exit", (event) => {});
     })
-
     this.user = true;
   }
 
