@@ -37,7 +37,7 @@ export class ProductDetailPage {
   }
 
   getSafeUrl() {
-    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://sketchfab.com/models/' + this.product.modelPath + '/embed?autostart=1');
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://sketchfab.com/models/' + this.product.modelPath + '/embed');
     return this.safeUrl;
   }
 
